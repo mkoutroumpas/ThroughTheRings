@@ -15,12 +15,12 @@ public class SpacecraftMock : MonoBehaviour
 
     private IEnumerator MoveForward()
     {
-        var position = gameObject.transform.position;
+        var transform = gameObject.transform;
 
         while (true)
         {
-            position = new Vector3(position.x, position.y, 
-                position.z + (Forward ? 1 : -1) * TranslationRate * VelocityMetersPerSecond / UnitLengthInMeters);
+            transform.position = new Vector3(transform.position.x, transform.position.y,
+                transform.position.z + (Forward ? 1 : -1) * TranslationRate * VelocityMetersPerSecond / UnitLengthInMeters);
 
             yield return new WaitForSeconds(TranslationRate);
         }
