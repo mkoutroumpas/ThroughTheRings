@@ -320,7 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5eec7e640c42543be85bfa434e859a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpacecraftObject: {fileID: 0}
 --- !u!1 &569542325
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +650,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1e+9
-  field of view: 120
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
