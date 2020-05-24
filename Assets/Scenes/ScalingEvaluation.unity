@@ -699,6 +699,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1378320970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5913
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 616
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25983
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_Name
+      value: AllQuadSpere100mViewport6
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 589f0393098f3d849882efd0d64d916f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 589f0393098f3d849882efd0d64d916f, type: 3}
 --- !u!1001 &1905479053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -784,7 +873,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 89015347712e0c04189f6e4a931dbd6d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 89015347712e0c04189f6e4a931dbd6d,
         type: 3}
@@ -843,7 +932,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1e+9
+  far clip plane: 1e+12
   field of view: 90
   orthographic: 0
   orthographic size: 5
