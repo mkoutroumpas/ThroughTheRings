@@ -383,10 +383,35 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -2397996973257786244, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: e052a16d3ecb1ab46b26594aede01cfc,
         type: 3}
       propertyPath: m_Name
       value: SpacecraftMock2
+      objectReference: {fileID: 0}
+    - target: {fileID: -113181020801827196, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 608615394619914483, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066910053003865102, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490870052100550915, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e052a16d3ecb1ab46b26594aede01cfc, type: 3}
@@ -765,6 +790,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AllQuadSpere50m
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c7d861801f8e2de4c9396ee6d6a31d6e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c7d861801f8e2de4c9396ee6d6a31d6e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7d861801f8e2de4c9396ee6d6a31d6e, type: 3}
@@ -1562,8 +1597,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
-  far clip plane: 1e+12
+  near clip plane: 0.05
+  far clip plane: 1e+15
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1590,7 +1625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970346654}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.077, y: 0.147, z: 0}
+  m_LocalPosition: {x: 0.07700001, y: 0.26, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 351024886}
