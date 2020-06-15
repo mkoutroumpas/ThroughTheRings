@@ -8,13 +8,13 @@ using Unity.Transforms;
 namespace Assets.Scripts.Systems
 {
     [BurstCompile]
-    public class SpacecraftMockSystem : SystemBase
+    public class SpacecraftTranslationSystem : SystemBase
     {
         protected override void OnUpdate()
         {
             var time = Time.DeltaTime;
 
-            Entities.ForEach((ref Translation translation, in Velocity velocity) =>
+            Entities.WithAll<Spacecraft>().ForEach((ref Translation translation, in Velocity velocity) =>
             {
                 translation.Value += new float3(0f, 0f, velocity.Value * time);
 
