@@ -10,7 +10,7 @@ public class SpacecraftMock : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(MoveForward());
+        ////StartCoroutine(MoveForward());
     }
 
     private IEnumerator MoveForward()
