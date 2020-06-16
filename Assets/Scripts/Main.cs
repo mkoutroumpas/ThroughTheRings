@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SpacecraftMock : MonoBehaviour
+public class Main : MonoBehaviour
 {
     private const int VelocityMetersPerSecond = 10;
     private const bool Forward = true;

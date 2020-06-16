@@ -246,6 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8752580334219457300}
+  - component: {fileID: 4405387087241201990}
   m_Layer: 0
   m_Name: SpacecraftMock
   m_TagString: Untagged
@@ -272,6 +273,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+--- !u!114 &4405387087241201990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704988327001620743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ba4babb5e84af4bbd5a7a350d3f41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6603733969811840775
 GameObject:
   m_ObjectHideFlags: 0
