@@ -14,7 +14,7 @@ namespace Assets.Scripts.Systems
         {
             var time = Time.DeltaTime;
 
-            Entities.WithAll<Spacecraft>().ForEach((ref Translation translation, in Velocity velocity) =>
+            Entities.WithAll<SpacecraftMock>().ForEach((ref Translation translation, in Velocity velocity) =>
             {
                 translation.Value += new float3(0f, 0f, velocity.Value * time);
 
