@@ -30,7 +30,8 @@ public class Manager : MonoBehaviour
             
             _entityManager.SetComponentData(entityInstance, 
                 new Translation { Value = position });
-            _entityManager.SetComponentData(entityInstance, 
+
+            _entityManager.AddComponentData(entityInstance, 
                 new Displacement { Value = (Forward ? 1 : -1) * TranslationRate * VelocityMetersPerSecond / UnitLengthInMeters });
         }
     }

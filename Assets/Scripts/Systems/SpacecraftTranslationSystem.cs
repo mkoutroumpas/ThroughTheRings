@@ -1,12 +1,11 @@
 ﻿using Assets.Scripts.Components;
-using Unity.Burst;
 using Unity.Entities;
+using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 
 namespace Assets.Scripts.Systems
 {
-    [BurstCompile]
     public class SpacecraftTranslationSystem : SystemBase
     {
         protected override void OnUpdate()

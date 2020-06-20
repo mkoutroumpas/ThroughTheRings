@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5eec7e640c42543be85bfa434e859a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrefabsToMove: []
 --- !u!1001 &521685175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -698,6 +699,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5eec7e640c42543be85bfa434e859a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrefabsToMove:
+  - {fileID: 569542325}
+  - {fileID: 1304413601}
 --- !u!4 &917095381
 Transform:
   m_ObjectHideFlags: 0
