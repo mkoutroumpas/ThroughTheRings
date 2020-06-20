@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Components
 {
-    public struct Velocity : IComponentData
+    public struct Displacement : IComponentData
     {
         public float Value;
     }

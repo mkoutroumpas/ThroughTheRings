@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Components;
 using Unity.Burst;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -14,11 +13,11 @@ namespace Assets.Scripts.Systems
         {
             var time = Time.DeltaTime;
 
-            Entities.WithAll<Spacecraft>().ForEach((ref Translation translation, in Velocity velocity) =>
+            Entities.WithAll<Spacecraft>().ForEach((ref Translation translation, in Displacement displacement) =>
             {
-                translation.Value += new float3(0f, 0f, velocity.Value * time);
+                translation.Value += new float3(0f, 0f, displacement.Value * time);
 
-            }).Schedule();
+            }).ScheduleParallel();
         }
     }
 }
