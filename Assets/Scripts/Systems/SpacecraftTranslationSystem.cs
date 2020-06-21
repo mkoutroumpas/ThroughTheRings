@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.Components;
+using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -6,17 +8,55 @@ using Unity.Transforms;
 
 namespace Assets.Scripts.Systems
 {
-    public class SpacecraftTranslationSystem : SystemBase
+    public class SpacecraftTranslationSystem : JobComponentSystem
     {
-        protected override void OnUpdate()
+        //protected override void OnUpdate()
+        //{
+        //    var time = Time.DeltaTime;
+
+        //    Entities.WithAll<SpaceObject>().ForEach((ref Translation translation) =>
+        //    {
+        //        translation.Value += new float3(0f, 0f, 100 * time);
+
+        //    }).ScheduleParallel();
+        //}
+
+        //protected override JobHandle OnUpdate(JobHandle inputDeps)
+        //{
+        //    var time = Time.DeltaTime;
+
+        //    var jobHandle = Entities.ForEach((ref Translation translation, in Displacement displacement) =>
+        //    {
+        //        translation.Value += new float3(0f, 0f, displacement.Value * time);
+
+        //    }).Schedule(inputDeps);
+
+        //    return jobHandle;
+        //}
+
+
+        [BurstCompile]
+        [RequireComponentTag(typeof(SpaceObject))]
+        struct TranslateJob : IJobForEach<Translation, Displacement>
         {
-            var time = Time.DeltaTime;
+            [ReadOnly]
+            public float DeltaTime;
 
-            Entities.WithAll<Spacecraft>().ForEach((ref Translation translation, in Displacement displacement) =>
+            public void Execute(ref Translation translation, ref Displacement displacement)
             {
-                translation.Value += new float3(0f, 0f, displacement.Value * time);
+                translation.Value += new float3(0f, 0f, displacement.Value * DeltaTime);
+            }
+        }
 
-            }).ScheduleParallel();
+
+        protected override JobHandle OnUpdate(JobHandle inputDeps)
+        {
+            var job = new TranslateJob
+            {
+                DeltaTime = Time.DeltaTime
+            };
+
+            return job.Schedule(this, inputDeps);
         }
     }
 }

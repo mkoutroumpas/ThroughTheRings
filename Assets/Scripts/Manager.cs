@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject[] PrefabsToMove;
+    public GameObject[] GameObjectsToMove;
 
     private const int VelocityMetersPerSecond = 10;
     private const bool Forward = true;
@@ -17,19 +16,20 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
+        //var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        foreach (var prefab in PrefabsToMove)
+        foreach (var go in GameObjectsToMove)
         {
-            var position = prefab.transform.position;
+            var position = go.transform.position;
 
-            var entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(prefab, settings);
+            //var entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(go, settings);
 
-            var entityInstance = _entityManager.Instantiate(entity);
-            
-            _entityManager.SetComponentData(entityInstance, 
-                new Translation { Value = position });
+            var entityInstance = _entityManager.Instantiate(go);
+
+            _entityManager.AddComponent(entityInstance, typeof(SpaceObject));
+
+            _entityManager.AddComponentData(entityInstance, new Translation { Value = position });
 
             _entityManager.AddComponentData(entityInstance, 
                 new Displacement { Value = (Forward ? 1 : -1) * TranslationRate * VelocityMetersPerSecond / UnitLengthInMeters });
