@@ -8,18 +8,18 @@ using Unity.Transforms;
 
 namespace Assets.Scripts.Systems
 {
-    public class SpacecraftTranslationSystem : JobComponentSystem
+    public class SpacecraftTranslationSystem : SystemBase //JobComponentSystem
     {
-        //protected override void OnUpdate()
-        //{
-        //    var time = Time.DeltaTime;
+        protected override void OnUpdate()
+        {
+            var time = Time.DeltaTime;
 
-        //    Entities.WithAll<SpaceObject>().ForEach((ref Translation translation) =>
-        //    {
-        //        translation.Value += new float3(0f, 0f, 100 * time);
+            Entities.ForEach((ref Translation translation, in Displacement displacement) =>
+            {
+                translation.Value += new float3(0f, 0f, displacement.Value * time);
 
-        //    }).ScheduleParallel();
-        //}
+            }).ScheduleParallel();
+        }
 
         //protected override JobHandle OnUpdate(JobHandle inputDeps)
         //{
@@ -35,28 +35,28 @@ namespace Assets.Scripts.Systems
         //}
 
 
-        [BurstCompile]
-        [RequireComponentTag(typeof(SpaceObject))]
-        struct TranslateJob : IJobForEach<Translation, Displacement>
-        {
-            [ReadOnly]
-            public float DeltaTime;
+        //[BurstCompile]
+        //[RequireComponentTag(typeof(SpaceObject))]
+        //struct TranslateJob : IJobForEach<Translation, Displacement>
+        //{
+        //    [ReadOnly]
+        //    public float DeltaTime;
 
-            public void Execute(ref Translation translation, ref Displacement displacement)
-            {
-                translation.Value += new float3(0f, 0f, displacement.Value * DeltaTime);
-            }
-        }
+        //    public void Execute(ref Translation translation, ref Displacement displacement)
+        //    {
+        //        translation.Value += new float3(0f, 0f, displacement.Value * DeltaTime);
+        //    }
+        //}
 
 
-        protected override JobHandle OnUpdate(JobHandle inputDeps)
-        {
-            var job = new TranslateJob
-            {
-                DeltaTime = Time.DeltaTime
-            };
+        //protected override JobHandle OnUpdate(JobHandle inputDeps)
+        //{
+        //    var job = new TranslateJob
+        //    {
+        //        DeltaTime = Time.DeltaTime
+        //    };
 
-            return job.Schedule(this, inputDeps);
-        }
+        //    return job.Schedule(this, inputDeps);
+        //}
     }
 }

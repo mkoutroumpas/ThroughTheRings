@@ -2,5 +2,11 @@
 
 namespace Assets.Scripts.Components
 {
-    public struct SpaceObject : IComponentData { }
+    [GenerateAuthoringComponent]
+    public struct SpaceObject : IComponentData
+    {
+        public int VelocityMetersPerSecond;
+        public float TranslationRate;
+        public bool Backward;
+    }
 }
