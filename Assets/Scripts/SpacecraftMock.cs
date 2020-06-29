@@ -10,8 +10,12 @@ public class SpacecraftMock : MonoBehaviour
     private int forwardInput;
     private bool fwdInput;
     private bool revInput;
-    private float horizontalInput;
-    private float verticalInput;
+    private bool rightInput;
+    private bool leftInput;
+    private bool upInput;
+    private bool downInput;
+    private int horizontalInput;
+    private int verticalInput;
 
     private void Start()
     {
@@ -36,6 +40,12 @@ public class SpacecraftMock : MonoBehaviour
         fwdInput = Input.GetKey("e");
         revInput = Input.GetKey("q");
 
+        rightInput = Input.GetKey("d");
+        leftInput = Input.GetKey("a");
+
+        upInput = Input.GetKey("w");
+        downInput = Input.GetKey("s");
+
         if (fwdInput && revInput)
             forwardInput = 0;
         else if (fwdInput)
@@ -43,8 +53,19 @@ public class SpacecraftMock : MonoBehaviour
         else if (revInput)
             forwardInput = -1;
 
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        if (rightInput && leftInput)
+            horizontalInput = 0;
+        else if (rightInput)
+            horizontalInput = 1;
+        else if (leftInput)
+            horizontalInput = -1;
+
+        if (upInput && downInput)
+            verticalInput = 0;
+        else if (upInput)
+            verticalInput = 1;
+        else if (downInput)
+            verticalInput = -1;
     }
 
     private void FixedUpdate()
@@ -54,7 +75,9 @@ public class SpacecraftMock : MonoBehaviour
             transform.position += 
                 new Vector3(horizontalInput, verticalInput, forwardInput) * TranslationRate * VelocityMetersPerSecond / UnitLengthInMeters;
 
-            forwardInput = 0;
+            ////forwardInput = 0;
+            ////horizontalInput = 0;
+            ////verticalInput = 0;
         }
     }
 }
