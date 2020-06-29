@@ -6,7 +6,7 @@ public class SpacecraftMock : MonoBehaviour
     private const int VelocityMetersPerSecond = 10;
     private const bool Forward = true;
     private const int UnitLengthInMeters = 1000;
-    private const float TranslationRate = 0.1f;
+    private const float TranslationRate = 0.01f;
     private int forwardInput;
     private bool fwdInput;
     private bool revInput;
