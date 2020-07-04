@@ -2,12 +2,12 @@
 
 public class SpacecraftMock : MonoBehaviour
 {
-    private const int VelocityMetersPerSecondX = 10;
-    private const int VelocityMetersPerSecondY = 10;
-    private const int VelocityMetersPerSecondZ = 10;
+    private float VelocityMetersPerSecondX = 0;
+    private float VelocityMetersPerSecondY = 0;
+    private float VelocityMetersPerSecondZ = 0;
     private const bool Forward = true;
     private const int UnitLengthInMeters = 1000;
-    private const float TranslationRate = 0.01f;
+    private const float TranslationRate = 1f;
     private int forwardInput;
     private bool fwdInput;
     private bool revInput;
@@ -37,31 +37,61 @@ public class SpacecraftMock : MonoBehaviour
         if (fwdInput && revInput)
             forwardInput = 0;
         else if (fwdInput)
+        {
             forwardInput = 1;
+
+            UpdateVelocity();
+        }
         else if (revInput)
+        {
             forwardInput = -1;
+
+            UpdateVelocity();
+        }
 
         if (rightInput && leftInput)
             horizontalInput = 0;
         else if (rightInput)
+        {
             horizontalInput = 1;
+
+            UpdateVelocity();
+        }
         else if (leftInput)
+        {
             horizontalInput = -1;
+
+            UpdateVelocity();
+        }
 
         if (upInput && downInput)
             verticalInput = 0;
         else if (upInput)
+        {
             verticalInput = 1;
+
+            UpdateVelocity();
+        }
         else if (downInput)
+        {
             verticalInput = -1;
+
+            UpdateVelocity();
+        }
     }
 
     private void FixedUpdate()
     {
         if (horizontalInput != 0 || verticalInput != 0 || forwardInput != 0)
         {
-            transform.position +=
-                new Vector3(horizontalInput * VelocityMetersPerSecondX, verticalInput * VelocityMetersPerSecondY, forwardInput * VelocityMetersPerSecondZ) * TranslationRate / UnitLengthInMeters;
+            transform.position += new Vector3(VelocityMetersPerSecondX, VelocityMetersPerSecondY, VelocityMetersPerSecondZ) / UnitLengthInMeters;
         }
+    }
+
+    private void UpdateVelocity()
+    {
+        VelocityMetersPerSecondX += horizontalInput * TranslationRate;
+        VelocityMetersPerSecondY += verticalInput * TranslationRate;
+        VelocityMetersPerSecondZ += forwardInput * TranslationRate;
     }
 }
