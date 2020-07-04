@@ -82,10 +82,11 @@ public class SpacecraftMock : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (horizontalInput != 0 || verticalInput != 0 || forwardInput != 0)
-        {
-            transform.position += new Vector3(VelocityMetersPerSecondX, VelocityMetersPerSecondY, VelocityMetersPerSecondZ) / UnitLengthInMeters;
-        }
+        transform.position += new Vector3(VelocityMetersPerSecondX, VelocityMetersPerSecondY, VelocityMetersPerSecondZ) / UnitLengthInMeters;
+
+        horizontalInput = 0;
+        verticalInput = 0;
+        forwardInput = 0;
     }
 
     private void UpdateVelocity()
