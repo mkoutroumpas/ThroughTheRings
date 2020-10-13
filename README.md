@@ -8,5 +8,6 @@ This is a simple game aimed at demonstrating a) structural composition concepts 
 
 
 First Phase:
+
 The goal is to evaluate the spatial properties of the scene and the technique used to facilitate long distances. 
 
