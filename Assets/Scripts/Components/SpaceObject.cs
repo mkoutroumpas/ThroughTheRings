@@ -2,6 +2,7 @@
 
 namespace Assets.Scripts.Components
 {
+    //  Descriptor of an object in space in general.
     [GenerateAuthoringComponent]
     public struct SpaceObject : IComponentData
     {

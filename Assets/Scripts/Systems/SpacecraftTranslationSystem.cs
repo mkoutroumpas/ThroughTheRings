@@ -8,6 +8,7 @@ using Unity.Transforms;
 
 namespace Assets.Scripts.Systems
 {
+    //  ECS System class for translating space objects on the Z axis.
     public class SpacecraftTranslationSystem : SystemBase //JobComponentSystem
     {
         protected override void OnUpdate()
