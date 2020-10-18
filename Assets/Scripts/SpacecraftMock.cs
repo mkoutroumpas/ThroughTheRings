@@ -2,21 +2,27 @@
 
 public class SpacecraftMock : MonoBehaviour
 {
-    private float VelocityMetersPerSecondX = 0;
-    private float VelocityMetersPerSecondY = 0;
-    private float VelocityMetersPerSecondZ = 0;
-    private const bool Forward = true;
     private const int UnitLengthInMeters = 1000;
     private const float TranslationRate = 0.005f;
-    private int forwardInput;
-    private bool fwdInput;
-    private bool revInput;
-    private bool rightInput;
-    private bool leftInput;
-    private bool upInput;
-    private bool downInput;
-    private int horizontalInput;
-    private int verticalInput;
+    private const float ZeroSpeedTolerance = 0.00001f;
+    private const float SlowDownRate = 0.001f;
+
+    private float _velocityMetersPerSecondX = 0;
+    private float _velocityMetersPerSecondY = 0;
+    private float _velocityMetersPerSecondZ = 0;
+
+    private bool _fwdInput;
+    private bool _revInput;
+    private bool _rightInput;
+    private bool _leftInput;
+    private bool _upInput;
+    private bool _downInput;
+    private bool _allStopInput;
+    private bool _stopping;
+
+    private int _mainThrusterInput;
+    private int _horizontalInput;
+    private int _verticalInput;
 
     private void Start()
     {
@@ -25,56 +31,79 @@ public class SpacecraftMock : MonoBehaviour
 
     private void Update()
     {
-        fwdInput = Input.GetKey("e");
-        revInput = Input.GetKey("q");
+        _fwdInput = Input.GetKey(KeyCode.Keypad9);
+        _revInput = Input.GetKey(KeyCode.Keypad7);
 
-        rightInput = Input.GetKey("d");
-        leftInput = Input.GetKey("a");
+        _rightInput = Input.GetKey(KeyCode.Keypad6);
+        _leftInput = Input.GetKey(KeyCode.Keypad4);
 
-        upInput = Input.GetKey("w");
-        downInput = Input.GetKey("s");
+        _upInput = Input.GetKey(KeyCode.Keypad8);
+        _downInput = Input.GetKey(KeyCode.Keypad2);
 
-        if (fwdInput && revInput)
-            forwardInput = 0;
-        else if (fwdInput)
+        _allStopInput = Input.GetKey(KeyCode.Keypad0);
+
+        if (_allStopInput && !_stopping)
         {
-            forwardInput = 1;
+            _stopping = true;
+        }
+
+        if (_stopping) 
+        {
+            SlowDown();
+
+            if (!IsStopped())
+            {
+                return;
+            }
+            else
+            {
+                SlowDown(true);
+
+                _stopping = false;
+            }
+        }
+
+        if (_fwdInput && _revInput)
+            _mainThrusterInput = 0;
+        else if (_fwdInput)
+        {
+            _mainThrusterInput = 1;
 
             UpdateVelocity();
         }
-        else if (revInput)
+        else if (_revInput)
         {
-            forwardInput = -1;
+            _mainThrusterInput = -1;
 
             UpdateVelocity();
         }
 
-        if (rightInput && leftInput)
-            horizontalInput = 0;
-        else if (rightInput)
+        if (_rightInput && _leftInput)
+            _horizontalInput = 0;
+        else if (_rightInput)
         {
-            horizontalInput = 1;
+            _horizontalInput = 1;
 
             UpdateVelocity();
         }
-        else if (leftInput)
+        else if (_leftInput)
         {
-            horizontalInput = -1;
+            _horizontalInput = -1;
 
             UpdateVelocity();
         }
 
-        if (upInput && downInput)
-            verticalInput = 0;
-        else if (upInput)
+        if (_upInput && _downInput)
+            _verticalInput = 0;
+        else if (_upInput)
         {
-            verticalInput = 1;
+            _verticalInput = 1;
 
             UpdateVelocity();
         }
-        else if (downInput)
+        else if (_downInput)
         {
-            verticalInput = -1;
+            _verticalInput = -1;
 
             UpdateVelocity();
         }
@@ -82,17 +111,40 @@ public class SpacecraftMock : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += new Vector3(VelocityMetersPerSecondX, VelocityMetersPerSecondY, VelocityMetersPerSecondZ) / UnitLengthInMeters;
+        transform.position += new Vector3(_velocityMetersPerSecondX, _velocityMetersPerSecondY, _velocityMetersPerSecondZ) / UnitLengthInMeters;
 
-        horizontalInput = 0;
-        verticalInput = 0;
-        forwardInput = 0;
+        _horizontalInput = 0;
+        _verticalInput = 0;
+        _mainThrusterInput = 0;
     }
 
     private void UpdateVelocity()
     {
-        VelocityMetersPerSecondX += horizontalInput * TranslationRate;
-        VelocityMetersPerSecondY += verticalInput * TranslationRate;
-        VelocityMetersPerSecondZ += forwardInput * TranslationRate;
+        _velocityMetersPerSecondX += _horizontalInput * TranslationRate;
+        _velocityMetersPerSecondY += _verticalInput * TranslationRate;
+        _velocityMetersPerSecondZ += _mainThrusterInput * TranslationRate;
+    }
+
+    private bool IsStopped() 
+    {
+        return _velocityMetersPerSecondX <= ZeroSpeedTolerance
+            && _velocityMetersPerSecondY <= ZeroSpeedTolerance
+            && _velocityMetersPerSecondZ <= ZeroSpeedTolerance;
+    }
+
+    private void SlowDown(bool allStop = false) 
+    {
+        if (allStop) 
+        {
+            _velocityMetersPerSecondX = 0f;
+            _velocityMetersPerSecondY = 0f;
+            _velocityMetersPerSecondZ = 0f;
+
+            return;
+        }
+
+        _velocityMetersPerSecondX -= SlowDownRate;
+        _velocityMetersPerSecondY -= SlowDownRate;
+        _velocityMetersPerSecondZ -= SlowDownRate;
     }
 }
