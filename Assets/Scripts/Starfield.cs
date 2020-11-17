@@ -17,7 +17,7 @@ public class Starfield : MonoBehaviour
         {
             points[i].position = Random.insideUnitSphere * universeSize;
             points[i].startSize = Random.Range(0.05f, 0.05f);
-            points[i].startColor = new Color(1, 1, 1, 1);
+            points[i].startColor = Color.white;
         }
 
         particleSystem = gameObject.GetComponent<ParticleSystem>();
