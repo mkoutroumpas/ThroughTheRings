@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlanetRingSystem : MonoBehaviour 
 {
     private Vector3 CoordinateSystemZero; 
-    private float rA, rB, PlanetRadius = 30000f;
-    private const int n = 2, F = 2;
+    private float rA, rB, PlanetRadius = 30000f, RingRadius = 50000;
+    private const int numOfRingsBetween = 2, ringAngleStep = 2;
 
     void Start() 
     {
@@ -12,20 +12,20 @@ public class PlanetRingSystem : MonoBehaviour
         PlanetRadius = gameObject.transform.localScale.z / 2;
 
         rA = PlanetRadius + 10000;
-        rB = rA + 50000;
+        rB = rA + RingRadius;
 
         Debug.Log($"CoordinateSystemZero = {CoordinateSystemZero}");
         Debug.Log($"rA = {rA}, rB = {rB}");
 
-        AddTestCubes();
+        AddTestRingSystem();
     }
 
     private void AddTestCubes() 
     {
         for (int i = 0; i < 360; i += 5)
         {
-            AddTestCube(i, rA, 1000f);
-            AddTestCube(i, rB, 1000f);
+            AddTestCube(i, rA, 100f);
+            AddTestCube(i, rB, 100f);
         }
     }
 
@@ -39,11 +39,11 @@ public class PlanetRingSystem : MonoBehaviour
 
     private void AddTestRingSystem()
     {
-        for (int f = 0; f < 360; f += F) 
+        for (int a = 0; a < 360; a += ringAngleStep) 
         {
-            for (int i = 0; i < n + 1; i++) AddTestCube(f, GetArtifactRadius(i));
+            for (int i = 0; i <= numOfRingsBetween + 1; i++) AddTestCube(a, GetArtifactRadius(i), 100f);
         }
     }
 
-    private float GetArtifactRadius(int ringId) => rA + ringId * (rB - rA) / (n + 1);
+    private float GetArtifactRadius(int ringId) => rA + ringId * RingRadius / (numOfRingsBetween + 1);
 }
