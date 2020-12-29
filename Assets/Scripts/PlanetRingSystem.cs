@@ -14,8 +14,8 @@ public class PlanetRingSystem : MonoBehaviour
         rA = PlanetRadius + 10000;
         rB = rA + 50000;
 
-        // Debug.Log($"CoordinateSystemZero = {CoordinateSystemZero}");
-        // Debug.Log($"rA = {rA}, rB = {rB}");
+        Debug.Log($"CoordinateSystemZero = {CoordinateSystemZero}");
+        Debug.Log($"rA = {rA}, rB = {rB}");
 
         AddTestCubes();
     }
