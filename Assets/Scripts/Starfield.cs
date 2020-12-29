@@ -7,7 +7,7 @@ public class Starfield : MonoBehaviour
 
     private ParticleSystem.Particle[] points;
 
-    private ParticleSystem particleSystem;
+    private new ParticleSystem particleSystem;
 
     private void Create()
     {
