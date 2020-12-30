@@ -4,7 +4,8 @@ public class PlanetRingSystem : MonoBehaviour
 {
     Vector3 coordinateSystemZero; 
     float rA, rB, planetRadius = 30000f, ringRadius = 50000;
-    const int numOfRingsBetween = 2, ringAngleStep = 2;
+    const int numOfRingsBetween = 2, ringAngleStep = 2; 
+    const int sizeAndDistanceMultiplier = 1; // Near-field objects scaling. 1: 1 unit corresponds to 10 m, 2: 1 unit corresponds to 1 km.
 
     void Start() 
     {
@@ -32,9 +33,9 @@ public class PlanetRingSystem : MonoBehaviour
     {
         for (int a = 0; a < 360; a += ringAngleStep) 
         {
-            for (int i = 0; i <= numOfRingsBetween + 1; i++) AddTestCube(a, GetArtifactRadius(i), 100f);
+            for (int i = 0; i <= numOfRingsBetween + 1; i++) AddTestCube(a, GetArtifactRadius(i), 1000f);
         }
     }
 
-    float GetArtifactRadius(int ringId) => rA + ringId * ringRadius / (numOfRingsBetween + 1);
+    float GetArtifactRadius(int ringId) => rA + ringId * ringRadius * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
 }
