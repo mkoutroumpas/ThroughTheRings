@@ -5,7 +5,7 @@ public class PlanetRingSystem : MonoBehaviour
     Vector3 coordinateSystemZero; 
     float rA, rB, planetRadius = 30000f, ringRadius = 50000;
     const int numOfRingsBetween = 2, ringAngleStep = 2; 
-    const int sizeAndDistanceMultiplier = 1; // Near-field objects scaling. 1: 1 unit corresponds to 10 m, 2: 1 unit corresponds to 1 km.
+    const int sizeAndDistanceMultiplier = 1; // Near-field objects scaling. 1: 1 unit corresponds to 10 m, 100: 1 unit corresponds to 1 km.
     const float testCubeScale = 100f;
 
     void Start() 
