@@ -5,11 +5,11 @@ public class Starfield : MonoBehaviour
     public int maxStars = 1000;
     public int universeSize = 10;
 
-    private ParticleSystem.Particle[] points;
+    ParticleSystem.Particle[] points;
 
-    private new ParticleSystem particleSystem;
+    new ParticleSystem particleSystem;
 
-    private void Create()
+    void Create()
     {
         points = new ParticleSystem.Particle[maxStars];
 
@@ -29,10 +29,5 @@ public class Starfield : MonoBehaviour
     {
         Create();
     }
-
-    void Update()
-    {
-
-	}
 }
 

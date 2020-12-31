@@ -2,34 +2,34 @@
 
 public class SpacecraftMock : MonoBehaviour
 {
-    private const int UnitLengthInMeters = 1000;
-    private const float TranslationRate = 0.005f;
-    private const float ZeroSpeedTolerance = 0.00001f;
-    private const float SlowDownRate = 0.001f;
+    const int UnitLengthInMeters = 1000;
+    const float TranslationRate = 0.005f;
+    const float ZeroSpeedTolerance = 0.00001f;
+    const float SlowDownRate = 0.001f;
 
-    private float _velocityMetersPerSecondX = 0;
-    private float _velocityMetersPerSecondY = 0;
-    private float _velocityMetersPerSecondZ = 0;
+    float _velocityMetersPerSecondX = 0;
+    float _velocityMetersPerSecondY = 0;
+    float _velocityMetersPerSecondZ = 0;
 
-    private bool _fwdInput;
-    private bool _revInput;
-    private bool _rightInput;
-    private bool _leftInput;
-    private bool _upInput;
-    private bool _downInput;
-    private bool _allStopInput;
-    private bool _stopping;
+    bool _fwdInput;
+    bool _revInput;
+    bool _rightInput;
+    bool _leftInput;
+    bool _upInput;
+    bool _downInput;
+    bool _allStopInput;
+    bool _stopping;
 
-    private int _mainThrusterInput;
-    private int _horizontalInput;
-    private int _verticalInput;
+    int _mainThrusterInput;
+    int _horizontalInput;
+    int _verticalInput;
 
-    private void Start()
+    void Start()
     {
 
     }
 
-    private void Update()
+    void Update()
     {
         _fwdInput = Input.GetKey(KeyCode.Keypad9);
         _revInput = Input.GetKey(KeyCode.Keypad7);
@@ -63,8 +63,7 @@ public class SpacecraftMock : MonoBehaviour
             }
         }
 
-        if (_fwdInput && _revInput)
-            _mainThrusterInput = 0;
+        if (_fwdInput && _revInput) _mainThrusterInput = 0;
         else if (_fwdInput)
         {
             _mainThrusterInput = 1;
@@ -78,8 +77,7 @@ public class SpacecraftMock : MonoBehaviour
             UpdateVelocity();
         }
 
-        if (_rightInput && _leftInput)
-            _horizontalInput = 0;
+        if (_rightInput && _leftInput) _horizontalInput = 0;
         else if (_rightInput)
         {
             _horizontalInput = 1;
@@ -93,8 +91,7 @@ public class SpacecraftMock : MonoBehaviour
             UpdateVelocity();
         }
 
-        if (_upInput && _downInput)
-            _verticalInput = 0;
+        if (_upInput && _downInput) _verticalInput = 0;
         else if (_upInput)
         {
             _verticalInput = 1;
@@ -109,7 +106,7 @@ public class SpacecraftMock : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         transform.position += new Vector3(_velocityMetersPerSecondX, _velocityMetersPerSecondY, _velocityMetersPerSecondZ) / UnitLengthInMeters;
 
@@ -118,21 +115,21 @@ public class SpacecraftMock : MonoBehaviour
         _mainThrusterInput = 0;
     }
 
-    private void UpdateVelocity()
+    void UpdateVelocity()
     {
         _velocityMetersPerSecondX += _horizontalInput * TranslationRate;
         _velocityMetersPerSecondY += _verticalInput * TranslationRate;
         _velocityMetersPerSecondZ += _mainThrusterInput * TranslationRate;
     }
 
-    private bool IsStopped() 
+    bool IsStopped() 
     {
         return _velocityMetersPerSecondX <= ZeroSpeedTolerance
             && _velocityMetersPerSecondY <= ZeroSpeedTolerance
             && _velocityMetersPerSecondZ <= ZeroSpeedTolerance;
     }
 
-    private void SlowDown(bool allStop = false) 
+    void SlowDown(bool allStop = false) 
     {
         if (allStop) 
         {

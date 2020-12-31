@@ -3,8 +3,7 @@
 public class MouseLookController : MonoBehaviour
 {
 	Vector2 rotation = new Vector2 (0, 0);
-	public float speed = 3;
-
+	float speed = 3;
 	void Update () 
     {
 		rotation.y += Input.GetAxis ("Mouse X");
