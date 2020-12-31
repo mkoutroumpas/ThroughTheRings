@@ -35,7 +35,7 @@ public class PlanetRingSystem : MonoBehaviour
     {
         for (int a = 0; a < 360; a += ringAngleStep) 
         {
-            for (int i = 0; i <= numOfRingsBetween + 1; i++) AddTestCube(a + startAngle, GetArtifactRadius(i), testCubeScale, yOverhead, color);
+            for (int i = 0; i <= numOfRingsBetween + 1; i++) AddTestCube(a + startAngle, GetArtifactRadialDistance(i), testCubeScale, yOverhead, color);
         }
     }
 
@@ -49,5 +49,5 @@ public class PlanetRingSystem : MonoBehaviour
             coordinateSystemZero.y + yOverhead, coordinateSystemZero.z - radius * Mathf.Cos(angle * Mathf.PI / 180)); 
     }
 
-    float GetArtifactRadius(int ringId) => rA + ringId * ringRadius * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
+    float GetArtifactRadialDistance(int ringId) => rA + ringId * ringRadius * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
 }
