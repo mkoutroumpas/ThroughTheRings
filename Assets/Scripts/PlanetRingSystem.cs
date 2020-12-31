@@ -6,19 +6,25 @@ public class PlanetRingSystem : MonoBehaviour
     Vector3 coordinateSystemZero; 
     List<(float Angle, float YOverhead, Color Color)> ringLayers;
     float rA, rB, planetRadius = 30000f, ringRadius = 50000;
-    const int numOfRingsBetween = 10, ringAngleStep = 6;
+    const int numOfRingsBetween = 20, ringAngleStep = 3;
     const int sizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float uniformTestCubeScale = 250f;
-    float minCubeScale = 100f, maxCubeScale = 1000f;
+    float minCubeScale = 1f, maxCubeScale = 1000f;
     static System.Random random;
+    int numOfTestArtifacts;
 
     void Start() 
     {
+        numOfTestArtifacts = 0;
+
         ringLayers = new List<(float, float, Color)>
         {
-            (0f, -2000f, Color.green),
-            (2f, 0f, Color.red),
-            (4f, 2000f, Color.blue)
+            (0.0f, -2000f, Color.green),
+            (0.5f, -1200f, Color.red),
+            (1.0f, -400f, Color.blue),
+            (1.5f, 400f, Color.grey),
+            (2.0f, 1200f, Color.yellow),
+            (2.5f, 2000f, Color.white)
         };
 
         coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
@@ -31,6 +37,8 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"rA = {rA}, rB = {rB}");
 
         foreach (var ringLayer in ringLayers) AddTestRingSystem(ringLayer.Angle, ringLayer.YOverhead, ringLayer.Color, true);
+
+        Debug.Log($"numOfTestArtifacts = {numOfTestArtifacts}");
     }
 
     void AddTestRingSystem(float startAngle = 0f, float yOverhead = 0f, Color color = default, bool randomize = false)
@@ -40,7 +48,7 @@ public class PlanetRingSystem : MonoBehaviour
             for (int i = 0; i <= numOfRingsBetween + 1; i++) 
             {
                 float scale = randomize ? GetRandomArtifactSize(minCubeScale, maxCubeScale) : uniformTestCubeScale;
-                
+
                 AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color);
             }
         }
@@ -54,6 +62,8 @@ public class PlanetRingSystem : MonoBehaviour
         artifact.transform.localScale = new Vector3(scale, scale, scale); 
         artifact.transform.position = new Vector3(radius * Mathf.Sin(angle * Mathf.PI / 180), 
             coordinateSystemZero.y + yOverhead, coordinateSystemZero.z - radius * Mathf.Cos(angle * Mathf.PI / 180)); 
+        
+        numOfTestArtifacts++;
     }
 
     float GetArtifactRadialDistance(int ringId) => rA + ringId * ringRadius * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
