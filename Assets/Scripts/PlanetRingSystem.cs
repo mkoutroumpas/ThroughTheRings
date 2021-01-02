@@ -7,6 +7,7 @@ public class PlanetRingSystem : MonoBehaviour
     List<(float Angle, float YOverhead, Color Color)> ringLayers;
     float rA, rB, planetRadius = 30000f, ringRadius = 50000;
     const int numOfRingsBetween = 20, ringAngleStep = 3;
+    const int stdDeviation = 1;
     const int sizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float uniformTestCubeScale = 250f;
     float minCubeScale = 0.01f, maxCubeScale = 1000f;
@@ -68,9 +69,25 @@ public class PlanetRingSystem : MonoBehaviour
 
     float GetArtifactRadialDistance(int ringId) => rA + ringId * ringRadius * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
 
-    float GetArtifactSize(float minSize = 1f, float maxSize = 1000f) 
+    float GetArtifactSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
         if (random == null) random = new System.Random();
-        return (float)(random.NextDouble() * (maxSize - minSize) + minSize);
+
+        if (distribution == Distributions.White) return (float)(random.NextDouble() * (maxSize - minSize) + minSize);
+        if (distribution == Distributions.Gaussian) // See https://stackoverflow.com/a/218600
+        {
+            float u1 = 1.0f - (float)random.NextDouble();
+            float u2 = 1.0f - (float)random.NextDouble();
+            float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
+            return (maxSize - minSize) / 2 + stdDeviation * randStdNormal;
+        }
+
+        return 0f;
+    }
+
+    enum Distributions
+    {
+        White,
+        Gaussian
     }
 }
