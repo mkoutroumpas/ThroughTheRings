@@ -9,7 +9,7 @@ public class PlanetRingSystem : MonoBehaviour
     const int numOfRingsBetween = 20, ringAngleStep = 3;
     const int sizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float uniformTestCubeScale = 250f;
-    float minCubeScale = 1f, maxCubeScale = 1000f;
+    float minCubeScale = 0.01f, maxCubeScale = 1000f;
     static System.Random random;
     int numOfTestArtifacts;
 
@@ -47,7 +47,7 @@ public class PlanetRingSystem : MonoBehaviour
         {
             for (int i = 0; i <= numOfRingsBetween + 1; i++) 
             {
-                float scale = randomize ? GetRandomArtifactSize(minCubeScale, maxCubeScale) : uniformTestCubeScale;
+                float scale = randomize ? GetArtifactSize(minCubeScale, maxCubeScale) : uniformTestCubeScale;
 
                 AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color);
             }
@@ -68,7 +68,7 @@ public class PlanetRingSystem : MonoBehaviour
 
     float GetArtifactRadialDistance(int ringId) => rA + ringId * ringRadius * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
 
-    float GetRandomArtifactSize(float minSize = 1f, float maxSize = 1000f) 
+    float GetArtifactSize(float minSize = 1f, float maxSize = 1000f) 
     {
         if (random == null) random = new System.Random();
         return (float)(random.NextDouble() * (maxSize - minSize) + minSize);
