@@ -7,7 +7,7 @@ public class PlanetRingSystem : MonoBehaviour
     List<(float Angle, float YOverhead, Color Color)> ringLayers;
     float rA, rB, planetRadius = 30000f, ringRadius = 50000;
     const int numOfRingsBetween = 20, ringAngleStep = 3;
-    const int stdDeviation = 100;
+    const int stdDeviation = 10;
     const int sizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float uniformTestCubeScale = 250f;
     float minCubeScale = 0.01f, maxCubeScale = 1000f;
@@ -48,7 +48,7 @@ public class PlanetRingSystem : MonoBehaviour
         {
             for (int i = 0; i <= numOfRingsBetween + 1; i++) 
             {
-                float scale = randomize ? GetArtifactSize(minCubeScale, maxCubeScale, Distributions.Gaussian) : uniformTestCubeScale;
+                float scale = randomize ? GetArtifactSize(minCubeScale, maxCubeScale, Distributions.White) : uniformTestCubeScale;
 
                 AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color);
             }
@@ -74,12 +74,16 @@ public class PlanetRingSystem : MonoBehaviour
         if (random == null) random = new System.Random();
 
         if (distribution == Distributions.White) return (float)(random.NextDouble() * (maxSize - minSize) + minSize);
-        if (distribution == Distributions.Gaussian) // See https://stackoverflow.com/a/218600
+        if (distribution == Distributions.Normal) // See https://stackoverflow.com/a/218600
         {
             float u1 = 1.0f - (float)random.NextDouble();
             float u2 = 1.0f - (float)random.NextDouble();
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
             return (maxSize - minSize) / 2 + stdDeviation * randStdNormal;
+        }
+        if (distribution == Distributions.HalfNormal)
+        {
+            return Mathf.Sqrt(2f) / (stdDeviation * Mathf.Sqrt(Mathf.PI)) * Mathf.Exp(-Mathf.Pow((float)(random.NextDouble() * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(stdDeviation, 2)));
         }
 
         return 0f;
@@ -88,6 +92,7 @@ public class PlanetRingSystem : MonoBehaviour
     enum Distributions
     {
         White,
-        Gaussian
+        Normal,
+        HalfNormal
     }
 }
