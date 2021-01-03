@@ -5,7 +5,7 @@ public class PlanetRingSystem : MonoBehaviour
 {
     Vector3 coordinateSystemZero; 
     List<(float Angle, float YOverhead, Color Color)> ringLayers;
-    float rA, rB, planetRadius = 30000f, ringRadius = 50000;
+    float rA, rB, planetRadius = 30000f, ringWidth = 50000;
     const int numOfRingsBetween = 20, ringAngleStep = 3;
     const float stdDeviation = 0.1f;
     const int sizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
@@ -32,7 +32,7 @@ public class PlanetRingSystem : MonoBehaviour
         planetRadius = gameObject.transform.localScale.z / 2;
 
         rA = planetRadius + 10000;
-        rB = rA + ringRadius;
+        rB = rA + ringWidth;
 
         Debug.Log($"CoordinateSystemZero = {coordinateSystemZero}");
         Debug.Log($"rA = {rA}, rB = {rB}");
@@ -67,7 +67,7 @@ public class PlanetRingSystem : MonoBehaviour
         numOfTestArtifacts++;
     }
 
-    float GetArtifactRadialDistance(int ringId) => rA + ringId * ringRadius * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
+    float GetArtifactRadialDistance(int ringId) => rA + ringId * ringWidth * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
 
     float GetArtifactSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
