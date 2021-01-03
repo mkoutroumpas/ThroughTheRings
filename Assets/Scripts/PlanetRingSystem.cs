@@ -17,15 +17,21 @@ public class PlanetRingSystem : MonoBehaviour
     void Start() 
     {
         numOfTestArtifacts = 0;
-
+        
         ringLayers = new List<(float, float, Color)>
         {
-            (0.0f, -2000f, Color.green),
-            (0.5f, -1200f, Color.red),
-            (1.0f, -400f, Color.blue),
-            (1.5f, 400f, Color.grey),
-            (2.0f, 1200f, Color.yellow),
-            (2.5f, 2000f, Color.white)
+            (0.0f, -4200f, Color.green),
+            (0.25f, -3400f, Color.white),
+            (0.5f, -2600f, Color.blue),
+            (0.75f, -1800f, Color.grey),
+            (1.0f, -1000f, Color.yellow),
+            (1.25f, -200f, Color.magenta),
+            (1.5f, 200f, Color.cyan),
+            (1.75f, 1000f, Color.white),
+            (2.0f, 1800f, Color.blue),
+            (2.25f, 2600f, Color.grey),
+            (2.5f, 3400f, Color.yellow),
+            (2.75f, 4200f, Color.red)
         };
 
         coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
