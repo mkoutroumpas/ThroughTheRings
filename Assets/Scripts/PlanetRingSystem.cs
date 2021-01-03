@@ -7,7 +7,7 @@ public class PlanetRingSystem : MonoBehaviour
     List<(float Angle, float YOverhead, Color Color)> ringLayers;
     float rA, rB, planetRadius = 30000f, ringRadius = 50000;
     const int numOfRingsBetween = 20, ringAngleStep = 3;
-    const int stdDeviation = 10;
+    const float stdDeviation = 0.1f;
     const int sizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float uniformTestCubeScale = 250f;
     float minCubeScale = 0.01f, maxCubeScale = 1000f;
@@ -83,7 +83,8 @@ public class PlanetRingSystem : MonoBehaviour
         }
         if (distribution == Distributions.HalfNormal)
         {
-            return Mathf.Sqrt(2f) / (stdDeviation * Mathf.Sqrt(Mathf.PI)) * Mathf.Exp(-Mathf.Pow((float)(random.NextDouble() * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(stdDeviation, 2)));
+            return Mathf.Sqrt(2f) / (stdDeviation * Mathf.Sqrt(Mathf.PI)) 
+                * Mathf.Exp(-Mathf.Pow((float)(random.NextDouble() * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(stdDeviation, 2)));
         }
 
         return 0f;
