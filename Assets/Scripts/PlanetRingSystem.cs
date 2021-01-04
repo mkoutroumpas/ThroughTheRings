@@ -73,7 +73,13 @@ public class PlanetRingSystem : MonoBehaviour
         numOfTestArtifacts++;
     }
 
-    float GetArtifactRadialDistance(int ringId) => rA + ringId * ringWidth * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
+    float GetArtifactRadialDistance(int ringId, Distributions distribution = default) 
+    {
+        if (distribution == Distributions.White)
+            return rA + ringId * ringWidth * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
+
+        return 0f;
+    } 
 
     float GetArtifactSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
