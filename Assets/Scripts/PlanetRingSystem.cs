@@ -56,13 +56,13 @@ public class PlanetRingSystem : MonoBehaviour
             {
                 float scale = randomize ? GetArtifactSize(minCubeScale, maxCubeScale, Distributions.White) : uniformTestCubeScale;
 
-                AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color);
+                AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color, Distributions.White);
             }
         }
     }
 
     void AddTestCube(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
-        Color color = default, Distributions distribution = default, float minDeviation = 1f, float maxDeviation = 1000f) 
+        Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f) 
     {
         GameObject artifact = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Renderer artifactRenderer = artifact.GetComponent<Renderer>();
@@ -75,9 +75,9 @@ public class PlanetRingSystem : MonoBehaviour
 
         if (distribution == Distributions.White)
         {
-            xPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) * xPos;
-            yPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) * yPos;
-            zPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) * zPos;
+            xPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + xPos;
+            yPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + yPos;
+            zPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + zPos;
         }
 
         artifact.transform.position = new Vector3(xPos, yPos, zPos); 
