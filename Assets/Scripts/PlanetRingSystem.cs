@@ -56,30 +56,36 @@ public class PlanetRingSystem : MonoBehaviour
             {
                 float scale = randomize ? GetArtifactSize(minCubeScale, maxCubeScale, Distributions.White) : uniformTestCubeScale;
 
-                AddTestCube(a + startAngle, GetArtifactRadialDistance(i, Distributions.None), scale, yOverhead, color);
+                AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color);
             }
         }
     }
 
-    void AddTestCube(float angle, float radius, float scale = 1000f, float yOverhead = 0f, Color color = default) 
+    void AddTestCube(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
+        Color color = default, Distributions distribution = default, float minDeviation = 1f, float maxDeviation = 1000f) 
     {
         GameObject artifact = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Renderer artifactRenderer = artifact.GetComponent<Renderer>();
         artifactRenderer?.material.SetColor("_Color", color);
         artifact.transform.localScale = new Vector3(scale, scale, scale); 
-        artifact.transform.position = new Vector3(radius * Mathf.Sin(angle * Mathf.PI / 180), 
-            coordinateSystemZero.y + yOverhead, coordinateSystemZero.z - radius * Mathf.Cos(angle * Mathf.PI / 180)); 
+
+        float xPos = radius * Mathf.Sin(angle * Mathf.PI / 180);
+        float yPos = coordinateSystemZero.y + yOverhead;
+        float zPos = coordinateSystemZero.z - radius * Mathf.Cos(angle * Mathf.PI / 180);
+
+        if (distribution == Distributions.White)
+        {
+            xPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) * xPos;
+            yPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) * yPos;
+            zPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) * zPos;
+        }
+
+        artifact.transform.position = new Vector3(xPos, yPos, zPos); 
         
         numOfTestArtifacts++;
     }
 
-    float GetArtifactRadialDistance(int ringId, Distributions distribution = default) 
-    {
-        if (distribution == Distributions.White)
-            return rA + ringId * ringWidth * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
-
-        return 0f;
-    } 
+    float GetArtifactRadialDistance(int ringId) => rA + ringId * ringWidth * sizeAndDistanceMultiplier / (numOfRingsBetween + 1);
 
     float GetArtifactSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
