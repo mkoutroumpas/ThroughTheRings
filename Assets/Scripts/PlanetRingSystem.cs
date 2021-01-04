@@ -56,7 +56,7 @@ public class PlanetRingSystem : MonoBehaviour
             {
                 float scale = randomize ? GetArtifactSize(minCubeScale, maxCubeScale, Distributions.White) : uniformTestCubeScale;
 
-                AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color);
+                AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color, Distributions.None);
             }
         }
     }
@@ -104,6 +104,7 @@ public class PlanetRingSystem : MonoBehaviour
 
     enum Distributions
     {
+        None,
         White,
         Normal,
         HalfNormal
