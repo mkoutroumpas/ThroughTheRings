@@ -81,6 +81,12 @@ public class PlanetRingSystem : MonoBehaviour
         }
 
         artifact.transform.position = new Vector3(xPos, yPos, zPos); 
+
+        float rotX = (float)random.NextDouble() * 360;
+        float rotY = (float)random.NextDouble() * 360;
+        float rotZ = (float)random.NextDouble() * 360;
+
+        artifact.transform.Rotate(new Vector3(rotX, rotY, rotZ), Space.Self);
         
         numOfTestArtifacts++;
     }
