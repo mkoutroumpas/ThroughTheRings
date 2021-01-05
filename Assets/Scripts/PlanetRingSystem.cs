@@ -62,7 +62,8 @@ public class PlanetRingSystem : MonoBehaviour
     }
 
     void AddTestCube(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
-        Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f) 
+        Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
+        bool localRotation = true) 
     {
         GameObject artifact = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Renderer artifactRenderer = artifact.GetComponent<Renderer>();
@@ -82,12 +83,15 @@ public class PlanetRingSystem : MonoBehaviour
 
         artifact.transform.position = new Vector3(xPos, yPos, zPos); 
 
-        float rotX = (float)random.NextDouble() * 360;
-        float rotY = (float)random.NextDouble() * 360;
-        float rotZ = (float)random.NextDouble() * 360;
+        if (localRotation)
+        {
+            float rotX = (float)random.NextDouble() * 360;
+            float rotY = (float)random.NextDouble() * 360;
+            float rotZ = (float)random.NextDouble() * 360;
 
-        artifact.transform.Rotate(new Vector3(rotX, rotY, rotZ), Space.Self);
-        
+            artifact.transform.Rotate(new Vector3(rotX, rotY, rotZ), Space.Self);
+        }
+
         numOfTestArtifacts++;
     }
 
