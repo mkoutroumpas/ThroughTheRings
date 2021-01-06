@@ -1,8 +1,8 @@
 using UnityEngine;
 public class RingObject : IRingObject
 {
-    public Vector3 Position { get; set; }
-    public Vector3 Rotation { get; set; }
+    public Vector3 Position { get; private set; }
+    public Vector3 Rotation { get; private set; }
 
     public void SetPosition(float radialDistance, float angle)
     {
