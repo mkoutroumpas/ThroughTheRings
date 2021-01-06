@@ -11,6 +11,7 @@ public class RingObject : IRingObject
 
     public void SetInitialRotation(Vector3 rotation)
     {
-        // TODO: Set initial rotation.
+        if (rotation == null) return;
+        this.Rotation = rotation;
     }
 }
