@@ -6,4 +6,6 @@ public interface IRingObject
     Vector3 Position { get; }
 
     void SetPosition(float radialDistance, float angle);
+
+    void SetInitialRotation(Vector3 rotation);
 }
