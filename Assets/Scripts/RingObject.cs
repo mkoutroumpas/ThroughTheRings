@@ -8,4 +8,9 @@ public class RingObject : IRingObject
     {
         // TODO: Trigonometrically set position coordinates.
     }
+
+    public void SetInitialRotation(Vector3 rotation)
+    {
+        // TODO: Set initial rotation.
+    }
 }
