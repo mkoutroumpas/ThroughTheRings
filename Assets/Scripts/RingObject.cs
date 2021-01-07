@@ -3,6 +3,7 @@ public class RingObject : IRingObject
 {
     public Vector3 Position { get; private set; }
     public Vector3 Rotation { get; private set; }
+    public Vector3 RotationSpeed { get; private set; }
 
     public void SetPosition(float radialDistance, float angle)
     {
@@ -13,5 +14,10 @@ public class RingObject : IRingObject
     {
         if (rotation == null) return;
         this.Rotation = rotation;
+    }
+
+    public void SetRotationSpeed(Vector3 rotationSpeed)
+    {
+        // TODO: 
     }
 }
