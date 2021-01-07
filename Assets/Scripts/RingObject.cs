@@ -18,6 +18,9 @@ public class RingObject : IRingObject
 
     public void SetRotationSpeed(Vector3 rotationSpeed)
     {
-        // TODO: 
+        if (rotationSpeed == null) return;
+        this.RotationSpeed = rotationSpeed;
+
+        // TODO: Also implement ability to change rotation speed 'on-the-fly'.
     }
 }
