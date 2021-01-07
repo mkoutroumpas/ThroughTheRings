@@ -9,4 +9,5 @@ public interface IRingObject
     void SetPosition(float radialDistance, float angle);
 
     void SetInitialRotation(Vector3 rotation);
+    void SetRotationSpeed(Vector3 rotationSpeed);
 }
