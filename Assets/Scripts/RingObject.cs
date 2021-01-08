@@ -1,5 +1,5 @@
 using UnityEngine;
-public class RingObject : IRingObject
+public class RingObject : MonoBehaviour, IRingObject
 {
     public Vector3 Position { get; private set; }
     public Vector3 Rotation { get; private set; }
