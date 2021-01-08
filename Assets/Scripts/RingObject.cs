@@ -21,6 +21,6 @@ public class RingObject : MonoBehaviour, IRingObject
         if (rotationSpeed == null) return;
         this.RotationSpeed = rotationSpeed;
 
-        // TODO: Also implement ability to change rotation speed 'on-the-fly'.
+        // TODO: Also implement ability to change rotation speed 'on-the-fly' (guess will be handled by Unity's thread ...)
     }
 }
