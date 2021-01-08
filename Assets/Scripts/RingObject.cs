@@ -6,6 +6,16 @@ public class RingObject : MonoBehaviour, IRingObject
     public Vector3 RotationSpeed { get; private set; }
     public Color Color{ get; private set; }
 
+    public void Start()
+    {
+
+    }
+
+    public void Update()
+    {
+        
+    }
+
     public void SetPosition(float radialDistance, float angle)
     {
         // TODO: Trigonometrically set position coordinates.
