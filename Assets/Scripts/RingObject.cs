@@ -11,6 +11,7 @@ public class RingObject : IRingObject
     public RingObject(PrimitiveType primitiveType = PrimitiveType.Cube)
     {
         this.PrimitiveType = primitiveType;
+        this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
     }
 
     public void SetPosition(float radialDistance, float angle)
