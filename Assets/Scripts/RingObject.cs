@@ -6,10 +6,11 @@ public class RingObject : IRingObject
     public Vector3 RotationSpeed { get; private set; }
     public Color Color{ get; private set; }
     public GameObject Object { get; private set; }
+    public PrimitiveType PrimitiveType { get; private set; }
 
     public RingObject(PrimitiveType primitiveType = PrimitiveType.Cube)
     {
-
+        this.PrimitiveType = primitiveType;
     }
 
     public void SetPosition(float radialDistance, float angle)
