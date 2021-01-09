@@ -7,6 +7,11 @@ public class RingObject : IRingObject
     public Color Color{ get; private set; }
     public GameObject Object { get; private set; }
 
+    public RingObject(PrimitiveType primitiveType = PrimitiveType.Cube)
+    {
+
+    }
+
     public void SetPosition(float radialDistance, float angle)
     {
         // TODO: Trigonometrically set position coordinates.
