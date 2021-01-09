@@ -1,20 +1,11 @@
 using UnityEngine;
-public class RingObject : MonoBehaviour, IRingObject
+public class RingObject : IRingObject
 {
     public Vector3 Position { get; private set; }
     public Vector3 Rotation { get; private set; }
     public Vector3 RotationSpeed { get; private set; }
     public Color Color{ get; private set; }
-
-    public void Start()
-    {
-
-    }
-
-    public void Update()
-    {
-        
-    }
+    public GameObject Object { get; private set; }
 
     public void SetPosition(float radialDistance, float angle)
     {
@@ -39,5 +30,11 @@ public class RingObject : MonoBehaviour, IRingObject
     {
         if (color == null) return;
         this.Color = color;
+    }
+
+    public void SetObjects(GameObject gameObject)
+    {
+        if (gameObject == null) return;
+        this.Object = gameObject;
     }
 }

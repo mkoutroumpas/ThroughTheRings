@@ -7,9 +7,12 @@ public interface IRingObject
     Vector3 RotationSpeed { get; }
     Color Color{ get; }
 
+    GameObject Object { get; }
+
     void SetPosition(float radialDistance, float angle);
 
     void SetInitialRotation(Vector3 rotation);
     void SetRotationSpeed(Vector3 rotationSpeed);
     void SetColor(Color color);
+    void SetObjects(GameObject gameObject);
 }
