@@ -13,6 +13,6 @@ public interface IRingObject
     void SetInitialRotation(Vector3 rotation);
     void SetRotationSpeed(Vector3 rotationSpeed);
     void SetColor(Color color);
-    void SetObjects(GameObject gameObject);
+    void SetObject(GameObject gameObject);
     void SetUniformScale(float uniformScale);
 }

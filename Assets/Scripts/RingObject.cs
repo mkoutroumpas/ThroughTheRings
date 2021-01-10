@@ -52,7 +52,7 @@ public class RingObject : IRingObject
         objectRenderer?.material.SetColor("_Color", this.Color);
     }
 
-    public void SetObjects(GameObject gameObject)
+    public void SetObject(GameObject gameObject)
     {
         if (gameObject == null) return;
         this.Object = gameObject;
