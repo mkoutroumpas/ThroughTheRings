@@ -117,12 +117,4 @@ public class PlanetRingSystem : MonoBehaviour
 
         return 0f;
     }
-
-    enum Distributions
-    {
-        None,
-        White,
-        Normal,
-        HalfNormal
-    }
 }
