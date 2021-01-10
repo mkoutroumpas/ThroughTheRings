@@ -10,10 +10,11 @@ public class RingObject : IRingObject
     public Renderer Renderer { get; private set; }
     public Vector3 Scale { get; private set; }
 
-    public RingObject(PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
+    public RingObject(Vector3 initialPosition, PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
     {
         this.PrimitiveType = primitiveType;
         this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
+        this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
     }
 
     public void SetPosition(float radialDistance, float angle)
