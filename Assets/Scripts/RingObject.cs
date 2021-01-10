@@ -7,8 +7,10 @@ public class RingObject : IRingObject
     public Color Color{ get; private set; }
     public GameObject Object { get; private set; }
     public PrimitiveType PrimitiveType { get; private set; }
+    public Renderer Renderer { get; private set; }
+    public Vector3 Scale { get; private set; }
 
-    public RingObject(PrimitiveType primitiveType = PrimitiveType.Cube)
+    public RingObject(PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
     {
         this.PrimitiveType = primitiveType;
         this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
@@ -17,6 +19,12 @@ public class RingObject : IRingObject
     public void SetPosition(float radialDistance, float angle)
     {
         // TODO: Trigonometrically set position coordinates.
+    }
+
+    public void SetUniformScale(float uniformScale)
+    {
+        if (this.Object == null) return;
+        this.Object.transform.localScale = new Vector3(uniformScale, uniformScale, uniformScale); 
     }
 
     public void SetInitialRotation(Vector3 rotation)
@@ -37,6 +45,11 @@ public class RingObject : IRingObject
     {
         if (color == null) return;
         this.Color = color;
+
+        Renderer objectRenderer = this.Object.GetComponent<Renderer>();
+        if (objectRenderer == null) return;
+
+        objectRenderer?.material.SetColor("_Color", this.Color);
     }
 
     public void SetObjects(GameObject gameObject)
