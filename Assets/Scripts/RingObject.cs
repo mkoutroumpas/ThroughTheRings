@@ -15,6 +15,7 @@ public class RingObject : IRingObject
         this.PrimitiveType = primitiveType;
         this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
         this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
+        this.Scale = new Vector3(uniformScale, uniformScale, uniformScale);
     }
 
     public void SetPosition(float radialDistance, float angle, Vector3 overheads = default)
