@@ -17,9 +17,9 @@ public class RingObject : IRingObject
         this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
     }
 
-    public void SetPosition(float radialDistance, float angle)
+    public void SetPosition(float radialDistance, float angle, Vector3 overheads = default)
     {
-        // TODO: Trigonometrically set position coordinates.
+        
     }
 
     public void SetUniformScale(float uniformScale)
