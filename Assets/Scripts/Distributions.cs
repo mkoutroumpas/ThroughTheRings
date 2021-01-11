@@ -1,4 +1,4 @@
-enum Distributions
+public enum Distributions
 {
     None,
     White,

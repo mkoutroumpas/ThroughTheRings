@@ -1,7 +1,7 @@
 using UnityEngine;
 public class RingObject : IRingObject
 {
-    public Vector3 Position { get; private set; }
+    public Vector3 Position { get { return this.Object.transform.position; } private set {} }
     public Vector3 Rotation { get; private set; }
     public Vector3 RotationSpeed { get; private set; }
     public Color Color{ get; private set; }
@@ -18,9 +18,22 @@ public class RingObject : IRingObject
         this.Scale = new Vector3(uniformScale, uniformScale, uniformScale);
     }
 
-    public void SetPosition(float radialDistance, float angle, Vector3 overheads = default)
+    public void SetPosition(
+        float radialDistance, float angle, Vector3 coordSystemZero, System.Random random = default, Distributions distribution = default, 
+        Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f)
     {
-        
+        float xPos = radialDistance * Mathf.Sin(angle * Mathf.PI / 180) + overheads.x;
+        float yPos = coordSystemZero.y + overheads.y;
+        float zPos = coordSystemZero.z - radialDistance * Mathf.Cos(angle * Mathf.PI / 180) + overheads.z;
+
+        if (distribution == Distributions.White)
+        {
+            xPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + xPos;
+            yPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + yPos;
+            zPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + zPos;
+        }
+
+        this.Object.transform.position = new Vector3(xPos, yPos, zPos);
     }
 
     public void SetUniformScale(float uniformScale)

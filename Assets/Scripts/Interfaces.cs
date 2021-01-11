@@ -9,7 +9,9 @@ public interface IRingObject
     GameObject Object { get; }
     Vector3 Scale { get; }
 
-    void SetPosition(float radialDistance, float angle, Vector3 overheads = default);
+    void SetPosition(
+        float radialDistance, float angle, Vector3 coordSystemZero, System.Random random = default, Distributions distribution = default, 
+        Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f);
     void SetInitialRotation(Vector3 rotation);
     void SetRotationSpeed(Vector3 rotationSpeed);
     void SetColor(Color color);
