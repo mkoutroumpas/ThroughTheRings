@@ -10,7 +10,7 @@ public class RingObject : IRingObject
     public Renderer Renderer { get; private set; }
     public Vector3 Scale { get; private set; }
 
-    public RingObject(Vector3 initialPosition, PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
+    public RingObject(Vector3 initialPosition, Vector3 coordSystemZero, PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
     {
         this.PrimitiveType = primitiveType;
         this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
@@ -19,7 +19,7 @@ public class RingObject : IRingObject
     }
 
     public void SetPosition(
-        float radialDistance, float angle, Vector3 coordSystemZero, System.Random random = default, Distributions distribution = default, 
+        float radialDistance, float angle, System.Random random = default, Distributions distribution = default, 
         Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f)
     {
         float xPos = radialDistance * Mathf.Sin(angle * Mathf.PI / 180) + overheads.x;

@@ -10,7 +10,7 @@ public interface IRingObject
     Vector3 Scale { get; }
 
     void SetPosition(
-        float radialDistance, float angle, Vector3 coordSystemZero, System.Random random = default, Distributions distribution = default, 
+        float radialDistance, float angle, System.Random random = default, Distributions distribution = default, 
         Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f);
     void SetInitialRotation(Vector3 rotation);
     void SetRotationSpeed(Vector3 rotationSpeed);
