@@ -10,12 +10,15 @@ public class RingObject : IRingObject
     public Renderer Renderer { get; private set; }
     public Vector3 Scale { get; private set; }
 
+    private Vector3 CoordSystemZero;
+
     public RingObject(Vector3 initialPosition, Vector3 coordSystemZero, PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
     {
         this.PrimitiveType = primitiveType;
         this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
         this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
         this.Scale = new Vector3(uniformScale, uniformScale, uniformScale);
+        this.CoordSystemZero = coordSystemZero;
     }
 
     public void SetPosition(
@@ -23,8 +26,8 @@ public class RingObject : IRingObject
         Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f)
     {
         float xPos = radialDistance * Mathf.Sin(angle * Mathf.PI / 180) + overheads.x;
-        float yPos = coordSystemZero.y + overheads.y;
-        float zPos = coordSystemZero.z - radialDistance * Mathf.Cos(angle * Mathf.PI / 180) + overheads.z;
+        float yPos = this.CoordSystemZero.y + overheads.y;
+        float zPos = this.CoordSystemZero.z - radialDistance * Mathf.Cos(angle * Mathf.PI / 180) + overheads.z;
 
         if (distribution == Distributions.White)
         {
