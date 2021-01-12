@@ -18,6 +18,8 @@ public class RingObject : IRingObject
         this.Scale = new Vector3(uniformScale, uniformScale, uniformScale);
         this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
         this.CoordSystemZero = initialPosition == null ? new Vector3(0f, 0f, 0f) : coordSystemZero;
+
+        this.Object.transform.position = this.Position;
     }
 
     public void SetPosition(
@@ -47,7 +49,10 @@ public class RingObject : IRingObject
     public void SetInitialRotation(Vector3 rotation)
     {
         if (rotation == null) return;
+        if (this.Object == null) return;
+
         this.Rotation = rotation;
+        this.Object.transform.Rotate(this.Rotation, Space.Self);
     }
 
     public void SetRotationSpeed(Vector3 rotationSpeed)
