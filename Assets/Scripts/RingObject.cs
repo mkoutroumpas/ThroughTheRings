@@ -16,9 +16,9 @@ public class RingObject : IRingObject
     {
         this.PrimitiveType = primitiveType;
         this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
-        this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
         this.Scale = new Vector3(uniformScale, uniformScale, uniformScale);
-        this.CoordSystemZero = coordSystemZero;
+        this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
+        this.CoordSystemZero = initialPosition == null ? new Vector3(0f, 0f, 0f) : coordSystemZero;
     }
 
     public void SetPosition(
