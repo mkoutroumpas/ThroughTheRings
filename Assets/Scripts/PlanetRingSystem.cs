@@ -68,7 +68,7 @@ public class PlanetRingSystem : MonoBehaviour
         GameObject artifact = GameObject.CreatePrimitive(PrimitiveType.Cube);
         Renderer artifactRenderer = artifact.GetComponent<Renderer>();
         artifactRenderer?.material.SetColor("_Color", color);
-        artifact.transform.localScale = new Vector3(scale, scale, scale); 
+        artifact.transform.localScale = new Vector3(scale, scale, scale);
 
         float xPos = radius * Mathf.Sin(angle * Mathf.PI / 180);
         float yPos = coordinateSystemZero.y + yOverhead;
