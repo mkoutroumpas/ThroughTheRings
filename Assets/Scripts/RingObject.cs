@@ -7,11 +7,10 @@ public class RingObject : IRingObject
     public Color Color{ get; private set; }
     public GameObject Object { get; private set; }
     public PrimitiveType PrimitiveType { get; private set; }
-    public Renderer Renderer { get; private set; }
     public Vector3 Scale { get; private set; }
-
+    
     private Vector3 CoordSystemZero;
-
+    
     public RingObject(Vector3 initialPosition, Vector3 coordSystemZero, PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
     {
         this.PrimitiveType = primitiveType;
