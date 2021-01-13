@@ -56,12 +56,12 @@ public class PlanetRingSystem : MonoBehaviour
             {
                 float scale = randomize ? GetArtifactSize(minCubeScale, maxCubeScale, Distributions.White) : uniformTestCubeScale;
 
-                AddTestCube(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color, Distributions.White);
+                AddRingObject(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color, Distributions.White);
             }
         }
     }
 
-    void AddTestCube(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
+    void AddRingObject(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         bool localRotation = true) 
     {
