@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IRingObject
+public interface IRingSystemObject
 {
     Vector3 Rotation { get; }
     Vector3 Position { get; }
