@@ -1,7 +1,7 @@
 using UnityEngine;
 public class RingObject : IRingSystemObject
 {
-    public Vector3 Position { get { return this.Object.transform.position; } private set {} }
+    public Vector3 Position { get; private set; }
     public Vector3 Rotation { get; private set; }
     public Vector3 RotationSpeed { get; private set; }
     public Color Color{ get; private set; }
@@ -40,7 +40,8 @@ public class RingObject : IRingSystemObject
             zPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + zPos;
         }
 
-        this.Object.transform.position = new Vector3(xPos, yPos, zPos);
+        this.Position = new Vector3(xPos, yPos, zPos);
+        this.Object.transform.position = this.Position;
     }
 
     public void SetUniformScale(float uniformScale)

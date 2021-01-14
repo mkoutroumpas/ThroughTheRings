@@ -50,13 +50,13 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
     }
 
-    void CreateRingSystem(float startAngle = 0f, float yOverhead = 0f, Color color = default, bool randomize = false)
+    void CreateRingSystem(float startAngle = 0f, float yOverhead = 0f, Color color = default, bool randomizeRingObjectScale = false)
     {
         for (int a = 0; a < 360; a += RingAngleStep) 
         {
             for (int i = 0; i <= NumOfRingsAB + 1; i++) 
             {
-                float scale = randomize ? GetRingObjectSize(MinCubeScale, MaxCubeScale, Distributions.White) : UniformTestCubeScale;
+                float scale = randomizeRingObjectScale ? GetRingObjectSize(MinCubeScale, MaxCubeScale, Distributions.White) : UniformTestCubeScale;
 
                 AddRingObject(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color, Distributions.White);
             }
