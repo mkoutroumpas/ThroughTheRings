@@ -67,31 +67,17 @@ public class PlanetRingSystem : MonoBehaviour
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         bool localRotation = true) 
     {
-        GameObject artifact = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        Renderer artifactRenderer = artifact.GetComponent<Renderer>();
-        artifactRenderer?.material.SetColor("_Color", color);
-        artifact.transform.localScale = new Vector3(scale, scale, scale);
-
-        float xPos = radius * Mathf.Sin(angle * Mathf.PI / 180);
-        float yPos = _coordinateSystemZero.y + yOverhead;
-        float zPos = _coordinateSystemZero.z - radius * Mathf.Cos(angle * Mathf.PI / 180);
-
-        if (distribution == Distributions.White)
-        {
-            xPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + xPos;
-            yPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + yPos;
-            zPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + zPos;
-        }
-
-        artifact.transform.position = new Vector3(xPos, yPos, zPos); 
-
+        RingObject ringObject = new RingObject(default, _coordinateSystemZero, PrimitiveType.Cube, scale);
+        ringObject.SetColor(color);
+        ringObject.SetPosition(radius, angle, random, Distributions.White, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
+        
         if (localRotation)
         {
             float rotX = (float)random.NextDouble() * 360;
             float rotY = (float)random.NextDouble() * 360;
             float rotZ = (float)random.NextDouble() * 360;
 
-            artifact.transform.Rotate(new Vector3(rotX, rotY, rotZ), Space.Self);
+            ringObject.SetInitialRotation(new Vector3(rotX, rotY, rotZ));    
         }
 
         _numOfRingObjects++;
