@@ -71,14 +71,7 @@ public class PlanetRingSystem : MonoBehaviour
         ringObject.SetColor(color);
         ringObject.SetPosition(radius, angle, random, Distributions.White, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
         
-        if (localRotation)
-        {
-            float rotX = (float)random.NextDouble() * 360;
-            float rotY = (float)random.NextDouble() * 360;
-            float rotZ = (float)random.NextDouble() * 360;
-
-            ringObject.SetInitialRotation(new Vector3(rotX, rotY, rotZ));    
-        }
+        if (localRotation) ringObject.SetInitialRotation(new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
 
         _numOfRingObjects++;
     }
