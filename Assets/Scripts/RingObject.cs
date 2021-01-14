@@ -13,12 +13,12 @@ public class RingObject : IRingSystemObject
     
     public RingObject(Vector3 initialPosition, Vector3 coordSystemZero, PrimitiveType primitiveType = PrimitiveType.Cube, float uniformScale = 1f)
     {
-        this._coordSystemZero = initialPosition == null ? new Vector3(0f, 0f, 0f) : coordSystemZero;
+        this._coordSystemZero = coordSystemZero == default ? new Vector3(0f, 0f, 0f) : coordSystemZero;
 
         this.PrimitiveType = primitiveType;
         this.Object = GameObject.CreatePrimitive(this.PrimitiveType);
 
-        this.Position = initialPosition == null ? new Vector3(0f, 0f, 0f) : initialPosition;
+        this.Position = initialPosition == default ? new Vector3(0f, 0f, 0f) : initialPosition;
         this.Object.transform.position = this.Position;
 
         this.Scale = new Vector3(uniformScale, uniformScale, uniformScale);
