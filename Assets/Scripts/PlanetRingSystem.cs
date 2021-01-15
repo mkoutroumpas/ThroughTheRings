@@ -45,12 +45,12 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
         Debug.Log($"rA = {_ringA}, rB = {_ringB}");
 
-        foreach (var ringLayer in _ringLayers) CreateRingSystem(ringLayer.Angle, ringLayer.YOverhead, ringLayer.Color, true);
+        foreach (var ringLayer in _ringLayers) Create(ringLayer.Angle, ringLayer.YOverhead, ringLayer.Color, true);
 
         Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
     }
 
-    void CreateRingSystem(float startAngle = 0f, float yOverhead = 0f, Color color = default, bool randomizeRingObjectScale = false)
+    void Create(float startAngle = 0f, float yOverhead = 0f, Color color = default, bool randomizeRingObjectScale = false)
     {
         for (int a = 0; a < 360; a += RingAngleStep) 
         {
