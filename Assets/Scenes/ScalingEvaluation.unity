@@ -318,6 +318,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7462036371361415008, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_Name
+      value: BWall
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e052a16d3ecb1ab46b26594aede01cfc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -401,7 +406,7 @@ PrefabInstance:
     - target: {fileID: -492420421572216379, guid: e052a16d3ecb1ab46b26594aede01cfc,
         type: 3}
       propertyPath: m_Name
-      value: Ceiling
+      value: TWall
       objectReference: {fileID: 0}
     - target: {fileID: -113181020801827196, guid: e052a16d3ecb1ab46b26594aede01cfc,
         type: 3}
@@ -417,6 +422,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_DynamicOccludee
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502203975881118265, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_Name
+      value: RWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695666576454475813, guid: e052a16d3ecb1ab46b26594aede01cfc,
+        type: 3}
+      propertyPath: m_Name
+      value: LWall
       objectReference: {fileID: 0}
     - target: {fileID: 5490870052100550915, guid: e052a16d3ecb1ab46b26594aede01cfc,
         type: 3}
