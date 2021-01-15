@@ -45,20 +45,23 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
         Debug.Log($"rA = {_ringA}, rB = {_ringB}");
 
-        foreach (var ringLayer in _ringLayers) Create(ringLayer.Angle, ringLayer.YOverhead, ringLayer.Color, true);
+        Create(_ringLayers, true);
 
         Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
     }
 
-    void Create(float startAngle = 0f, float yOverhead = 0f, Color color = default, bool randomizeRingObjectScale = false)
+    void Create(List<(float Angle, float YOverhead, Color Color)> ringLayers, bool randomizeRingObjectScale = false)
     {
-        for (int a = 0; a < 360; a += RingAngleStep) 
+        foreach (var ringLayer in ringLayers)
         {
-            for (int i = 0; i <= NumOfRingsAB + 1; i++) 
+            for (int a = 0; a < 360; a += RingAngleStep) 
             {
-                float scale = randomizeRingObjectScale ? GetRingObjectSize(MinCubeScale, MaxCubeScale, Distributions.White) : UniformTestCubeScale;
+                for (int i = 0; i <= NumOfRingsAB + 1; i++) 
+                {
+                    float scale = randomizeRingObjectScale ? GetRingObjectSize(MinCubeScale, MaxCubeScale, Distributions.White) : UniformTestCubeScale;
 
-                AddRingObject(a + startAngle, GetArtifactRadialDistance(i), scale, yOverhead, color, Distributions.White);
+                    AddRingObject(a + ringLayer.Angle, GetArtifactRadialDistance(i), scale, ringLayer.YOverhead, ringLayer.Color, Distributions.White);
+                }
             }
         }
     }
