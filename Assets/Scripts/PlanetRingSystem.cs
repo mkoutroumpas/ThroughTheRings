@@ -52,6 +52,8 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Create(List<(float Angle, float YOverhead, Color Color)> ringLayers, bool randomizeRingObjectScale = false)
     {
+        if (ringLayers == null) return;
+
         foreach (var ringLayer in ringLayers)
         {
             for (int a = 0; a < 360; a += RingAngleStep) 
