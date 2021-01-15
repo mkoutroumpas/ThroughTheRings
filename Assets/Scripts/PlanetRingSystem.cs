@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlanetRingSystem : MonoBehaviour 
 {
+    #region Private and const variables
     int _numOfRingObjects;
     Vector3 _coordinateSystemZero;
     List<(float Angle, float YOverhead, Color Color)> _ringLayers;
@@ -15,6 +16,7 @@ public class PlanetRingSystem : MonoBehaviour
     const float UniformTestCubeScale = 250f;
     const float MinCubeScale = 0.01f, MaxCubeScale = 1000f;
     static System.Random random;
+    #endregion
 
     void Start() 
     {
