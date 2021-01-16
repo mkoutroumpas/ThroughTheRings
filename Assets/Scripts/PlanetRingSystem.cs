@@ -47,12 +47,17 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
         Debug.Log($"rA = {_ringA}, rB = {_ringB}");
 
-        Create(_ringLayers, true);
+        CreateRings(_ringLayers, true);
 
         Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
     }
 
-    void Create(List<(float Angle, float YOverhead, Color Color)> ringLayers, bool randomizeRingObjectScale = false)
+    void CreateCenterPlanet()
+    {
+
+    }
+
+    void CreateRings(List<(float Angle, float YOverhead, Color Color)> ringLayers, bool randomizeRingObjectScale = false)
     {
         if (ringLayers == null) return;
 
