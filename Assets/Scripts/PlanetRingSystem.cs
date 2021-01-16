@@ -52,9 +52,10 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
     }
 
-    void CreateCenterPlanet()
+    void AddCenterPlanet()
     {
-
+        CenterPlanet centerPlanet = new CenterPlanet(_coordinateSystemZero, _coordinateSystemZero, PrimitiveType.Sphere, 60000f);
+        centerPlanet.SetColor(Color.gray);
     }
 
     void CreateRings(List<(float Angle, float YOverhead, Color Color)> ringLayers, bool randomizeRingObjectScale = false)
