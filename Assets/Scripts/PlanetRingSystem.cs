@@ -8,7 +8,7 @@ public class PlanetRingSystem : MonoBehaviour
     Vector3 _coordinateSystemZero;
     List<(float Angle, float YOverhead, Color Color)> _ringLayers;
     float _ringA, _ringB;
-    float _planetRadius = 30000f;
+    float _planetRadius = 60000f;
     const float RingWidth = 50000;
     const int NumOfRingsAB = 20, RingAngleStep = 3;
     const float StdDeviation = 0.1f;
@@ -39,7 +39,7 @@ public class PlanetRingSystem : MonoBehaviour
         };
 
         _coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        _planetRadius = gameObject.transform.localScale.z / 2;
+        //_planetRadius = gameObject.transform.localScale.z / 2;
 
         _ringA = _planetRadius + 10000;
         _ringB = _ringA + RingWidth;
@@ -47,14 +47,16 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
         Debug.Log($"rA = {_ringA}, rB = {_ringB}");
 
-        CreateRings(_ringLayers, true);
+        AddCenterPlanet(this._planetRadius);
+
+        CreateRings(this._ringLayers, true);
 
         Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
     }
 
-    void AddCenterPlanet()
+    void AddCenterPlanet(float radius = 0f)
     {
-        CenterPlanet centerPlanet = new CenterPlanet(_coordinateSystemZero, _coordinateSystemZero, PrimitiveType.Sphere, 60000f);
+        CenterPlanet centerPlanet = new CenterPlanet(_coordinateSystemZero, _coordinateSystemZero, PrimitiveType.Sphere, radius);
         centerPlanet.SetColor(Color.gray);
     }
 
