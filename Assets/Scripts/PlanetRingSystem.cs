@@ -14,7 +14,7 @@ public class PlanetRingSystem : MonoBehaviour
     const float StdDeviation = 0.1f;
     const int SizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float UniformTestCubeScale = 250f;
-    const float MinCubeScale = 0.01f, MaxCubeScale = 1000f;
+    const float MinCubeScale = 0.001f, MaxCubeScale = 250f;
     static System.Random random;
     #endregion
 
