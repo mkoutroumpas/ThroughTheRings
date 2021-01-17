@@ -63,8 +63,6 @@ public class RingObject : IRingSystemObject
     {
         if (rotationSpeed == null) return;
         this.RotationSpeed = rotationSpeed;
-
-        // TODO: Also implement ability to change rotation speed 'on-the-fly' (guess will be handled by Unity's thread ...)
     }
 
     public void SetColor(Color color)
