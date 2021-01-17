@@ -55,6 +55,11 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
     }
 
+    void Update()
+    {
+        
+    }
+
     void AddCenterPlanet(float radius = 0f)
     {
         CenterPlanet centerPlanet = new CenterPlanet(_coordinateSystemZero, _coordinateSystemZero, PrimitiveType.Sphere, radius);
