@@ -15,6 +15,7 @@ public class PlanetRingSystem : MonoBehaviour
     const int SizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float UniformTestCubeScale = 250f;
     const float MinCubeScale = 0.001f, MaxCubeScale = 250f;
+    const float MinDeviation = -5000f, MaxDeviation = 5000f;
     static System.Random random;
     #endregion
 
@@ -72,7 +73,8 @@ public class PlanetRingSystem : MonoBehaviour
                 {
                     float scale = randomizeRingObjectScale ? GetRingObjectSize(MinCubeScale, MaxCubeScale, Distributions.White) : UniformTestCubeScale;
 
-                    AddRingObject(a + ringLayer.Angle, GetArtifactRadialDistance(i), scale, ringLayer.YOverhead, ringLayer.Color, Distributions.White, -5000f, 5000f);
+                    AddRingObject(
+                        a + ringLayer.Angle, GetArtifactRadialDistance(i), scale, ringLayer.YOverhead, ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation);
                 }
             }
         }
