@@ -4,9 +4,9 @@ using UnityEngine;
 public class PlanetRingSystem : MonoBehaviour 
 {
     #region Private and const variables
-    int _numOfRingObjects;
     Vector3 _coordinateSystemZero;
     List<(float Angle, float YOverhead, Color Color)> _ringLayers;
+    List<RingObject> _ringObjects;
     float _ringA, _ringB;
     float _planetRadius = 30000f;
     const float RingWidth = 50000;
@@ -21,7 +21,7 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Start() 
     {
-        _numOfRingObjects = 0;
+        _ringObjects = new List<RingObject>();
         
         _ringLayers = new List<(float, float, Color)>
         {
@@ -52,12 +52,12 @@ public class PlanetRingSystem : MonoBehaviour
 
         CreateRings(this._ringLayers, true);
 
-        Debug.Log($"numOfTestArtifacts = {_numOfRingObjects}");
+        Debug.Log($"numOfTestArtifacts = {this._ringObjects.Count}");
     }
 
     void Update()
     {
-        
+
     }
 
     void AddCenterPlanet(float radius = 0f)
@@ -95,7 +95,7 @@ public class PlanetRingSystem : MonoBehaviour
         
         if (localRotation) ringObject.SetInitialRotation(new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
 
-        _numOfRingObjects++;
+        this._ringObjects.Add(ringObject);
     }
 
     float GetArtifactRadialDistance(int ringId) => _ringA + ringId * RingWidth * SizeAndDistanceMultiplier / (NumOfRingsAB + 1);
