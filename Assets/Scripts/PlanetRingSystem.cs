@@ -18,7 +18,7 @@ public class PlanetRingSystem : MonoBehaviour
     List<RingObject> _ringObjects;
     float _ringA, _ringB;
     float _planetRadius = 30000f;
-    int _sizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
+    const FieldDepths FieldDepth = FieldDepths.Near;
     const float RingWidth = 50000;
     const int NumOfRingsAB = 20, RingAngleStep = 3;
     const float StdDeviation = 0.1f;
@@ -112,7 +112,10 @@ public class PlanetRingSystem : MonoBehaviour
         this._ringObjects.Add(ringObject);
     }
 
-    float GetArtifactRadialDistance(int ringId) => _ringA + ringId * RingWidth * _sizeAndDistanceMultiplier / (NumOfRingsAB + 1);
+    /// 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
+    int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1;
+
+    float GetArtifactRadialDistance(int ringId) => _ringA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
 
     float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
