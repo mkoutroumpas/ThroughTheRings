@@ -57,7 +57,13 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Update()
     {
-
+        if (this._ringObjects.Count > 0)
+        {
+            foreach (RingObject ringObject in this._ringObjects)
+            {
+                ringObject.Object.transform.Rotate(new Vector3(5f, 5f, 5f) * Time.deltaTime, Space.Self);
+            }
+        }
     }
 
     void AddCenterPlanet(float radius = 0f)
