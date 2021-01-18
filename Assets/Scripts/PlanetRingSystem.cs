@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class PlanetRingSystem : MonoBehaviour 
 {
+    #region Enums
+    enum FieldDepths
+    {
+        Near,
+        Far
+    }
+    #endregion
+
     #region Private and const variables
     Vector3 _coordinateSystemZero;
     Vector3 _rotationSpeeds;
@@ -10,10 +18,10 @@ public class PlanetRingSystem : MonoBehaviour
     List<RingObject> _ringObjects;
     float _ringA, _ringB;
     float _planetRadius = 30000f;
+    int SizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float RingWidth = 50000;
     const int NumOfRingsAB = 20, RingAngleStep = 3;
     const float StdDeviation = 0.1f;
-    const int SizeAndDistanceMultiplier = 1; // 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     const float UniformTestCubeScale = 250f;
     const float MinCubeScale = 0.001f, MaxCubeScale = 250f;
     const float MinDeviation = -5000f, MaxDeviation = 5000f;
