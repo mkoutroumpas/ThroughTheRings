@@ -5,7 +5,6 @@ public class PlanetRingSystem : MonoBehaviour
 {
     #region Private and const variables
     Vector3 _coordinateSystemZero;
-    Vector3 _rotationSpeeds;
     List<(float Angle, float YOverhead, Color Color)> _ringLayers;
     List<RingObject> _ringObjects;
     float _ringA, _ringB;
@@ -39,8 +38,6 @@ public class PlanetRingSystem : MonoBehaviour
             (2.5f, 3400f, Color.yellow),
             (2.75f, 4200f, Color.red)
         };
-
-        _rotationSpeeds = new Vector3(5f, 5f, 5f);
 
         _coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         _planetRadius = gameObject.transform.localScale.z / 2;
