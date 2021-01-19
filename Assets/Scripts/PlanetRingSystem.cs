@@ -9,6 +9,8 @@ public class PlanetRingSystem : MonoBehaviour
     List<RingObject> _ringObjects;
     float _ringA, _ringB;
     float _planetRadius = 30000f;
+    float maxRotationSpeed = 10f;
+    float minRotationSpeed = 0f;
     const FieldDepths FieldDepth = FieldDepths.Near;
     const float RingWidth = 50000;
     const int NumOfRingsAB = 20, RingAngleStep = 3;
@@ -95,6 +97,11 @@ public class PlanetRingSystem : MonoBehaviour
         RingObject ringObject = new RingObject(default, _coordinateSystemZero, PrimitiveType.Cube, scale);
         ringObject.SetColor(color);
         ringObject.SetPosition(radius, angle, random, Distributions.White, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
+        ringObject.SetRotationSpeed(
+            new Vector3(
+                (float)(random.NextDouble() * (maxRotationSpeed - minRotationSpeed) + minRotationSpeed),
+                (float)(random.NextDouble() * (maxRotationSpeed - minRotationSpeed) + minRotationSpeed),
+                (float)(random.NextDouble() * (maxRotationSpeed - minRotationSpeed) + minRotationSpeed)));
         
         if (localRotation) ringObject.SetInitialRotation(new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
 
