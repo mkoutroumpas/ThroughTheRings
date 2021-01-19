@@ -3,14 +3,6 @@ using UnityEngine;
 
 public class PlanetRingSystem : MonoBehaviour 
 {
-    #region Enums
-    enum FieldDepths
-    {
-        Near,
-        Far
-    }
-    #endregion
-
     #region Private and const variables
     Vector3 _coordinateSystemZero;
     Vector3 _rotationSpeeds;
