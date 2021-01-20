@@ -54,8 +54,6 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
         Debug.Log($"rA = {_ringA}, rB = {_ringB}");
 
-        // AddCenterPlanet(this._planetRadius);
-
         CreateRings(this._ringLayers, true);
 
         Debug.Log($"numOfTestArtifacts = {this._ringObjects.Count}");
