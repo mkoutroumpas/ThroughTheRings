@@ -22,7 +22,7 @@ public class PlanetRingSystem : MonoBehaviour
     #endregion
 
     #region Public properties
-    
+    public bool EnableRingObjectsRotation = true;
     #endregion
 
     void Start() 
