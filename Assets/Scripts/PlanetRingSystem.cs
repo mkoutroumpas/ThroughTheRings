@@ -21,6 +21,10 @@ public class PlanetRingSystem : MonoBehaviour
     static System.Random random;
     #endregion
 
+    #region Public properties
+    
+    #endregion
+
     void Start() 
     {
         _ringObjects = new List<RingObject>();
