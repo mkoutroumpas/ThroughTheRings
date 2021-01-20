@@ -63,7 +63,7 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Update()
     {
-        if (this._ringObjects.Count > 0)
+        if (this.EnableRingObjectsRotation && this._ringObjects.Count > 0)
         {
             foreach (RingObject ringObject in this._ringObjects) ringObject.Object.transform.Rotate(ringObject.RotationSpeed * Time.deltaTime, Space.Self);
         }
