@@ -37,9 +37,9 @@ public class RingObject : IRingSystemObject
 
         if (distribution == Distributions.White)
         {
-            xPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + xPos;
-            yPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + yPos;
-            zPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + zPos;
+            xPos = (float)(random.NextDouble() * devDiff + minDeviation) + xPos;
+            yPos = (float)(random.NextDouble() * devDiff + minDeviation) + yPos;
+            zPos = (float)(random.NextDouble() * devDiff + minDeviation) + zPos;
         }
 
         this.Position = new Vector3(xPos, yPos, zPos);
