@@ -28,7 +28,9 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Start() 
     {
-        _ringObjects = new List<RingObject>();
+        this._rotationSpeedDiff = this._maxRotationSpeed - this._minRotationSpeed;
+
+        this._ringObjects = new List<RingObject>();
         
         _ringLayers = new List<(float, float, Color)>
         {
