@@ -11,6 +11,7 @@ public class PlanetRingSystem : MonoBehaviour
     float _planetRadius = 30000f;
     float _maxRotationSpeed = 10f;
     float _minRotationSpeed = 0f;
+    float _rotationSpeedDiff = 0f;
     const FieldDepths FieldDepth = FieldDepths.Near;
     const float RingWidth = 50000;
     const int NumOfRingsAB = 20, RingAngleStep = 3;
