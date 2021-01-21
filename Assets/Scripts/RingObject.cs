@@ -33,6 +33,8 @@ public class RingObject : IRingSystemObject
         float yPos = this._coordSystemZero.y + overheads.y;
         float zPos = this._coordSystemZero.z - radialDistance * Mathf.Cos(angle * Mathf.PI / 180) + overheads.z;
 
+        float devDiff = maxDeviation - minDeviation;
+
         if (distribution == Distributions.White)
         {
             xPos = (float)(random.NextDouble() * (maxDeviation - minDeviation) + minDeviation) + xPos;
