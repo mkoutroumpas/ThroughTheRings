@@ -17,3 +17,9 @@ Create a simple ringed planet system, that consists of a central shpere (Planet)
 The end result should posess a few basic properties of a standard ring system, such as random initial rotation, size, self-rotation speed and distance from the Planet and its neighbouring Asteroids.
 
 Third Phase:
+
+The Asteroids should be able to implement collisions and gravity forces, affecting their motion. Collisions should also result in Asteroid fragmentation (debris).
+
+
+Fourth Phase:
+
