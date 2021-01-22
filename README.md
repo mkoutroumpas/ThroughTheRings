@@ -11,3 +11,9 @@ First Phase:
 
 The goal is to evaluate the spatial properties of the scene and the technique used to facilitate long distances. 
 
+Second Phase:
+
+Create a simple ringed planet system. 
+
+
+Third Phase:
