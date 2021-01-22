@@ -14,7 +14,6 @@ The goal is to evaluate the spatial properties of the scene and the technique us
 Second Phase:
 
 Create a simple ringed planet system, that consists of a central shpere (Planet) and various disc-like layers of token cubes scattered around it (Asteroids).
-The end result should posess a few basic properties of a standard ring system. 
-
+The end result should posess a few basic properties of a standard ring system, such as random initial rotation, size, self-rotation speed and distance from the Planet and its neighbouring Asteroids.
 
 Third Phase:
