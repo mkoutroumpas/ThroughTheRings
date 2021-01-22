@@ -22,4 +22,4 @@ The Asteroids should be able to implement collisions and gravity forces, affecti
 
 Fourth Phase:
 
-By now, the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. 
+By now, the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. Add features, controls and artifacts inside the Capsule. 
