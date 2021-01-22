@@ -18,8 +18,8 @@ The end result should posess a few basic properties of a standard ring system, s
 
 Third Phase:
 
-The Asteroids should be able to implement collisions and gravity forces, affecting their motion. Collisions should also result in Asteroid fragmentation (debris).
-
+The Asteroids should be able to implement collisions and gravity forces, affecting their motion. Collisions should also result in Asteroid fragmentation (debris). Those Physics should also affect the Capsule. 
 
 Fourth Phase:
 
+By now, the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. 
