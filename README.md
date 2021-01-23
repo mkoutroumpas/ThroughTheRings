@@ -6,7 +6,6 @@ Board your space capsule and explore the asteroid-packed ring system of a nearby
 This is a simple game aimed at demonstrating a) structural composition concepts that involve very large objects (asteroids, planets, etc.) and b) how Unity technologies such as ECS, URP and ShaderGraph can be used to create a fully-featured commercial entertainment environment.
 
 
-
 First Phase:
 
 The goal is to evaluate the spatial properties of the scene and the technique used to facilitate long distances. 
@@ -22,9 +21,9 @@ The Asteroids should be able to implement collisions and gravity forces, affecti
 
 Fourth Phase:
 
-By now, the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. Add features, controls and artifacts inside the Capsule. 
+By now the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. Add features, controls and artifacts inside the Capsule. 
 
-fifth Phase:
+Fifth Phase:
 
 Try to make the Scene as compelling as possible. See how much load it can handle.
 
