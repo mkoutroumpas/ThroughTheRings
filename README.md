@@ -1,7 +1,7 @@
 # ThroughTheRings
 Simple asteroid navigation game.
 
-Board your space capsule and explore the asteroid-packed ring system of a nearby planet. Your goal is to identify specific asteroids suitable for resource mining and transmit your findings to headquarters. Communications services while inside the asteroid field are expected to be unreliable, so you will have to make your transmission after exiting the ring system. 
+Board your space Capsule and explore the asteroid-packed Ring System of a nearby planet. Your goal is to identify specific Asteroids suitable for resource mining and transmit your findings to Headquarters. Communications services while inside the asteroid field are expected to be unreliable, so you will have to make your transmission after exiting the Ring System. 
 
 This is a simple game aimed at demonstrating the following topics:
 
