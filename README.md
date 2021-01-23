@@ -6,6 +6,7 @@ Board your space capsule and explore the asteroid-packed ring system of a nearby
 This is a simple game aimed at demonstrating the following topics:
 
 a) structural composition concepts that involve very large objects (asteroids, planets, etc.) 
+
 b) how Unity technologies such as ECS, URP and ShaderGraph can be used to create a fully-featured commercial entertainment environment.
 
 
@@ -15,7 +16,7 @@ The goal is to evaluate the spatial properties of the scene and the technique us
 
 Second Phase:
 
-Create a simple ringed planet system, that consists of a central shpere (Planet) and various disc-like layers of token cubes scattered around it (Asteroids).
+Create a simple ringed planet system that consists of a central shpere (Planet) and various disc-like layers of token cubes scattered around it (Asteroids).
 The end result should posess a few basic properties of a standard ring system, such as random initial rotation, size, self-rotation speed and distance from the Planet and its neighbouring Asteroids.
 
 Third Phase:
