@@ -12,7 +12,7 @@ b) how Unity technologies such as ECS, URP and ShaderGraph can be used to create
 
 First Phase:
 
-The goal is to evaluate the spatial properties of the scene and the technique used to facilitate long distances. 
+The goal is to evaluate the spatial properties of the scene and the technique used to facilitate implementation of long distances in the Scene. 
 
 Second Phase:
 
