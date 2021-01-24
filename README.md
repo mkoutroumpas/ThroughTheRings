@@ -5,9 +5,9 @@ Board your space Capsule and explore the asteroid-packed Ring System of a nearby
 
 This is a simple game aimed at demonstrating the following topics:
 
-a) structural composition concepts that involve very large objects (asteroids, planets, etc.) 
+a) Structural composition concepts that involve very large objects (asteroids, planets, etc.) 
 
-b) how Unity technologies such as ECS, URP and ShaderGraph can be used to create a fully-featured commercial entertainment environment.
+b) How Unity technologies such as ECS, URP and ShaderGraph can be used to create a fully-featured commercial entertainment environment.
 
 
 First Phase:
