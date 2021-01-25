@@ -32,11 +32,11 @@ public class PlanetRingSystem : MonoBehaviour
     {
         Initialize();
 
-        _coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        _planetRadius = gameObject.transform.localScale.z / 2;
+        this._coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        this._planetRadius = gameObject.transform.localScale.z / 2;
 
-        _ringA = _planetRadius + 10000;
-        _ringB = _ringA + RingWidth;
+        this._ringA = _planetRadius + 10000;
+        this._ringB = _ringA + RingWidth;
 
         Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
         Debug.Log($"rA = {_ringA}, rB = {_ringB}");
