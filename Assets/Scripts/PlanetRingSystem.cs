@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlanetRingSystem : MonoBehaviour 
 {
-    #region Private and const variables
+    #region Private variables
     Vector3 _coordinateSystemZero;
     List<(float Angle, float YOverhead, Color Color)> _ringLayers;
     List<RingObject> _ringObjects;
@@ -11,6 +11,9 @@ public class PlanetRingSystem : MonoBehaviour
     float _planetRadius;
     float _maxRotationSpeed, _minRotationSpeed;
     float _rotationSpeedDiff;
+    #endregion
+
+    #region Const variables
     const FieldDepths FieldDepth = FieldDepths.Near;
     const float RingWidth = 50000;
     const int NumOfRingsAB = 20, RingAngleStep = 3;
