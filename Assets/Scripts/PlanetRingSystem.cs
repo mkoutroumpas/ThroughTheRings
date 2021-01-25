@@ -30,6 +30,32 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Start() 
     {
+        Initialize();
+
+        _coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        _planetRadius = gameObject.transform.localScale.z / 2;
+
+        _ringA = _planetRadius + 10000;
+        _ringB = _ringA + RingWidth;
+
+        Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
+        Debug.Log($"rA = {_ringA}, rB = {_ringB}");
+
+        CreateRings(this._ringLayers, true);
+
+        Debug.Log($"numOfTestArtifacts = {this._ringObjects.Count}");
+    }
+
+    void Update()
+    {
+        if (this.EnableRingObjectsRotation && this._ringObjects.Count > 0)
+        {
+            foreach (RingObject ringObject in this._ringObjects) ringObject.Object.transform.Rotate(ringObject.RotationSpeed * Time.deltaTime, Space.Self);
+        }
+    }
+
+    void Initialize()
+    {
         this._planetRadius = 30000f;
         this._maxRotationSpeed = 10f;
         this._minRotationSpeed = 0f;
@@ -53,27 +79,6 @@ public class PlanetRingSystem : MonoBehaviour
             (2.5f, 3400f, Color.yellow),
             (2.75f, 4200f, Color.red)
         };
-
-        _coordinateSystemZero = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        _planetRadius = gameObject.transform.localScale.z / 2;
-
-        _ringA = _planetRadius + 10000;
-        _ringB = _ringA + RingWidth;
-
-        Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
-        Debug.Log($"rA = {_ringA}, rB = {_ringB}");
-
-        CreateRings(this._ringLayers, true);
-
-        Debug.Log($"numOfTestArtifacts = {this._ringObjects.Count}");
-    }
-
-    void Update()
-    {
-        if (this.EnableRingObjectsRotation && this._ringObjects.Count > 0)
-        {
-            foreach (RingObject ringObject in this._ringObjects) ringObject.Object.transform.Rotate(ringObject.RotationSpeed * Time.deltaTime, Space.Self);
-        }
     }
 
     void AddCenterPlanet(float radius = 0f)
