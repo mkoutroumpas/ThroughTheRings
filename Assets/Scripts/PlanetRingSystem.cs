@@ -8,9 +8,9 @@ public class PlanetRingSystem : MonoBehaviour
     List<(float Angle, float YOverhead, Color Color)> _ringLayers;
     List<RingObject> _ringObjects;
     float _ringA, _ringB;
-    float _planetRadius = 30000f;
-    float _maxRotationSpeed = 10f, _minRotationSpeed = 0f;
-    float _rotationSpeedDiff = 0f;
+    float _planetRadius;
+    float _maxRotationSpeed, _minRotationSpeed;
+    float _rotationSpeedDiff;
     const FieldDepths FieldDepth = FieldDepths.Near;
     const float RingWidth = 50000;
     const int NumOfRingsAB = 20, RingAngleStep = 3;
@@ -27,11 +27,15 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Start() 
     {
+        this._planetRadius = 30000f;
+        this._maxRotationSpeed = 10f;
+        this._minRotationSpeed = 0f;
+
         this._rotationSpeedDiff = this._maxRotationSpeed - this._minRotationSpeed;
 
         this._ringObjects = new List<RingObject>();
         
-        _ringLayers = new List<(float, float, Color)>
+        this._ringLayers = new List<(float, float, Color)>
         {
             (0.0f, -4200f, Color.green),
             (0.25f, -3400f, Color.white),
