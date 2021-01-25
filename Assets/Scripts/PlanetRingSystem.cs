@@ -83,7 +83,7 @@ public class PlanetRingSystem : MonoBehaviour
 
     void AddCenterPlanet(float radius = 0f)
     {
-        CenterPlanet centerPlanet = new CenterPlanet(_coordinateSystemZero, _coordinateSystemZero, PrimitiveType.Sphere, radius);
+        CenterPlanet centerPlanet = new CenterPlanet(this._coordinateSystemZero, this._coordinateSystemZero, PrimitiveType.Sphere, radius);
         centerPlanet.SetColor(Color.gray);
     }
 
