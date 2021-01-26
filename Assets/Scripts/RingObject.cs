@@ -26,7 +26,7 @@ public class RingObject : IRingSystemObject
         this.Object.transform.localScale = this.Scale;
     }
 
-    public void SetPosition(
+    public void SetInitialPosition(
         float radialDistance, float angle, System.Random random = default, Distributions distribution = default, 
         Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f)
     {

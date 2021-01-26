@@ -10,7 +10,7 @@ public interface IRingSystemObject
     GameObject Object { get; }
     Vector3 Scale { get; }
 
-    void SetPosition(
+    void SetInitialPosition(
         float radialDistance, float angle, System.Random random = default, Distributions distribution = default, 
         Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f);
     void SetInitialRotation(Vector3 rotation);
