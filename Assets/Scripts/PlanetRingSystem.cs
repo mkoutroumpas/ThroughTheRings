@@ -9,7 +9,7 @@ public class PlanetRingSystem : MonoBehaviour
     List<RingObject> _ringObjects;
     float _ringA, _ringB;
     float _planetRadius;
-    float _maxRotationSpeed, _minRotationSpeed;
+    float _maxSelfRotSpeed, _minSelfRotSpeed;
     float _rotationSpeedDiff;
     #endregion
 
@@ -57,10 +57,10 @@ public class PlanetRingSystem : MonoBehaviour
     void Initialize()
     {
         this._planetRadius = 30000f;
-        this._maxRotationSpeed = 10f;
-        this._minRotationSpeed = 0f;
+        this._maxSelfRotSpeed = 10f;
+        this._minSelfRotSpeed = 0f;
 
-        this._rotationSpeedDiff = this._maxRotationSpeed - this._minRotationSpeed;
+        this._rotationSpeedDiff = this._maxSelfRotSpeed - this._minSelfRotSpeed;
 
         this._ringObjects = new List<RingObject>();
         
@@ -115,9 +115,9 @@ public class PlanetRingSystem : MonoBehaviour
         ringObject.SetPosition(radius, angle, random, Distributions.White, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
         ringObject.SetRotationSpeed(
             new Vector3(
-                (float)(random.NextDouble() * this._rotationSpeedDiff + this._minRotationSpeed),
-                (float)(random.NextDouble() * this._rotationSpeedDiff + this._minRotationSpeed),
-                (float)(random.NextDouble() * this._rotationSpeedDiff + this._minRotationSpeed)));
+                (float)(random.NextDouble() * this._rotationSpeedDiff + this._minSelfRotSpeed),
+                (float)(random.NextDouble() * this._rotationSpeedDiff + this._minSelfRotSpeed),
+                (float)(random.NextDouble() * this._rotationSpeedDiff + this._minSelfRotSpeed)));
         
         if (localRotation) ringObject.SetInitialRotation(new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
 
