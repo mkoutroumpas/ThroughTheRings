@@ -4,7 +4,8 @@ public interface IRingSystemObject
 {
     Vector3 Rotation { get; }
     Vector3 Position { get; }
-    Vector3 RotationSpeed { get; }
+    Vector3 SelfRotationSpeed { get; }
+    Vector3 SystemRotationSpeed { get; }
     Color Color{ get; }
     GameObject Object { get; }
     Vector3 Scale { get; }

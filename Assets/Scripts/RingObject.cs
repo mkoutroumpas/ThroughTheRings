@@ -3,7 +3,8 @@ public class RingObject : IRingSystemObject
 {
     public Vector3 Position { get; private set; }
     public Vector3 Rotation { get; private set; }
-    public Vector3 RotationSpeed { get; private set; }
+    public Vector3 SelfRotationSpeed { get; private set; }
+    public Vector3 SystemRotationSpeed { get; private set; }
     public Color Color{ get; private set; }
     public GameObject Object { get; private set; }
     public PrimitiveType PrimitiveType { get; private set; }
@@ -64,7 +65,7 @@ public class RingObject : IRingSystemObject
     public void SetRotationSpeed(Vector3 rotationSpeed)
     {
         if (rotationSpeed == null) return;
-        this.RotationSpeed = rotationSpeed;
+        this.SelfRotationSpeed = rotationSpeed;
     }
 
     public void SetColor(Color color)
