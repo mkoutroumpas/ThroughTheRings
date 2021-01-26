@@ -62,7 +62,7 @@ public class RingObject : IRingSystemObject
         this.Object.transform.Rotate(this.Rotation, Space.Self);
     }
 
-    public void SetRotationSpeed(Vector3 rotationSpeed)
+    public void SetSelfRotationSpeed(Vector3 rotationSpeed)
     {
         if (rotationSpeed == null) return;
         this.SelfRotationSpeed = rotationSpeed;
