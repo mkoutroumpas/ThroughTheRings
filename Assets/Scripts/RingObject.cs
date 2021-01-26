@@ -68,6 +68,12 @@ public class RingObject : IRingSystemObject
         this.SelfRotationSpeed = rotationSpeed;
     }
 
+    public void SetSystemRotationSpeed(Vector3 rotationSpeed)
+    {
+        if (rotationSpeed == null) return;
+        this.SystemRotationSpeed = rotationSpeed;
+    }
+
     public void SetColor(Color color)
     {
         if (color == null) return;

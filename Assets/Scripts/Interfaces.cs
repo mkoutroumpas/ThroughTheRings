@@ -15,6 +15,7 @@ public interface IRingSystemObject
         Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f);
     void SetInitialRotation(Vector3 rotation);
     void SetSelfRotationSpeed(Vector3 rotationSpeed);
+    void SetSystemRotationSpeed(Vector3 rotationSpeed);
     void SetColor(Color color);
     void SetObject(GameObject gameObject);
     void SetUniformScale(float uniformScale);
