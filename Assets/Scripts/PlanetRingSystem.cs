@@ -53,7 +53,14 @@ public class PlanetRingSystem : MonoBehaviour
         {
             foreach (RingObject ringObject in this._ringObjects) 
             {
-                ringObject.Object.transform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
+                Transform rOTransform = ringObject.Object.transform;
+
+                rOTransform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
+                // rOTransform.position = 
+                //     new Vector3(
+                //         rOTransform.position.x * Mathf.Cos(1f), 
+                //         rOTransform.position.y, 
+                //         rOTransform.position.z * Mathf.Sin(1f));
             }
         }
     }
@@ -66,8 +73,8 @@ public class PlanetRingSystem : MonoBehaviour
         this._minSelfRotSpeed = 0f;
         this._diffSelfRotSpeed = this._maxSelfRotSpeed - this._minSelfRotSpeed;
 
-        this._maxSystemRotSpeed = 10f;
-        this._minSystemRotSpeed = 5f;
+        this._maxSystemRotSpeed = 0.1f;
+        this._minSystemRotSpeed = 0.05f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
 
         this._ringObjects = new List<RingObject>();
