@@ -73,6 +73,8 @@ public class PlanetRingSystem : MonoBehaviour
             this._timeCounter += Time.deltaTime * this._diffSystemRotSpeed;
             this._systemRotationTestCube.transform.position = 
                 new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
+
+            this._systemRotationTestCube.transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
         }
     }
 
