@@ -12,6 +12,7 @@ public class PlanetRingSystem : MonoBehaviour
     float _maxSelfRotSpeed, _minSelfRotSpeed;
     float _maxSystemRotSpeed, _minSystemRotSpeed;
     float _diffSelfRotSpeed, _diffSystemRotSpeed;
+    float _timeCounter;
     GameObject _systemRotationTestCube;
     #endregion
 
@@ -65,7 +66,11 @@ public class PlanetRingSystem : MonoBehaviour
             }
         }
 
-        
+        if (this._systemRotationTestCube != null)
+        {
+            this._timeCounter += Time.deltaTime * this._diffSystemRotSpeed;
+            this._systemRotationTestCube.transform.position = new Vector3(Mathf.Cos(this._timeCounter) * 10, 0f, Mathf.Sin(this._timeCounter) * 10 - 9990);
+        }
     }
 
     void Initialize()
@@ -76,7 +81,7 @@ public class PlanetRingSystem : MonoBehaviour
         this._minSelfRotSpeed = 0f;
         this._diffSelfRotSpeed = this._maxSelfRotSpeed - this._minSelfRotSpeed;
 
-        this._maxSystemRotSpeed = 0.1f;
+        this._maxSystemRotSpeed = 5f;
         this._minSystemRotSpeed = 0.05f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
 
