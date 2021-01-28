@@ -12,6 +12,7 @@ public class PlanetRingSystem : MonoBehaviour
     float _maxSelfRotSpeed, _minSelfRotSpeed;
     float _maxSystemRotSpeed, _minSystemRotSpeed;
     float _diffSelfRotSpeed, _diffSystemRotSpeed;
+    GameObject _systemRotationTestCube;
     #endregion
 
     #region Const variables
@@ -63,6 +64,8 @@ public class PlanetRingSystem : MonoBehaviour
                 //         rOTransform.position.z * Mathf.Sin(1f));
             }
         }
+
+        
     }
 
     void Initialize()
@@ -94,6 +97,8 @@ public class PlanetRingSystem : MonoBehaviour
             (2.5f, 3400f, Color.yellow),
             (2.75f, 4200f, Color.red)
         };
+
+        this._systemRotationTestCube = GameObject.Find("SystemRotationTestCube");
     }
 
     void AddCenterPlanet(float radius = 0f)
