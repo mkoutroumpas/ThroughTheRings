@@ -14,6 +14,7 @@ public class PlanetRingSystem : MonoBehaviour
     float _diffSelfRotSpeed, _diffSystemRotSpeed;
     float _timeCounter;
     GameObject _systemRotationTestCube;
+    float _testCubeB;
     #endregion
 
     #region Const variables
@@ -68,7 +69,7 @@ public class PlanetRingSystem : MonoBehaviour
 
         if (this._systemRotationTestCube != null)
         {
-            var R = this._ringB + 10000;
+            var R = this._ringB + this._testCubeB;
 
             this._timeCounter += Time.deltaTime * this._diffSystemRotSpeed;
             this._systemRotationTestCube.transform.position = 
@@ -89,6 +90,8 @@ public class PlanetRingSystem : MonoBehaviour
         this._maxSystemRotSpeed = 0.05f;
         this._minSystemRotSpeed = 0.025f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
+
+        this._testCubeB = 10000;
 
         this._ringObjects = new List<RingObject>();
         
