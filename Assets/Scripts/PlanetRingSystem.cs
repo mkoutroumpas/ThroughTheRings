@@ -60,12 +60,12 @@ public class PlanetRingSystem : MonoBehaviour
             {
                 Transform rOTransform = ringObject.Object.transform;
 
-                rOTransform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
-
                 var R = Mathf.Abs(rOTransform.position.z - this._coordinateSystemZero.z);
 
                 rOTransform.position = 
                     new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
+
+                rOTransform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
             }
         }
 
