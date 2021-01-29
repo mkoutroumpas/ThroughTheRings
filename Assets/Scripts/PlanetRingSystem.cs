@@ -53,7 +53,7 @@ public class PlanetRingSystem : MonoBehaviour
     void Update()
     {
         this._timeCounter += Time.deltaTime * this._diffSystemRotSpeed;
-        
+
         if (this.EnableRingObjectsRotation && this._ringObjects.Count > 0)
         {
             foreach (RingObject ringObject in this._ringObjects) 
@@ -64,6 +64,8 @@ public class PlanetRingSystem : MonoBehaviour
 
                 var R = Mathf.Abs(rOTransform.position.z - this._coordinateSystemZero.z);
 
+                rOTransform.position = 
+                    new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
 
                 // rOTransform.position = 
                 //     new Vector3(
