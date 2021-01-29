@@ -66,12 +66,6 @@ public class PlanetRingSystem : MonoBehaviour
 
                 rOTransform.position = 
                     new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
-
-                // rOTransform.position = 
-                //     new Vector3(
-                //         rOTransform.position.x * Mathf.Cos(1f), 
-                //         rOTransform.position.y, 
-                //         rOTransform.position.z * Mathf.Sin(1f));
             }
         }
 
