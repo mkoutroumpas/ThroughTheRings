@@ -52,6 +52,8 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Update()
     {
+        this._timeCounter += Time.deltaTime * this._diffSystemRotSpeed;
+        
         if (this.EnableRingObjectsRotation && this._ringObjects.Count > 0)
         {
             foreach (RingObject ringObject in this._ringObjects) 
@@ -59,6 +61,10 @@ public class PlanetRingSystem : MonoBehaviour
                 Transform rOTransform = ringObject.Object.transform;
 
                 rOTransform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
+
+                var R = Mathf.Abs(rOTransform.position.z - this._coordinateSystemZero.z);
+
+
                 // rOTransform.position = 
                 //     new Vector3(
                 //         rOTransform.position.x * Mathf.Cos(1f), 
@@ -71,7 +77,6 @@ public class PlanetRingSystem : MonoBehaviour
         {
             var R = this._ringB + this._testCubeB;
 
-            this._timeCounter += Time.deltaTime * this._diffSystemRotSpeed;
             this._systemRotationTestCube.transform.position = 
                 new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
 
