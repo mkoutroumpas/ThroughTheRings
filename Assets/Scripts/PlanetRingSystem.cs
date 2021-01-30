@@ -117,6 +117,11 @@ public class PlanetRingSystem : MonoBehaviour
         this._systemRotationTestCube = GameObject.Find("SystemRotationTestCube");
     }
 
+    void CreateTestRingObject()
+    {
+        // AddRingObject(a + ringLayer.Angle, GetArtifactRadialDistance(i), scale, ringLayer.YOverhead, ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation);
+    }
+
     void AddCenterPlanet(float radius = 0f)
     {
         CenterPlanet centerPlanet = new CenterPlanet(this._coordinateSystemZero, this._coordinateSystemZero, PrimitiveType.Sphere, radius);
@@ -148,7 +153,7 @@ public class PlanetRingSystem : MonoBehaviour
     {
         RingObject ringObject = new RingObject(default, this._coordinateSystemZero, PrimitiveType.Cube, scale);
         ringObject.SetColor(color);
-        ringObject.SetInitialPosition(radius, angle, random, Distributions.White, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
+        ringObject.SetInitialPosition(radius, angle, random, distribution, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
         ringObject.SetSelfRotationSpeed(
             new Vector3(
                 (float)(random.NextDouble() * this._diffSelfRotSpeed + this._minSelfRotSpeed),
