@@ -14,6 +14,7 @@ public class PlanetRingSystem : MonoBehaviour
     float _diffSelfRotSpeed, _diffSystemRotSpeed;
     float _timeCounter;
     GameObject _systemRotationTestCube;
+    RingObject _systemRotationTestRingObject;
     float _testCubeB;
     #endregion
 
@@ -78,7 +79,7 @@ public class PlanetRingSystem : MonoBehaviour
             var R = this._ringB + this._testCubeB;
 
             this._systemRotationTestCube.transform.position = 
-                new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
+                new Vector3(Mathf.Cos(this._timeCounter) * R + this._coordinateSystemZero.x, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
 
             this._systemRotationTestCube.transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
         }
@@ -116,17 +117,23 @@ public class PlanetRingSystem : MonoBehaviour
             (2.75f, 4200f, Color.red)
         };
 
-        this._systemRotationTestCube = GameObject.Find("SystemRotationTestCube");
+        // this._systemRotationTestCube = GameObject.Find("SystemRotationTestCube");
     }
 
     void CreateTestRingObject()
     {
-        RingObject ringObject = new RingObject(default, this._coordinateSystemZero, PrimitiveType.Cube, 10);
-        ringObject.SetColor(Color.red);
-        // ringObject.SetInitialPosition(radius, angle, random, distribution, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
-        ringObject.SetSelfRotationSpeed(
+        var R = this._ringB + this._testCubeB;
+
+        Debug.Log($"_systemRotationTestRingObject.R: {R}");
+
+        this._systemRotationTestRingObject = new RingObject(
+            new Vector3(this._coordinateSystemZero.x, 0f, this._coordinateSystemZero.z - R),
+            this._coordinateSystemZero, PrimitiveType.Cube, 10);
+        this._systemRotationTestRingObject.SetColor(Color.red);
+        this._systemRotationTestRingObject.SetSelfRotationSpeed(
             new Vector3(
                 this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed));
+        
         // ringObject.SetSystemRotationSpeed(
         //     new Vector3(
         //         (float)(random.NextDouble() * this._diffSystemRotSpeed + this._minSystemRotSpeed),
@@ -135,7 +142,7 @@ public class PlanetRingSystem : MonoBehaviour
         
         // if (localRotation) ringObject.SetInitialRotation(new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
 
-        this._ringObjects.Add(ringObject);
+        // this._ringObjects.Add(this._systemRotationTestRingObject);
     }
 
     void AddCenterPlanet(float radius = 0f)
