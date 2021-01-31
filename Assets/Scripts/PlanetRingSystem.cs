@@ -74,6 +74,16 @@ public class PlanetRingSystem : MonoBehaviour
             }
         }
 
+        if (this._systemRotationTestRingObject != null)
+        {
+            var transform = this._systemRotationTestRingObject.Object.transform;
+
+            transform.position = 
+                new Vector3(Mathf.Cos(this._timeCounter) * transform.position.x, 0f, Mathf.Sin(this._timeCounter) * transform.position.z);
+
+            transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
+        }
+
         if (this._systemRotationTestCube != null)
         {
             var R = this._ringB + this._testCubeB;
