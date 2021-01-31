@@ -107,7 +107,7 @@ public class PlanetRingSystem : MonoBehaviour
         this._minSystemRotSpeed = 0.025f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
 
-        this._testCubeB = 10000;
+        this._testCubeB = 11000;
 
         this._ringObjects = new List<RingObject>();
         
