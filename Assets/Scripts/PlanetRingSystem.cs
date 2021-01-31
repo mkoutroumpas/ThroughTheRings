@@ -76,12 +76,12 @@ public class PlanetRingSystem : MonoBehaviour
 
         if (this._systemRotationTestRingObject != null)
         {
-            var transform = this._systemRotationTestRingObject.Object.transform;
+            // var transform = this._systemRotationTestRingObject.Object.transform;
 
-            transform.position = 
-                new Vector3(Mathf.Cos(this._timeCounter) * transform.position.x, 0f, Mathf.Sin(this._timeCounter) * transform.position.z);
+            // transform.position = 
+            //     new Vector3(Mathf.Cos(this._timeCounter) * transform.position.x, 0f, Mathf.Sin(this._timeCounter) * transform.position.z);
 
-            transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
+            // transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
         }
 
         if (this._systemRotationTestCube != null)
@@ -107,7 +107,7 @@ public class PlanetRingSystem : MonoBehaviour
         this._minSystemRotSpeed = 0.025f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
 
-        this._testCubeB = 11000;
+        this._testCubeB = 15000;
 
         this._ringObjects = new List<RingObject>();
         
