@@ -76,12 +76,14 @@ public class PlanetRingSystem : MonoBehaviour
 
         if (this._systemRotationTestRingObject != null)
         {
-            // var transform = this._systemRotationTestRingObject.Object.transform;
+            var R = this._ringB + this._testCubeB;
 
-            // transform.position = 
-            //     new Vector3(Mathf.Cos(this._timeCounter) * transform.position.x, 0f, Mathf.Sin(this._timeCounter) * transform.position.z);
+            var transform = this._systemRotationTestRingObject.Object.transform;
 
-            // transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
+            transform.position = 
+                new Vector3(Mathf.Cos(this._timeCounter) * R + this._coordinateSystemZero.x, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
+
+            transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
         }
 
         if (this._systemRotationTestCube != null)
@@ -107,7 +109,7 @@ public class PlanetRingSystem : MonoBehaviour
         this._minSystemRotSpeed = 0.025f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
 
-        this._testCubeB = 15000;
+        this._testCubeB = 10980;
 
         this._ringObjects = new List<RingObject>();
         
@@ -127,6 +129,8 @@ public class PlanetRingSystem : MonoBehaviour
             (2.75f, 4200f, Color.red)
         };
 
+        if (random == null) random = new System.Random();
+
         // this._systemRotationTestCube = GameObject.Find("SystemRotationTestCube");
     }
 
@@ -138,8 +142,10 @@ public class PlanetRingSystem : MonoBehaviour
 
         this._systemRotationTestRingObject = new RingObject(
             new Vector3(this._coordinateSystemZero.x, 0f, this._coordinateSystemZero.z - R),
-            this._coordinateSystemZero, PrimitiveType.Cube, 10);
+            this._coordinateSystemZero, PrimitiveType.Cube, 2);
         this._systemRotationTestRingObject.SetColor(Color.red);
+        this._systemRotationTestRingObject.SetInitialRotation(
+            new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
         this._systemRotationTestRingObject.SetSelfRotationSpeed(
             new Vector3(
                 this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed));
@@ -150,7 +156,7 @@ public class PlanetRingSystem : MonoBehaviour
         //         0f,
         //         (float)(random.NextDouble() * this._diffSystemRotSpeed + this._minSystemRotSpeed)));
         
-        // if (localRotation) ringObject.SetInitialRotation(new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
+        
 
         // this._ringObjects.Add(this._systemRotationTestRingObject);
     }
