@@ -73,10 +73,10 @@ public class PlanetRingSystem : MonoBehaviour
 
         if (this._systemRotationTestRingObjects != null)
         {
-            var R = this._ringB + this._testCubeB;
-
             for (int i = 0; i < this._systemRotationTestRingObjects.Count; i++)
             {
+                var R = this._ringB + this._testCubeB - i  * 10;
+
                 var transform = this._systemRotationTestRingObjects[i].Object.transform;
 
                 transform.position = 
@@ -138,12 +138,12 @@ public class PlanetRingSystem : MonoBehaviour
 
     void CreateTestRingObjects()
     {
-        var R = this._ringB + this._testCubeB;
-
-        Debug.Log($"_systemRotationTestRingObject.R: {R}");
-
         for (int i = 0; i < 10; i++)
         {
+            var R = this._ringB + this._testCubeB - i  * 10;
+
+            Debug.Log($"_systemRotationTestRingObject.R: {R}");
+
             RingObject ringObject = new RingObject(
                 new Vector3(this._coordinateSystemZero.x, 0f, this._coordinateSystemZero.z - R),
                 this._coordinateSystemZero, PrimitiveType.Cube, 2);
