@@ -48,7 +48,7 @@ public class PlanetRingSystem : MonoBehaviour
 
         // CreateRings(this._ringLayers, true);
 
-        CreateTestRingObject();
+        CreateTestRingObjects();
 
         Debug.Log($"numOfTestArtifacts = {this._ringObjects.Count}");
     }
@@ -134,7 +134,7 @@ public class PlanetRingSystem : MonoBehaviour
         // this._systemRotationTestCube = GameObject.Find("SystemRotationTestCube");
     }
 
-    void CreateTestRingObject()
+    void CreateTestRingObjects()
     {
         var R = this._ringB + this._testCubeB;
 
