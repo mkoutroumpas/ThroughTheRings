@@ -14,7 +14,7 @@ public class PlanetRingSystem : MonoBehaviour
     float _diffSelfRotSpeed, _diffSystemRotSpeed;
     float _timeCounter;
     GameObject _systemRotationTestCube;
-    RingObject _systemRotationTestRingObject;
+    List<RingObject> _systemRotationTestRingObjects;
     float _testCubeB;
     #endregion
 
@@ -74,16 +74,19 @@ public class PlanetRingSystem : MonoBehaviour
             }
         }
 
-        if (this._systemRotationTestRingObject != null)
+        if (this._systemRotationTestRingObjects != null)
         {
             var R = this._ringB + this._testCubeB;
 
-            var transform = this._systemRotationTestRingObject.Object.transform;
+            for (int i = 0; i < this._systemRotationTestRingObjects.Count; i++)
+            {
+                var transform = this._systemRotationTestRingObjects[i].Object.transform;
 
-            transform.position = 
-                new Vector3(Mathf.Cos(this._timeCounter) * R + this._coordinateSystemZero.x, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
+                transform.position = 
+                    new Vector3(Mathf.Cos(this._timeCounter) * R + this._coordinateSystemZero.x, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
 
-            transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
+                transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
+            }
         }
 
         if (this._systemRotationTestCube != null)
@@ -140,16 +143,18 @@ public class PlanetRingSystem : MonoBehaviour
 
         Debug.Log($"_systemRotationTestRingObject.R: {R}");
 
-        this._systemRotationTestRingObject = new RingObject(
+        RingObject ringObject = new RingObject(
             new Vector3(this._coordinateSystemZero.x, 0f, this._coordinateSystemZero.z - R),
             this._coordinateSystemZero, PrimitiveType.Cube, 2);
-        this._systemRotationTestRingObject.SetColor(Color.red);
-        this._systemRotationTestRingObject.SetInitialRotation(
+        ringObject.SetColor(Color.red);
+        ringObject.SetInitialRotation(
             new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
-        this._systemRotationTestRingObject.SetSelfRotationSpeed(
+        ringObject.SetSelfRotationSpeed(
             new Vector3(
                 this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed));
         
+        this._systemRotationTestRingObjects.Add(ringObject);
+
         // ringObject.SetSystemRotationSpeed(
         //     new Vector3(
         //         (float)(random.NextDouble() * this._diffSystemRotSpeed + this._minSystemRotSpeed),
