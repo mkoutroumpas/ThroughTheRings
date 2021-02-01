@@ -145,7 +145,7 @@ public class PlanetRingSystem : MonoBehaviour
             Debug.Log($"_systemRotationTestRingObject.R: {R}");
 
             RingObject ringObject = new RingObject(
-                new Vector3(this._coordinateSystemZero.x, 0f, this._coordinateSystemZero.z - R),
+                new Vector3(R + this._coordinateSystemZero.x, 0f, this._coordinateSystemZero.z),
                 this._coordinateSystemZero, PrimitiveType.Cube, 2);
             ringObject.SetColor(Color.red);
             ringObject.SetInitialRotation(
