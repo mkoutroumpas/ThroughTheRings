@@ -154,16 +154,6 @@ public class PlanetRingSystem : MonoBehaviour
                 this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed));
         
         this._systemRotationTestRingObjects.Add(ringObject);
-
-        // ringObject.SetSystemRotationSpeed(
-        //     new Vector3(
-        //         (float)(random.NextDouble() * this._diffSystemRotSpeed + this._minSystemRotSpeed),
-        //         0f,
-        //         (float)(random.NextDouble() * this._diffSystemRotSpeed + this._minSystemRotSpeed)));
-        
-        
-
-        // this._ringObjects.Add(this._systemRotationTestRingObject);
     }
 
     void AddCenterPlanet(float radius = 0f)
