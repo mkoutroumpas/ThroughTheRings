@@ -67,9 +67,6 @@ public class PlanetRingSystem : MonoBehaviour
 
                 Debug.Log($"R: {R}");
 
-                // rOTransform.position = 
-                //     new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
-
                 rOTransform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
             }
         }
@@ -102,6 +99,8 @@ public class PlanetRingSystem : MonoBehaviour
 
     void Initialize()
     {
+        this._systemRotationTestRingObjects = new List<RingObject>();
+
         this._planetRadius = 30000f;
 
         this._maxSelfRotSpeed = 10f;
