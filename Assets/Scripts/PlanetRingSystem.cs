@@ -189,7 +189,7 @@ public class PlanetRingSystem : MonoBehaviour
     {
         RingObject ringObject = new RingObject(default, this._coordinateSystemZero, PrimitiveType.Cube, scale);
         ringObject.SetColor(color);
-        ringObject.SetInitialPosition(radius, angle, random, distribution, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
+        // ringObject.SetInitialPosition(radius, angle, random, distribution, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
         ringObject.SetSelfRotationSpeed(
             new Vector3(
                 (float)(random.NextDouble() * this._diffSelfRotSpeed + this._minSelfRotSpeed),
