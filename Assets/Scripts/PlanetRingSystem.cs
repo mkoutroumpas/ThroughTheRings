@@ -187,8 +187,20 @@ public class PlanetRingSystem : MonoBehaviour
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         bool localRotation = true) 
     {
-        RingObject ringObject = new RingObject(
-            new Vector3(Mathf.Cos(angle) * radius + this._coordinateSystemZero.x, 0f, Mathf.Sin(angle) * this._coordinateSystemZero.z),
+        float xPos = Mathf.Cos(angle) * radius + this._coordinateSystemZero.x;
+        float yPos = this._coordinateSystemZero.y + yOverhead;
+        float zPos = Mathf.Sin(angle) * radius + this._coordinateSystemZero.z;
+
+        float devDiff = maxDeviation - minDeviation;
+
+        if (distribution == Distributions.White)
+        {
+            xPos = (float)(random.NextDouble() * devDiff + minDeviation) + xPos;
+            yPos = (float)(random.NextDouble() * devDiff + minDeviation) + yPos;
+            zPos = (float)(random.NextDouble() * devDiff + minDeviation) + zPos;
+        }
+
+        RingObject ringObject = new RingObject(new Vector3(xPos, yPos, zPos),
             this._coordinateSystemZero, PrimitiveType.Cube, scale);
         ringObject.SetColor(color);
         // ringObject.SetInitialPosition(radius, angle, random, distribution, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
