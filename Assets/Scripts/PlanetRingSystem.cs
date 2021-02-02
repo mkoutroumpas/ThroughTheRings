@@ -46,9 +46,9 @@ public class PlanetRingSystem : MonoBehaviour
         Debug.Log($"CoordinateSystemZero = {_coordinateSystemZero}");
         Debug.Log($"rA = {_ringA}, rB = {_ringB}");
 
-        // CreateRings(this._ringLayers, true);
+        CreateRings(this._ringLayers, true);
 
-        CreateTestRingObjects();
+        // CreateTestRingObjects();
 
         Debug.Log($"numOfTestArtifacts = {this._ringObjects.Count}");
     }
@@ -71,7 +71,7 @@ public class PlanetRingSystem : MonoBehaviour
             }
         }
 
-        if (this._systemRotationTestRingObjects != null)
+        if (this._systemRotationTestRingObjects != null && this._systemRotationTestRingObjects.Count > 0)
         {
             for (int i = 0; i < this._systemRotationTestRingObjects.Count; i++)
             {
