@@ -65,8 +65,8 @@ public class PlanetRingSystem : MonoBehaviour
 
                 var R = Mathf.Sqrt(Mathf.Pow(rOTransform.position.x, 2) + Mathf.Pow(rOTransform.position.z, 2));
 
-                rOTransform.position = 
-                    new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R);
+                // rOTransform.position = 
+                //     new Vector3(Mathf.Cos(this._timeCounter) * R, 0f, Mathf.Sin(this._timeCounter) * R);
 
                 rOTransform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
             }
