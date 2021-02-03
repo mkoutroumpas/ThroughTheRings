@@ -63,7 +63,7 @@ public class PlanetRingSystem : MonoBehaviour
             {
                 Transform rOTransform = ringObject.Object.transform;
 
-                var R = Mathf.Abs(rOTransform.position.z - this._coordinateSystemZero.z);
+                var R = Mathf.Sqrt(Mathf.Pow(rOTransform.position.x, 2) + Mathf.Pow(rOTransform.position.z, 2));
 
                 Debug.Log($"R: {R}");
 
