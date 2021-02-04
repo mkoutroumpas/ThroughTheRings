@@ -10,6 +10,7 @@ public interface IRingSystemObject
     GameObject Object { get; }
     Vector3 Scale { get; }
     float Angle { get; }
+    float Radius { get; }
 
     void SetInitialPosition(
         float radialDistance, float angle, System.Random random = default, Distributions distribution = default, 
