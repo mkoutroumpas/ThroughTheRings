@@ -130,8 +130,6 @@ public class PlanetRingSystem : MonoBehaviour
         };
 
         if (random == null) random = new System.Random();
-
-        // this._systemRotationTestCube = GameObject.Find("SystemRotationTestCube");
     }
 
     void CreateTestRingObjects()
@@ -200,7 +198,6 @@ public class PlanetRingSystem : MonoBehaviour
 
         RingObject ringObject = new RingObject(new Vector3(xPos, yPos, zPos), this._coordinateSystemZero, PrimitiveType.Cube, scale);
         ringObject.SetColor(color);
-        // ringObject.SetInitialPosition(radius, angle, random, distribution, new Vector3(0f, yOverhead, 0f), minDeviation, maxDeviation);
         ringObject.SetSelfRotationSpeed(
             new Vector3(
                 (float)(random.NextDouble() * this._diffSelfRotSpeed + this._minSelfRotSpeed),
