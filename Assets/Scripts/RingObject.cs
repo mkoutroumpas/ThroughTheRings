@@ -9,6 +9,8 @@ public class RingObject : IRingSystemObject
     public GameObject Object { get; private set; }
     public PrimitiveType PrimitiveType { get; private set; }
     public Vector3 Scale { get; private set; }
+    public float Angle { get; private set; }
+    public float Radius { get; private set; }
     
     private Vector3 _coordSystemZero;
     
@@ -89,5 +91,14 @@ public class RingObject : IRingSystemObject
     {
         if (gameObject == null) return;
         this.Object = gameObject;
+    }
+    public void SetAngle(float angle)
+    {
+        this.Angle = angle;
+    }
+
+    public void SetRadius(float radius)
+    {
+        this.Radius = radius;
     }
 }
