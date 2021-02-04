@@ -21,4 +21,6 @@ public interface IRingSystemObject
     void SetColor(Color color);
     void SetObject(GameObject gameObject);
     void SetUniformScale(float uniformScale);
+    void SetAngle(float angle);
+    void SetRadius(float radius);
 }
