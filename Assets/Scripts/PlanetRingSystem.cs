@@ -212,6 +212,9 @@ public class PlanetRingSystem : MonoBehaviour
         this._ringObjects.Add(ringObject);
     }
 
+    float GetNextSelfRotSpeed() => (float)(random.NextDouble() * this._diffSelfRotSpeed + this._minSelfRotSpeed);
+    float GetNextSystemRotSpeed() => (float)(random.NextDouble() * this._diffSystemRotSpeed + this._minSystemRotSpeed);
+
     /// 1: a unit corresponds to 10 m (near-field objects scaling), 100: a unit corresponds to 1 km (far-field objects scaling).
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1;
 
