@@ -187,8 +187,8 @@ public class PlanetRingSystem : MonoBehaviour
 
         if (distribution == Distributions.White)
         {
-            angle = (float)(random.NextDouble() * devDiff + minDeviation) + angle;
-            radius = (float)(random.NextDouble() * devDiff + minDeviation) + radius;
+            angle += (float)(random.NextDouble() * devDiff + minDeviation);
+            radius += (float)(random.NextDouble() * devDiff + minDeviation);
         }
 
         RingObject ringObject = new RingObject(
