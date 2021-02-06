@@ -197,7 +197,7 @@ public class PlanetRingSystem : MonoBehaviour
         // }
 
         RingObject ringObject = new RingObject(
-            new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, 0f, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z), 
+            new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z), 
             this._coordinateSystemZero, PrimitiveType.Cube, scale);
         ringObject.SetColor(color);
         ringObject.SetAngle(angle);
