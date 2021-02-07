@@ -109,8 +109,8 @@ public class PlanetRingSystem : MonoBehaviour
         this._minSelfRotSpeed = 0f;
         this._diffSelfRotSpeed = this._maxSelfRotSpeed - this._minSelfRotSpeed;
 
-        this._maxSystemRotSpeed = 0.05f;
-        this._minSystemRotSpeed = 0.025f;
+        this._maxSystemRotSpeed = 0.005f;
+        this._minSystemRotSpeed = 0.0025f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
 
         this._testCubeB = 10980;
