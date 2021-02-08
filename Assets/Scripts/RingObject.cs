@@ -28,27 +28,6 @@ public class RingObject : IRingSystemObject
         this.Object.transform.localScale = this.Scale;
     }
 
-    public void SetInitialPosition(
-        float radialDistance, float angle, System.Random random = default, Distributions distribution = default, 
-        Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f)
-    {
-        float xPos = radialDistance * Mathf.Sin(angle * Mathf.PI / 180) + overheads.x;
-        float yPos = this._coordSystemZero.y + overheads.y;
-        float zPos = this._coordSystemZero.z - radialDistance * Mathf.Cos(angle * Mathf.PI / 180) + overheads.z;
-
-        float devDiff = maxDeviation - minDeviation;
-
-        if (distribution == Distributions.White)
-        {
-            xPos = (float)(random.NextDouble() * devDiff + minDeviation) + xPos;
-            yPos = (float)(random.NextDouble() * devDiff + minDeviation) + yPos;
-            zPos = (float)(random.NextDouble() * devDiff + minDeviation) + zPos;
-        }
-
-        this.Position = new Vector3(xPos, yPos, zPos);
-        this.Object.transform.position = this.Position;
-    }
-
     public void SetUniformScale(float uniformScale)
     {
         if (this.Object == null) return;

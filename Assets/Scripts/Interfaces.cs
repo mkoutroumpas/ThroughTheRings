@@ -12,9 +12,6 @@ public interface IRingSystemObject
     float Angle { get; }
     float Radius { get; }
 
-    void SetInitialPosition(
-        float radialDistance, float angle, System.Random random = default, Distributions distribution = default, 
-        Vector3 overheads = default, float minDeviation = -1000f, float maxDeviation = 1000f);
     void SetInitialRotation(Vector3 rotation);
     void SetSelfRotationSpeed(Vector3 rotationSpeed);
     void SetSystemRotationSpeed(Vector3 rotationSpeed);
