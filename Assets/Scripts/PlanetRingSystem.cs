@@ -123,28 +123,6 @@ public class PlanetRingSystem : MonoBehaviour
         if (random == null) random = new System.Random();
     }
 
-    void CreateTestRingObjects()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            var R = this._ringB + this._testCubeB - i  * 10;
-
-            Debug.Log($"_systemRotationTestRingObject.R: {R}");
-
-            RingObject ringObject = new RingObject(
-                new Vector3(R + this._coordinateSystemZero.x, 0f, this._coordinateSystemZero.z),
-                this._coordinateSystemZero, PrimitiveType.Cube, 2);
-            ringObject.SetColor(Color.red);
-            ringObject.SetInitialRotation(
-                new Vector3((float)random.NextDouble() * 360, (float)random.NextDouble() * 360, (float)random.NextDouble() * 360));
-            ringObject.SetSelfRotationSpeed(
-                new Vector3(
-                    this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed, this._diffSelfRotSpeed + this._minSelfRotSpeed));
-            
-            this._systemRotationTestRingObjects.Add(ringObject);
-        }
-    }
-
     void AddCenterPlanet(float radius = 0f)
     {
         CenterPlanet centerPlanet = new CenterPlanet(this._coordinateSystemZero, this._coordinateSystemZero, PrimitiveType.Sphere, radius);
