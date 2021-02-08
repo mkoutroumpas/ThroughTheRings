@@ -9,8 +9,8 @@ public interface IRingSystemObject
     Color Color{ get; }
     GameObject Object { get; }
     Vector3 Scale { get; }
-    float Angle { get; }
-    float Radius { get; }
+    float SystemInitialAngle { get; }
+    float SystemInitialRadius { get; }
 
     void SetInitialRotation(Vector3 rotation);
     void SetSelfRotationSpeed(Vector3 rotationSpeed);
@@ -18,6 +18,6 @@ public interface IRingSystemObject
     void SetColor(Color color);
     void SetObject(GameObject gameObject);
     void SetUniformScale(float uniformScale);
-    void SetAngle(float angle);
-    void SetRadius(float radius);
+    void SetSystemInitialAngle(float angle);
+    void SetSystemInitialRadius(float radius);
 }

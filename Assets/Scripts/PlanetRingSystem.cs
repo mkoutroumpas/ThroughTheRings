@@ -61,9 +61,9 @@ public class PlanetRingSystem : MonoBehaviour
 
                 rOTransform.position = 
                     new Vector3(
-                        Mathf.Cos(this._timeCounter + ringObject.Angle) * ringObject.Radius + this._coordinateSystemZero.x, 
+                        Mathf.Cos(this._timeCounter + ringObject.SystemInitialAngle) * ringObject.SystemInitialRadius + this._coordinateSystemZero.x, 
                         rOTransform.position.y, 
-                        Mathf.Sin(this._timeCounter + ringObject.Angle) * ringObject.Radius + this._coordinateSystemZero.z);
+                        Mathf.Sin(this._timeCounter + ringObject.SystemInitialAngle) * ringObject.SystemInitialRadius + this._coordinateSystemZero.z);
 
                 rOTransform.Rotate(ringObject.SelfRotationSpeed * Time.deltaTime, Space.Self);
             }
@@ -146,8 +146,8 @@ public class PlanetRingSystem : MonoBehaviour
             new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z), 
             this._coordinateSystemZero, PrimitiveType.Cube, scale);
         ringObject.SetColor(color);
-        ringObject.SetAngle(angle);
-        ringObject.SetRadius(radius);
+        ringObject.SetSystemInitialAngle(angle);
+        ringObject.SetSystemInitialRadius(radius);
         ringObject.SetSelfRotationSpeed(new Vector3(GetNextSelfRotSpeed(), GetNextSelfRotSpeed(), GetNextSelfRotSpeed()));
         ringObject.SetSystemRotationSpeed(new Vector3(GetNextSystemRotSpeed(), 0f, GetNextSystemRotSpeed()));
         
