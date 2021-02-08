@@ -48,8 +48,6 @@ public class PlanetRingSystem : MonoBehaviour
 
         CreateRings(this._ringLayers, true);
 
-        // CreateTestRingObjects();
-
         Debug.Log($"numOfTestArtifacts = {this._ringObjects.Count}");
     }
 
