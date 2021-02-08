@@ -13,7 +13,6 @@ public class PlanetRingSystem : MonoBehaviour
     float _maxSystemRotSpeed, _minSystemRotSpeed;
     float _diffSelfRotSpeed, _diffSystemRotSpeed;
     float _timeCounter;
-    GameObject _systemRotationTestCube;
     List<RingObject> _systemRotationTestRingObjects;
     float _testCubeB;
     #endregion
@@ -84,16 +83,6 @@ public class PlanetRingSystem : MonoBehaviour
 
                 transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
             }
-        }
-
-        if (this._systemRotationTestCube != null)
-        {
-            var R = this._ringB + this._testCubeB;
-
-            this._systemRotationTestCube.transform.position = 
-                new Vector3(Mathf.Cos(this._timeCounter) * R + this._coordinateSystemZero.x, 0f, Mathf.Sin(this._timeCounter) * R + this._coordinateSystemZero.z);
-
-            this._systemRotationTestCube.transform.Rotate(new Vector3(this._maxSelfRotSpeed, this._maxSelfRotSpeed, this._maxSelfRotSpeed) * Time.deltaTime, Space.Self);
         }
     }
 
