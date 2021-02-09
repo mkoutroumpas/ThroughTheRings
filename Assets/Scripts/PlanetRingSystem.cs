@@ -24,6 +24,7 @@ public class PlanetRingSystem : MonoBehaviour
     const float UniformTestCubeScale = 250f;
     const float MinCubeScale = 0.001f, MaxCubeScale = 250f;
     const float MinDeviation = -5000f, MaxDeviation = 5000f;
+    const float MinYDeviation = -500f, MaxYDeviation = 500f;
     static System.Random random;
     #endregion
 
