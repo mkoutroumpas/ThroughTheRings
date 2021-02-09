@@ -137,6 +137,7 @@ public class PlanetRingSystem : MonoBehaviour
         float minYDeviation = -500f, float maxYDeviation = 500f, bool localRotation = true) 
     {
         float devDiff = maxDeviation - minDeviation;
+        float devDiffY = maxYDeviation - minYDeviation;
 
         if (distribution == Distributions.White)
         {
