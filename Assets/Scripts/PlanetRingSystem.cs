@@ -143,7 +143,7 @@ public class PlanetRingSystem : MonoBehaviour
         {
             angle += (float)(random.NextDouble() * devDiff + minDeviation);
             radius += (float)(random.NextDouble() * devDiff + minDeviation);
-            yOverhead += (float)(random.NextDouble() * devDiff + minDeviation);
+            yOverhead += (float)(random.NextDouble() * devDiffY + minYDeviation);
         }
 
         RingObject ringObject = new RingObject(
