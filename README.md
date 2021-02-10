@@ -21,14 +21,12 @@ The end result should possess a few basic properties of a standard ring system, 
 
 Third Phase:
 
-The Asteroids should be able to implement collisions and gravity forces, affecting their motion. Collisions should also result in Asteroid fragmentation (debris). Those Physics should also affect the Capsule. 
+By now the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. Add features, controls and artifacts inside the Capsule. 
 
 Fourth Phase:
 
-By now the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. Add features, controls and artifacts inside the Capsule. 
+Try to make the Scene as compelling as possible. See how much load it can handle. Also try to build and run it on various platforms; even gaming consoles. 
 
 Fifth Phase:
 
-Try to make the Scene as compelling as possible. See how much load it can handle. Also try to build and run it on various platforms; even gaming consoles. 
-
-
+The Asteroids should be able to implement collisions and gravity forces, affecting their motion. Collisions should also result in Asteroid fragmentation (debris). Those Physics should also affect the Capsule. 
