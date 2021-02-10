@@ -29,6 +29,6 @@ By now the Scene must be filled with tens of thousands of moving GameObjects, ma
 
 Fifth Phase:
 
-Try to make the Scene as compelling as possible. See how much load it can handle. Also try to build and run it on various platforms; even gamig consoles. 
+Try to make the Scene as compelling as possible. See how much load it can handle. Also try to build and run it on various platforms; even gaming consoles. 
 
 
