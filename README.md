@@ -29,4 +29,4 @@ Try to make the Scene as compelling as possible. See how much load it can handle
 
 Fifth Phase:
 
-The Asteroids should be able to implement collisions and gravity forces, affecting their motion. Collisions should also result in Asteroid fragmentation (debris). Those Physics should also affect the Capsule. 
+Implement collisions and gravity forces between Asteroids, affecting their motion. Collisions should also result in fragmentation (debris). Those Physics should also affect the Capsule. 
