@@ -25,7 +25,7 @@ By now the Scene must be filled with tens of thousands of moving GameObjects, ma
 
 Fourth Phase:
 
-Try to make the Scene as compelling as possible. See how much load it can handle. Also try to build and run it on various platforms; even gaming consoles. 
+Try to make the Scene as compelling as possible. See how much load it can handle. Replace token cubes with Asteroid meshes and textures. Also try to build and run it on various platforms; even gaming consoles. 
 
 Fifth Phase:
 
