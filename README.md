@@ -7,7 +7,7 @@ This is a simple game aiming to demonstrate the following topics:
 
 a) Structural composition concepts that involve very large objects (asteroids, planets, etc.) 
 
-b) How Unity technologies such as ECS, URP and ShaderGraph can be used to create a fully-featured commercial entertainment environment.
+b) How Unity technologies such as ECS, URP and ShaderGraph can be used to create a fully-featured, multi-platform entertainment environment.
 
 
 First Phase:
