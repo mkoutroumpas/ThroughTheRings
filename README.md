@@ -3,7 +3,7 @@ Simple asteroid navigation game.
 
 Board your space Capsule and explore the asteroid-packed Ring System of a nearby planet. Your goal is to identify specific Asteroids suitable for resource mining and transmit your findings to Headquarters. Communications services while inside the asteroid field are expected to be unreliable, so you will have to make your transmission after exiting the Ring System. 
 
-This is a simple game aimed at demonstrating the following topics:
+This is a simple game aiming to demonstrate the following topics:
 
 a) Structural composition concepts that involve very large objects (asteroids, planets, etc.) 
 
