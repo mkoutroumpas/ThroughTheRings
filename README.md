@@ -21,7 +21,7 @@ The end result should possess a few basic properties of a standard ring system, 
 
 Third Phase:
 
-By now the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Refactor the whole project using ECS. Add features, controls and artifacts inside the Capsule. 
+By now the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Add features, controls and artifacts inside the Capsule. Refactor the whole project using ECS. 
 
 Fourth Phase:
 
