@@ -11976,7 +11976,7 @@ GameObject:
   - component: {fileID: 1615569054}
   - component: {fileID: 1615569053}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: DockingAdapter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
