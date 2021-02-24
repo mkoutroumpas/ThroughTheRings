@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 538950769}
   - component: {fileID: 538950768}
   m_Layer: 5
-  m_Name: A (1)
+  m_Name: VLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,14 +1127,14 @@ RectTransform:
   m_GameObject: {fileID: 538950766}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.065, y: 0.065, z: 0.1}
+  m_LocalScale: {x: 0.0005, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 625858951}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.3, y: 5}
+  m_AnchoredPosition: {x: 7.52, y: 2.51}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &538950768
