@@ -7432,7 +7432,7 @@ GameObject:
   - component: {fileID: 1008135370}
   - component: {fileID: 1008135369}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: RBottomSide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
