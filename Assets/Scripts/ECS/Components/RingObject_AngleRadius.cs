@@ -3,7 +3,7 @@ using UnityEngine;
 using Unity.Entities;
 
 [Serializable]
-public struct RingObject_AngleRadius : IComponentData
+public struct RingObject_Coordinates : IComponentData
 {
     public float Angle;
     public float Radius;
