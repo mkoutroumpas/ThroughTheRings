@@ -21,4 +21,22 @@ public class RingSystem : SystemBase
             
         }
     }
+
+    [BurstCompile]
+    struct AppearanceJob : IJobEntityBatch
+    {
+        public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
+        {
+            
+        }
+    }
+
+    [BurstCompile]
+    struct PositionJob : IJobEntityBatch
+    {
+        public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
+        {
+            
+        }
+    }
 }
