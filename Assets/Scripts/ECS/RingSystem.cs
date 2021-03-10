@@ -20,13 +20,14 @@ public class RingSystem : SystemBase
         ComponentTypeHandle<RingObject_Appearance> appearanceType = GetComponentTypeHandle<RingObject_Appearance>();
         ComponentTypeHandle<RingObject_Position> positionType = GetComponentTypeHandle<RingObject_Position>();
 
-        
+
     }
 
     [BurstCompile]
     struct RotationSpeedJob : IJobEntityBatch
     {
         public float DeltaTime;
+        public ComponentTypeHandle<RingObject_RotationSpeed> RotationSpeedType;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             
@@ -36,6 +37,7 @@ public class RingSystem : SystemBase
     [BurstCompile]
     struct AppearanceJob : IJobEntityBatch
     {
+        public ComponentTypeHandle<RingObject_Appearance> AppearanceType;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             
@@ -46,6 +48,7 @@ public class RingSystem : SystemBase
     struct PositionJob : IJobEntityBatch
     {
         public float DeltaTime;
+        public ComponentTypeHandle<RingObject_Position> PositionType;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             
