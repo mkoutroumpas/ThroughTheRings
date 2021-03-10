@@ -22,6 +22,7 @@ public class RingSystem : SystemBase
     [BurstCompile]
     struct RotationSpeedJob : IJobEntityBatch
     {
+        public float DeltaTime;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             
@@ -40,6 +41,7 @@ public class RingSystem : SystemBase
     [BurstCompile]
     struct PositionJob : IJobEntityBatch
     {
+        public float DeltaTime;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             
