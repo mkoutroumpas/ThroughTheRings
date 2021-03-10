@@ -20,7 +20,22 @@ public class RingSystem : SystemBase
         ComponentTypeHandle<RingObject_Appearance> appearanceType = GetComponentTypeHandle<RingObject_Appearance>();
         ComponentTypeHandle<RingObject_Position> positionType = GetComponentTypeHandle<RingObject_Position>();
 
+        RotationSpeedJob rotationSpeedJob = new RotationSpeedJob()
+        {
+            DeltaTime = Time.DeltaTime,
+            RotationSpeedType = rotationSpeedType
+        };
 
+        AppearanceJob appearanceJob = new AppearanceJob()
+        {
+            AppearanceType = appearanceType
+        };
+
+        PositionJob positionJob = new PositionJob()
+        {
+            DeltaTime = Time.DeltaTime,
+            PositionType = positionType
+        };
     }
 
     [BurstCompile]
