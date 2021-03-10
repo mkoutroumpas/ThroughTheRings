@@ -3,6 +3,10 @@ using Unity.Burst;
 
 public class RingSystem : SystemBase
 {
+    EntityQuery rotationSpeedQuery;
+    EntityQuery appearanceQuery;
+    EntityQuery positionQuery;
+
     protected override void OnCreate()
     {
 
