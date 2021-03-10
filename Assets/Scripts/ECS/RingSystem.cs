@@ -9,7 +9,9 @@ public class RingSystem : SystemBase
 
     protected override void OnCreate()
     {
-
+        rotationSpeedQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), ComponentType.ReadOnly<RingSystem_Entity>());
+        appearanceQuery = GetEntityQuery(typeof(RingObject_Appearance), ComponentType.ReadOnly<RingSystem_Entity>());
+        positionQuery = GetEntityQuery(typeof(RingObject_Position), ComponentType.ReadOnly<RingSystem_Entity>());
     }
 
     protected override void OnUpdate()
