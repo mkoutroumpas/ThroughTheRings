@@ -28,26 +28,7 @@ public class RingSystem : SystemBase
             PositionType = positionType
         };
 
-        RotationSpeedJob rotationSpeedJob = new RotationSpeedJob()
-        {
-            DeltaTime = Time.DeltaTime,
-            RotationSpeedType = rotationSpeedType
-        };
-
-        AppearanceJob appearanceJob = new AppearanceJob()
-        {
-            AppearanceType = appearanceType
-        };
-
-        PositionJob positionJob = new PositionJob()
-        {
-            DeltaTime = Time.DeltaTime,
-            PositionType = positionType
-        };
-
-        Dependency = rotationSpeedJob.ScheduleParallel(rotationSpeedQuery, 1, Dependency);
-        Dependency = appearanceJob.ScheduleParallel(appearanceQuery, 1, Dependency);
-        Dependency = positionJob.ScheduleParallel(positionQuery, 1, Dependency);
+        Dependency = ringObjectJob.ScheduleParallel(rotationSpeedQuery, 1, Dependency);
     }
 
     [BurstCompile]
