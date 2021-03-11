@@ -3,15 +3,11 @@ using Unity.Burst;
 
 public class RingSystem : SystemBase
 {
-    EntityQuery rotationSpeedQuery;
-    EntityQuery appearanceQuery;
-    EntityQuery positionQuery;
+    EntityQuery ringObjectQuery;
 
     protected override void OnCreate()
     {
-        rotationSpeedQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), ComponentType.ReadOnly<RingSystem_Entity>());
-        appearanceQuery = GetEntityQuery(typeof(RingObject_Appearance), ComponentType.ReadOnly<RingSystem_Entity>());
-        positionQuery = GetEntityQuery(typeof(RingObject_Position), ComponentType.ReadOnly<RingSystem_Entity>());
+        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position), ComponentType.ReadOnly<RingSystem_Entity>());
     }
 
     protected override void OnUpdate()
@@ -28,7 +24,7 @@ public class RingSystem : SystemBase
             PositionType = positionType
         };
 
-        Dependency = ringObjectJob.ScheduleParallel(rotationSpeedQuery, 1, Dependency);
+        Dependency = ringObjectJob.ScheduleParallel(ringObjectQuery, 1, Dependency);
     }
 
     [BurstCompile]
