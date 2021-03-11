@@ -36,6 +36,10 @@ public class RingSystem : SystemBase
             DeltaTime = Time.DeltaTime,
             PositionType = positionType
         };
+
+        Dependency = rotationSpeedJob.ScheduleParallel(rotationSpeedQuery, 1, Dependency);
+        Dependency = appearanceJob.ScheduleParallel(appearanceQuery, 1, Dependency);
+        Dependency = positionJob.ScheduleParallel(positionQuery, 1, Dependency);
     }
 
     [BurstCompile]
