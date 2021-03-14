@@ -39,36 +39,4 @@ public class RingSystem : SystemBase
             
         }
     }
-
-    [BurstCompile]
-    struct RotationSpeedJob : IJobEntityBatch
-    {
-        public float DeltaTime;
-        public ComponentTypeHandle<RingObject_RotationSpeed> RotationSpeedType;
-        public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
-        {
-            
-        }
-    }
-
-    [BurstCompile]
-    struct AppearanceJob : IJobEntityBatch
-    {
-        public ComponentTypeHandle<RingObject_Appearance> AppearanceType;
-        public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
-        {
-            
-        }
-    }
-
-    [BurstCompile]
-    struct PositionJob : IJobEntityBatch
-    {
-        public float DeltaTime;
-        public ComponentTypeHandle<RingObject_Position> PositionType;
-        public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
-        {
-            
-        }
-    }
 }
