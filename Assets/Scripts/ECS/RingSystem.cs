@@ -35,6 +35,7 @@ public class RingSystem : SystemBase
         public ComponentTypeHandle<RingObject_RotationSpeed> RotationSpeedType;
         public ComponentTypeHandle<RingObject_Appearance> AppearanceType;
         public ComponentTypeHandle<RingObject_Position> PositionType;
+        public ComponentTypeHandle<RingSystem_Entity> RingSystemEntity;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             NativeArray<RingObject_RotationSpeed> rotationSpeedTypes = batchInChunk.GetNativeArray(RotationSpeedType);
