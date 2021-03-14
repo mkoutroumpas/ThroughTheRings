@@ -41,6 +41,14 @@ public class RingSystem : SystemBase
             NativeArray<RingObject_Appearance> appearanceType = batchInChunk.GetNativeArray(AppearanceType);
             NativeArray<RingObject_Position> positionType = batchInChunk.GetNativeArray(PositionType);
 
+            for (var i = 0; i < batchInChunk.Count; i++)
+            {
+                RingObject_RotationSpeed rotationSpeed = rotationSpeedTypes[i];
+                RingObject_Appearance appearance = appearanceType[i];
+                RingObject_Position position = positionType[i];
+
+                
+            }
         }
     }
 }
