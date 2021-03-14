@@ -8,7 +8,7 @@ public class RingSystem : SystemBase
 
     protected override void OnCreate()
     {
-        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position), ComponentType.ReadOnly<RingSystem_Entity>());
+        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position));
     }
 
     protected override void OnUpdate()
@@ -35,7 +35,6 @@ public class RingSystem : SystemBase
         public ComponentTypeHandle<RingObject_RotationSpeed> RotationSpeedType;
         public ComponentTypeHandle<RingObject_Appearance> AppearanceType;
         public ComponentTypeHandle<RingObject_Position> PositionType;
-        public ComponentTypeHandle<RingSystem_Entity> RingSystemEntity;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             NativeArray<RingObject_RotationSpeed> rotationSpeedTypes = batchInChunk.GetNativeArray(RotationSpeedType);
