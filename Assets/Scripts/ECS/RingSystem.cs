@@ -1,5 +1,6 @@
 using Unity.Entities;
 using Unity.Burst;
+using Unity.Collections;
 
 public class RingSystem : SystemBase
 {
@@ -36,7 +37,8 @@ public class RingSystem : SystemBase
         public ComponentTypeHandle<RingObject_Position> PositionType;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
-            
+            NativeArray<RingObject_RotationSpeed> rotationSpeedTypes = batchInChunk.GetNativeArray(RotationSpeedType);
+
         }
     }
 }
