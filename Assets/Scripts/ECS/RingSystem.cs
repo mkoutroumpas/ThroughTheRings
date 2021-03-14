@@ -38,6 +38,8 @@ public class RingSystem : SystemBase
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             NativeArray<RingObject_RotationSpeed> rotationSpeedTypes = batchInChunk.GetNativeArray(RotationSpeedType);
+            NativeArray<RingObject_Appearance> appearanceType = batchInChunk.GetNativeArray(AppearanceType);
+            NativeArray<RingObject_Position> positionType = batchInChunk.GetNativeArray(PositionType);
 
         }
     }
