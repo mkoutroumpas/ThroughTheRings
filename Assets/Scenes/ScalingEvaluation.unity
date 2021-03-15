@@ -14835,12 +14835,12 @@ GameObject:
   - component: {fileID: 1798508493}
   - component: {fileID: 1798508492}
   m_Layer: 0
-  m_Name: HostStarLight
+  m_Name: s
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1798508492
 Light:
   m_ObjectHideFlags: 0
