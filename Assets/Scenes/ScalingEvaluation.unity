@@ -2722,7 +2722,7 @@ GameObject:
   - component: {fileID: 988203318}
   - component: {fileID: 988203317}
   m_Layer: 0
-  m_Name: TopBench
+  m_Name: TopBenchLightSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
