@@ -11,7 +11,7 @@ public class RingSystem_Entity : MonoBehaviour, IConvertGameObjectToEntity
         RingObject_Position position = new RingObject_Position { Angle = 0f, Radius = 10000f };
         manager.AddComponentData(entity, position);
 
-        RingObject_RotationSpeed rorationSpeed = new RingObject_RotationSpeed();
+        RingObject_RotationSpeed rorationSpeed = new RingObject_RotationSpeed { SelfRotationSpeed = new Vector3(0f, 0f, 0f), SystemRotationSpeed = new Vector3(1f, 1f, 1f) };
         manager.AddComponentData(entity, rorationSpeed);
     }
 }
