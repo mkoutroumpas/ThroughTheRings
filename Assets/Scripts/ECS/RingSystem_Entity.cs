@@ -8,7 +8,7 @@ public class RingSystem_Entity : MonoBehaviour, IConvertGameObjectToEntity
         RingObject_Appearance appearance = new RingObject_Appearance { Color = Color.gray, PrimitiveType = PrimitiveType.Cube, Scale = new Vector3(1f, 1f, 1f) };
         manager.AddComponentData(entity, appearance);
 
-        RingObject_Position position = new RingObject_Position();
+        RingObject_Position position = new RingObject_Position { Angle = 0f, Radius = 10000f };
         manager.AddComponentData(entity, position);
 
         RingObject_RotationSpeed rorationSpeed = new RingObject_RotationSpeed();
