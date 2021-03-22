@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RingSystem_Entity : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
-    public GameObject Prefab;
+    public GameObject Prefab { get; set;}
 
     public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
     {
