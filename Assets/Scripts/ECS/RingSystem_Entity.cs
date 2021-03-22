@@ -1,8 +1,13 @@
+using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
 public class RingSystem_Entity : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
+    public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
+    {
+        referencedPrefabs.Add(null);
+    }
     public void Convert(Entity entity, EntityManager manager, GameObjectConversionSystem conversionSystem)
     {
         RingObject_Appearance appearance = new RingObject_Appearance { Color = Color.gray, PrimitiveType = PrimitiveType.Cube, Scale = new Vector3(1f, 1f, 1f) };
