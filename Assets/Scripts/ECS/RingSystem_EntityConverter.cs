@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public class RingSystem_Entity : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
+public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
     public GameObject Prefab { get; set;}
 
