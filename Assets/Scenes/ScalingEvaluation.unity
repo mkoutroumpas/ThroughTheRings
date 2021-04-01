@@ -15435,6 +15435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2020728365}
   - component: {fileID: 2020728366}
+  - component: {fileID: 2020728367}
   m_Layer: 0
   m_Name: ECSSpawner
   m_TagString: Untagged
@@ -15469,6 +15470,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
+--- !u!114 &2020728367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020728364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d958bc0e38dbfb4db1a2f8a4f0c7a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2102391531
 GameObject:
   m_ObjectHideFlags: 0
