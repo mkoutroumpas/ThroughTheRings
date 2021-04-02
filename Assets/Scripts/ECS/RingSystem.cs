@@ -6,6 +6,11 @@ public class RingSystem : SystemBase
 {
     EntityQuery ringObjectQuery;
 
+    protected override void OnStartRunning()
+    {
+        base.OnStartRunning();
+    }
+
     protected override void OnCreate()
     {
         ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position));
