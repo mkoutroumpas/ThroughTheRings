@@ -4,11 +4,12 @@ using Unity.Collections;
 
 public class RingSystem : SystemBase
 {
+    System.Random random;
     EntityQuery ringObjectQuery;
 
     protected override void OnStartRunning()
     {
-        base.OnStartRunning();
+        if (random == null) random = new System.Random();
     }
 
     protected override void OnCreate()
