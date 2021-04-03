@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-[AddComponentMenu("RingSystem")]
-[ConverterVersion("mkoutroumpas", 1)]
 public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
     public GameObject Prefab;
