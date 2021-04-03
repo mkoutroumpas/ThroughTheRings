@@ -8183,7 +8183,6 @@ GameObject:
   - component: {fileID: 1220072210}
   - component: {fileID: 1220072214}
   - component: {fileID: 1220072213}
-  - component: {fileID: 1220072212}
   - component: {fileID: 1220072211}
   - component: {fileID: 1220072216}
   - component: {fileID: 1220072215}
@@ -8222,19 +8221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStars: 1000
   universeSize: 10
---- !u!114 &1220072212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220072209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c3ab3e4ea3bb3d4591ca9c8166c6db7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnableRingObjectsRotation: 1
 --- !u!199 &1220072213
 ParticleSystemRenderer:
   serializedVersion: 6
