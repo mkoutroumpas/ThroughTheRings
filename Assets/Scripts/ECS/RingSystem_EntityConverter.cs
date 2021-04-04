@@ -12,7 +12,7 @@ public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefa
     }
     public void Convert(Entity entity, EntityManager manager, GameObjectConversionSystem conversionSystem)
     {
-        RingObject_Appearance appearance = new RingObject_Appearance { Color = Color.gray, PrimitiveType = PrimitiveType.Cube, Scale = new Vector3(1f, 1f, 1f) };
+        RingObject_Appearance appearance = new RingObject_Appearance { Color = Color.gray, Scale = new Vector3(1f, 1f, 1f) };
         manager.AddComponentData(entity, appearance);
 
         RingObject_Position position = new RingObject_Position { Angle = 0f, Radius = 10000f };

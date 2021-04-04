@@ -6,7 +6,6 @@ using Unity.Entities;
 public struct RingObject_Appearance : IComponentData
 {
     public Color Color;
-    public PrimitiveType PrimitiveType;
     public Vector3 Scale;
     public Vector3 InitialRotation;
 }
