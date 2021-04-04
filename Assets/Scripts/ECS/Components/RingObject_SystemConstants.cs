@@ -5,8 +5,6 @@ using Unity.Entities;
 [Serializable]
 public struct RingObject_SystemConstants : IComponentData
 {
-    public Vector3 CoordinateSystemZero;
-    public float PlanetRadius;
     public const float RingWidth = 50000.0f;
     public const int NumOfRingsAB = 20;
     public const int RingAngleStep = 3;
