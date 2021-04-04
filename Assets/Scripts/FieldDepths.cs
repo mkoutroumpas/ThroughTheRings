@@ -1,4 +1,4 @@
-enum FieldDepths
+public enum FieldDepths
 {
     Near,
     Far
