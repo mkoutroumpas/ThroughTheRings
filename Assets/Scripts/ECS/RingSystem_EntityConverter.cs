@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
-    public GameObject Prefab;
+    public GameObject RingObjectPrefab;
 
     public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
     {
-        referencedPrefabs.Add(Prefab);
+        referencedPrefabs.Add(RingObjectPrefab);
     }
     public void Convert(Entity entity, EntityManager manager, GameObjectConversionSystem conversionSystem)
     {
