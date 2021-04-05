@@ -26,11 +26,30 @@ public class RingSystem : SystemBase
     float timeCounter;
     EntityQuery ringObjectQuery;
     List<(float Angle, float YOverhead, Color Color)> ringLayers;
+    List<Entity> ringObjets;
     #endregion
 
     protected override void OnStartRunning()
     {
         if (random == null) random = new System.Random();
+
+        if (ringObjets == null) ringObjets = new List<Entity>();
+
+        if (ringLayers == null) ringLayers = new List<(float, float, Color)>
+        {
+            (0.0f, -4200f, Color.green),
+            (0.25f, -3400f, Color.white),
+            (0.5f, -2600f, Color.blue),
+            (0.75f, -1800f, Color.grey),
+            (1.0f, -1000f, Color.yellow),
+            (1.25f, -200f, Color.magenta),
+            (1.5f, 200f, Color.cyan),
+            (1.75f, 1000f, Color.white),
+            (2.0f, 1800f, Color.blue),
+            (2.25f, 2600f, Color.grey),
+            (2.5f, 3400f, Color.yellow),
+            (2.75f, 4200f, Color.red)
+        };
     }
 
     protected override void OnCreate()
