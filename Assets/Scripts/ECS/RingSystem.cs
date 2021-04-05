@@ -5,6 +5,7 @@ using Unity.Collections;
 public class RingSystem : SystemBase
 {
     System.Random random;
+    float timeCounter;
     EntityQuery ringObjectQuery;
 
     protected override void OnStartRunning()
