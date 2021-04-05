@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using UnityEngine;
 using Unity.Entities;
 using Unity.Burst;
 using Unity.Collections;
@@ -18,10 +20,13 @@ public class RingSystem : SystemBase
     const bool EnableRingObjectsRotation = true;
     const FieldDepths FieldDepth = FieldDepths.Near;
     #endregion
-    
+
+    #region Private variables
     System.Random random;
     float timeCounter;
     EntityQuery ringObjectQuery;
+    List<(float Angle, float YOverhead, Color Color)> ringLayers;
+    #endregion
 
     protected override void OnStartRunning()
     {
