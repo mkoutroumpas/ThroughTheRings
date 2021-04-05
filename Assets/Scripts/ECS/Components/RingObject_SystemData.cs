@@ -3,8 +3,8 @@ using UnityEngine;
 using Unity.Entities;
 
 [Serializable]
-public struct RingObject_PlanetCharacteristics : IComponentData
+public struct RingObject_SystemData : IComponentData
 {
     public Vector3 CoordinateSystemZero;
-    public float Radius;
+    public float PlanetRadius;
 }
