@@ -29,7 +29,39 @@ public class RingSystem : SystemBase
     List<Entity> ringObjets;
     #endregion
 
+    #region System overrides
     protected override void OnStartRunning()
+    {
+        
+    }
+
+    protected override void OnCreate()
+    {
+        CreateObjectHolders();
+        
+        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position));
+    }
+
+    protected override void OnUpdate()
+    {
+        ComponentTypeHandle<RingObject_RotationSpeed> rotationSpeedType = GetComponentTypeHandle<RingObject_RotationSpeed>();
+        ComponentTypeHandle<RingObject_Appearance> appearanceType = GetComponentTypeHandle<RingObject_Appearance>();
+        ComponentTypeHandle<RingObject_Position> positionType = GetComponentTypeHandle<RingObject_Position>();
+
+        RingObjectJob ringObjectJob = new RingObjectJob()
+        {
+            DeltaTime = Time.DeltaTime,
+            RotationSpeedType = rotationSpeedType,
+            AppearanceType = appearanceType,
+            PositionType = positionType
+        };
+        
+        Dependency = ringObjectJob.ScheduleParallel(ringObjectQuery, 1, Dependency);
+    }
+    #endregion
+
+    #region Support
+    void CreateObjectHolders() 
     {
         if (random == null) random = new System.Random();
 
@@ -51,28 +83,7 @@ public class RingSystem : SystemBase
             (2.75f, 4200f, Color.red)
         };
     }
-
-    protected override void OnCreate()
-    {
-        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position));
-    }
-
-    protected override void OnUpdate()
-    {
-        ComponentTypeHandle<RingObject_RotationSpeed> rotationSpeedType = GetComponentTypeHandle<RingObject_RotationSpeed>();
-        ComponentTypeHandle<RingObject_Appearance> appearanceType = GetComponentTypeHandle<RingObject_Appearance>();
-        ComponentTypeHandle<RingObject_Position> positionType = GetComponentTypeHandle<RingObject_Position>();
-
-        RingObjectJob ringObjectJob = new RingObjectJob()
-        {
-            DeltaTime = Time.DeltaTime,
-            RotationSpeedType = rotationSpeedType,
-            AppearanceType = appearanceType,
-            PositionType = positionType
-        };
-        
-        Dependency = ringObjectJob.ScheduleParallel(ringObjectQuery, 1, Dependency);
-    }
+    #endregion
 
     [BurstCompile]
     struct RingObjectJob : IJobEntityBatch
