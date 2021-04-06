@@ -39,7 +39,7 @@ public class RingSystem : SystemBase
     {
         CreateObjectHolders();
 
-        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position));
+        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position), typeof(RingObject_SystemData));
     }
 
     protected override void OnUpdate()
