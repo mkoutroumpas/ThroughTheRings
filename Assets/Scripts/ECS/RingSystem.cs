@@ -30,11 +30,6 @@ public class RingSystem : SystemBase
     #endregion
 
     #region System overrides
-    protected override void OnStartRunning()
-    {
-        
-    }
-
     protected override void OnCreate()
     {
         CreateObjectHolders();
