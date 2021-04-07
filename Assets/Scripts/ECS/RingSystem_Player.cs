@@ -1,5 +1,6 @@
 using Unity.Entities;
 
+[UpdateInGroup(typeof(SimulationSystemGroup))]
 public class RingSystem_Player : SystemBase
 {
     #region Private variables
@@ -13,7 +14,7 @@ public class RingSystem_Player : SystemBase
     }
     protected override void OnUpdate()
     {
-        
+
     }
     #endregion
 }
