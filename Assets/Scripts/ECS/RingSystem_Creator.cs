@@ -28,14 +28,15 @@ public class RingSystem_Creator : SystemBase
     EntityQuery ringObjectQuery;
     List<(float Angle, float YOverhead, Color Color)> ringLayers;
     List<Entity> ringObjets;
+    BeginInitializationEntityCommandBufferSystem entityCommandBufferSystem;
     #endregion
 
     #region System overrides
     protected override void OnCreate()
     {
-        CreateObjectHolders();
+        entityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
 
-        ringObjectQuery = GetEntityQuery(typeof(RingObject_RotationSpeed), typeof(RingObject_Appearance), typeof(RingObject_Position), typeof(RingObject_SystemData));
+        CreateObjectHolders();
     }
 
     protected override void OnUpdate()
