@@ -1,6 +1,6 @@
 using Unity.Entities;
 
-public class RingSystem_Playback : SystemBase
+public class RingSystem_Player : SystemBase
 {
     #region Private variables
     EntityQuery ringObjectQuery;
