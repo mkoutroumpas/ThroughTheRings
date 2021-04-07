@@ -13,7 +13,7 @@ public class RingSystem_Player : SystemBase
     }
     protected override void OnUpdate()
     {
-
+        
     }
     #endregion
 }

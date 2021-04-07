@@ -4,6 +4,7 @@ using Unity.Entities;
 using Unity.Burst;
 using Unity.Collections;
 
+[UpdateInGroup(typeof(InitializationSystemGroup))]
 public class RingSystem_Creator : SystemBase
 {
     #region Constants
