@@ -41,19 +41,7 @@ public class RingSystem_Creator : SystemBase
 
     protected override void OnUpdate()
     {
-        ComponentTypeHandle<RingObject_RotationSpeed> rotationSpeedType = GetComponentTypeHandle<RingObject_RotationSpeed>();
-        ComponentTypeHandle<RingObject_Appearance> appearanceType = GetComponentTypeHandle<RingObject_Appearance>();
-        ComponentTypeHandle<RingObject_Position> positionType = GetComponentTypeHandle<RingObject_Position>();
-
-        RingObjectJob ringObjectJob = new RingObjectJob()
-        {
-            DeltaTime = Time.DeltaTime,
-            RotationSpeedType = rotationSpeedType,
-            AppearanceType = appearanceType,
-            PositionType = positionType
-        };
         
-        Dependency = ringObjectJob.ScheduleParallel(ringObjectQuery, 1, Dependency);
     }
     #endregion
 
@@ -81,31 +69,4 @@ public class RingSystem_Creator : SystemBase
         };
     }
     #endregion
-
-    [BurstCompile]
-    struct RingObjectJob : IJobEntityBatch
-    {
-        public float DeltaTime;
-        public ComponentTypeHandle<RingObject_RotationSpeed> RotationSpeedType;
-        public ComponentTypeHandle<RingObject_Appearance> AppearanceType;
-        public ComponentTypeHandle<RingObject_Position> PositionType;
-        public ComponentTypeHandle<RingObject_SystemData> SystemData;
-        public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
-        {
-            NativeArray<RingObject_RotationSpeed> rotationSpeedTypes = batchInChunk.GetNativeArray(RotationSpeedType);
-            NativeArray<RingObject_Appearance> appearanceType = batchInChunk.GetNativeArray(AppearanceType);
-            NativeArray<RingObject_Position> positionType = batchInChunk.GetNativeArray(PositionType);
-            NativeArray<RingObject_SystemData> systemData = batchInChunk.GetNativeArray(SystemData);
-
-            for (var i = 0; i < batchInChunk.Count; i++)
-            {
-                RingObject_RotationSpeed rotationSpeed = rotationSpeedTypes[i];
-                RingObject_Appearance appearance = appearanceType[i];
-                RingObject_Position position = positionType[i];
-                RingObject_SystemData sData = systemData[i];
-
-                
-            }
-        }
-    }
 }
