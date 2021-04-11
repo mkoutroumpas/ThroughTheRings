@@ -49,13 +49,13 @@ public class RingSystem_Creator : SystemBase
         Entities
             .WithName("SpawnerSystem_FromEntity")
             .WithBurst(FloatMode.Default, FloatPrecision.Standard, true)
-            .ForEach((Entity entity, int entityInQueryIndex, in RingObject_SystemData roSystemData, in LocalToWorld location) =>
+            .ForEach((Entity entity, int entityInQueryIndex, in RingObject_SystemData roSystemData, in RingObject_Appearance appearance, in RingObject_Position position, in RingObject_RotationSpeed rotationSpeed, in LocalToWorld location) =>
             {
 
 
                 commandBuffer.DestroyEntity(entityInQueryIndex, entity);
             }).ScheduleParallel();
-            
+
         entityCommandBufferSystem.AddJobHandleForProducer(Dependency);
     }
     #endregion

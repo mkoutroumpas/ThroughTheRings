@@ -18,13 +18,17 @@ public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefa
         RingObject_Position position = new RingObject_Position { Angle = 0f, Radius = 10000f };
         manager.AddComponentData(entity, position);
 
-        RingObject_RotationSpeed rorationSpeed = new RingObject_RotationSpeed { SelfRotationSpeed = new Vector3(0f, 0f, 0f), SystemRotationSpeed = new Vector3(1f, 1f, 1f) };
+        RingObject_RotationSpeed rorationSpeed = new RingObject_RotationSpeed { SelfRotationSpeed = new Vector3(1f, 1f, 1f), SystemRotationSpeed = new Vector3(1f, 1f, 1f) };
         manager.AddComponentData(entity, rorationSpeed);
 
         Transform gOT = gameObject.transform;
 
-        RingObject_SystemData systemData = 
-            new RingObject_SystemData { CoordinateSystemZero = new Vector3(gOT.position.x, gOT.position.y, gOT.position.z), PlanetRadius = gOT.localScale.z / 2 };
+        RingObject_SystemData systemData = new RingObject_SystemData 
+        { 
+            CoordinateSystemZero = new Vector3(gOT.position.x, gOT.position.y, gOT.position.z), 
+            PlanetRadius = gOT.localScale.z / 2, 
+            Entity = conversionSystem.GetPrimaryEntity(RingObjectPrefab) 
+        };
         manager.AddComponentData(entity, systemData);
     }
 }

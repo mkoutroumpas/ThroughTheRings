@@ -7,4 +7,5 @@ public struct RingObject_SystemData : IComponentData
 {
     public Vector3 CoordinateSystemZero;
     public float PlanetRadius;
+    public Entity Entity;
 }
