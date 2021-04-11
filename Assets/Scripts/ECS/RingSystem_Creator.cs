@@ -34,7 +34,7 @@ public class RingSystem_Creator : SystemBase
     {
         entityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
 
-        CreateObjectHolders();
+        Initialize();
     }
 
     protected override void OnUpdate()
@@ -44,7 +44,7 @@ public class RingSystem_Creator : SystemBase
     #endregion
 
     #region Support
-    void CreateObjectHolders() 
+    void Initialize() 
     {
         if (random == null) random = new System.Random();
 
