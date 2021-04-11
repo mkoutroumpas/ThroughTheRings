@@ -81,7 +81,7 @@ public class RingSystem_Creator : SystemBase
                     float scale = randomizeRingObjectScale ? GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White) : UniformRingObjectScale;
 
                     AddRingObject(
-                        a + ringLayer.Angle, GetArtifactRadialDistance(i, ringSystemA), scale, ringLayer.YOverhead, 
+                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringSystemA), scale, ringLayer.YOverhead, 
                         ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
                 }
             }
@@ -90,7 +90,7 @@ public class RingSystem_Creator : SystemBase
 
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1;
 
-    float GetArtifactRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
+    float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
 
     float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
