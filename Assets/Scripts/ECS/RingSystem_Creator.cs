@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
+using Unity.Burst;
+using Unity.Jobs;
+using Unity.Mathematics;
+using Unity.Transforms;
 
 [UpdateInGroup(typeof(InitializationSystemGroup))]
 public class RingSystem_Creator : SystemBase
@@ -42,7 +46,17 @@ public class RingSystem_Creator : SystemBase
     {
         EntityCommandBuffer.ParallelWriter commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
 
-        
+        Entities
+            .WithName("SpawnerSystem_FromEntity")
+            .WithBurst(FloatMode.Default, FloatPrecision.Standard, true)
+            .ForEach((Entity entity, int entityInQueryIndex, in RingObject_SystemData roSystemData, in LocalToWorld location) =>
+            {
+
+
+                commandBuffer.DestroyEntity(entityInQueryIndex, entity);
+            }).ScheduleParallel();
+            
+        entityCommandBufferSystem.AddJobHandleForProducer(Dependency);
     }
     #endregion
 
