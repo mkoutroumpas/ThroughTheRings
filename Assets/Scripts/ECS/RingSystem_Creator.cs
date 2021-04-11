@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Burst;
 using Unity.Jobs;
-using Unity.Mathematics;
 using Unity.Transforms;
+using Unity.Collections;
 
 [UpdateInGroup(typeof(InitializationSystemGroup))]
 public class RingSystem_Creator : SystemBase
@@ -14,7 +13,7 @@ public class RingSystem_Creator : SystemBase
     const int NumOfRingsAB = 20;
     const int RingAngleStep = 3;
     const float StdDeviation = 0.1f;
-    const float MinRingObjectScale =  0.001f, MaxRingObjectScale = 250.0f, UniformRingObjectScale = 250.0f;
+    const float MinRingObjectScale =  0.001f, MaxRingObjectScale = 250.0f;
     const float MinDeviation = -5000.0f, MaxDeviation = 5000.0f;
     const float MinYDeviation = -500.0f, MaxYDeviation = 500.0f;
     const float MaxSelfRotationSpeed = 10.0f, MinSelfRotationSpeed = 0.0f;
@@ -26,11 +25,7 @@ public class RingSystem_Creator : SystemBase
     #endregion
 
     #region Private variables
-    System.Random random;
-    float timeCounter;
     EntityQuery ringObjectQuery;
-    List<(float Angle, float YOverhead, Color Color)> ringLayers;
-    List<Entity> ringObjets;
     BeginInitializationEntityCommandBufferSystem entityCommandBufferSystem;
     #endregion
 
@@ -46,12 +41,41 @@ public class RingSystem_Creator : SystemBase
     {
         EntityCommandBuffer.ParallelWriter commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
 
+        NativeArray<RingLayerData> ringLayers = new NativeArray<RingLayerData>(12, Allocator.Temp)
+        {
+            [0] = new RingLayerData() { Angle = 0.0f, YOverhead = -4200f, Color = Color.green },
+            [1] = new RingLayerData() { Angle = 0.25f, YOverhead = -3400f, Color = Color.white },
+            [2] = new RingLayerData() { Angle = 0.5f, YOverhead = -2600f, Color = Color.blue }, 
+            [3] = new RingLayerData() { Angle = 0.75f, YOverhead = -1800f, Color = Color.grey }, 
+            [4] = new RingLayerData() { Angle = 1.0f, YOverhead = -1000f, Color = Color.yellow }, 
+            [5] = new RingLayerData() { Angle = 1.25f, YOverhead = -200f, Color = Color.magenta }, 
+            [6] = new RingLayerData() { Angle = 1.5f, YOverhead = 200f, Color = Color.cyan }, 
+            [7] = new RingLayerData() { Angle = 1.75f, YOverhead = 1000f, Color = Color.white }, 
+            [8] = new RingLayerData() { Angle = 2.0f, YOverhead = 1800f, Color = Color.blue }, 
+            [9] = new RingLayerData() { Angle = 2.25f, YOverhead = 2600f, Color = Color.grey }, 
+            [10] = new RingLayerData() { Angle = 2.5f, YOverhead = 3400f, Color = Color.yellow }, 
+            [11] = new RingLayerData() { Angle = 2.75f, YOverhead = 4200f, Color = Color.red }
+        };
+
         Entities
             .WithName("SpawnerSystem_FromEntity")
             .WithBurst(FloatMode.Default, FloatPrecision.Standard, true)
-            .ForEach((Entity entity, int entityInQueryIndex, in RingObject_SystemData roSystemData, in RingObject_Appearance appearance, in RingObject_Position position, in RingObject_RotationSpeed rotationSpeed, in LocalToWorld location) =>
+            .ForEach((Entity entity, int entityInQueryIndex, ref RingObject_Appearance appearance, ref RingObject_Position position, ref RingObject_RotationSpeed rotationSpeed, in RingObject_SystemData systemData, in LocalToWorld location) =>
             {
+                foreach (var ringLayer in ringLayers)
+                {
+                    for (int a = 0; a < 360; a += RingAngleStep) 
+                    {
+                        for (int i = 0; i <= NumOfRingsAB + 1; i++) 
+                        {
+                            // float scale = GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White);
 
+                            // AddRingObject(
+                            //     a + ringLayer.Angle, GetRingObjectRadialDistance(i, systemData.PlanetRadius + 10000.0f), scale, ringLayer.YOverhead, 
+                            //     ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
+                        }
+                    }
+                }
 
                 commandBuffer.DestroyEntity(entityInQueryIndex, entity);
             }).ScheduleParallel();
@@ -61,56 +85,29 @@ public class RingSystem_Creator : SystemBase
     #endregion
 
     #region Support
+    struct RingLayerData
+    {
+        public float Angle { get; set; }
+        public float YOverhead { get; set; }
+        public Color Color { get; set; }
+    }
     void Initialize() 
     {
-        if (random == null) random = new System.Random();
-
-        if (ringObjets == null) ringObjets = new List<Entity>();
-
-        if (ringLayers == null) ringLayers = new List<(float, float, Color)>
-        {
-            (0.0f, -4200f, Color.green),
-            (0.25f, -3400f, Color.white),
-            (0.5f, -2600f, Color.blue),
-            (0.75f, -1800f, Color.grey),
-            (1.0f, -1000f, Color.yellow),
-            (1.25f, -200f, Color.magenta),
-            (1.5f, 200f, Color.cyan),
-            (1.75f, 1000f, Color.white),
-            (2.0f, 1800f, Color.blue),
-            (2.25f, 2600f, Color.grey),
-            (2.5f, 3400f, Color.yellow),
-            (2.75f, 4200f, Color.red)
-        };
-    }
-    
-    void CreateRings(List<(float Angle, float YOverhead, Color Color)> ringLayers, float ringSystemA, bool randomizeRingObjectScale = false)
-    {
-        if (ringLayers == null) return;
-
-        foreach (var ringLayer in ringLayers)
-        {
-            for (int a = 0; a < 360; a += RingAngleStep) 
-            {
-                for (int i = 0; i <= NumOfRingsAB + 1; i++) 
-                {
-                    float scale = randomizeRingObjectScale ? GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White) : UniformRingObjectScale;
-
-                    AddRingObject(
-                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringSystemA), scale, ringLayer.YOverhead, 
-                        ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
-                }
-            }
-        }
+        
     }
 
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1;
 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
 
+    float TestMethod()
+    {
+        return 0.0f;
+    }
+
     float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
-        if (random == null) random = new System.Random();
+        System.Random random = new System.Random();
 
         if (distribution == Distributions.White) return (float)(random.NextDouble() * (maxSize - minSize) + minSize);
         if (distribution == Distributions.Normal) // See https://stackoverflow.com/a/218600
