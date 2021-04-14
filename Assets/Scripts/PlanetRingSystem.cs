@@ -13,7 +13,6 @@ public class PlanetRingSystem : MonoBehaviour
     float _maxSystemRotSpeed, _minSystemRotSpeed;
     float _diffSelfRotSpeed, _diffSystemRotSpeed;
     float _timeCounter;
-    float _testCubeB;
     #endregion
 
     #region Const variables
@@ -82,8 +81,6 @@ public class PlanetRingSystem : MonoBehaviour
         this._maxSystemRotSpeed = 0.005f;
         this._minSystemRotSpeed = 0.0025f;
         this._diffSystemRotSpeed = this._maxSystemRotSpeed - this._minSystemRotSpeed;
-
-        this._testCubeB = 10980;
 
         this._ringObjects = new List<RingObject>();
         
