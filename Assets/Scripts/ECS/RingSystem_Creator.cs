@@ -33,8 +33,6 @@ public class RingSystem_Creator : SystemBase
     protected override void OnCreate()
     {
         entityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
-
-        Initialize();
     }
 
     protected override void OnUpdate()
