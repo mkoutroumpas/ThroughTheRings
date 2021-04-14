@@ -119,7 +119,7 @@ public class RingSystem_Creator : SystemBase
         return 0.0f;
     }
 
-    void AddRingObject(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
+    static void AddRingObject(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         float minYDeviation = -500f, float maxYDeviation = 500f, bool localRotation = true) 
     {
