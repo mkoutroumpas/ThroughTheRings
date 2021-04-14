@@ -91,11 +91,6 @@ public class RingSystem_Creator : SystemBase
         public float YOverhead { get; set; }
         public Color Color { get; set; }
     }
-    void Initialize() 
-    {
-        
-    }
-
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
