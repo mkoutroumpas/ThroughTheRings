@@ -68,7 +68,7 @@ public class RingSystem_Creator : SystemBase
                     {
                         for (int i = 0; i <= NumOfRingsAB + 1; i++) 
                         {
-                            // float scale = GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White);
+                            float ringObjectSize = GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White);
 
                             // AddRingObject(
                             //     a + ringLayer.Angle, GetRingObjectRadialDistance(i, systemData.PlanetRadius + 10000.0f), scale, ringLayer.YOverhead, 
@@ -96,31 +96,24 @@ public class RingSystem_Creator : SystemBase
         
     }
 
-    int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1;
+    int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
 
-    float TestMethod()
+    static float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
-        return 0.0f;
-    }
-
-    float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
-    {
-        System.Random random = new System.Random();
-
-        if (distribution == Distributions.White) return (float)(random.NextDouble() * (maxSize - minSize) + minSize);
+        if (distribution == Distributions.White) return (float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize);
         if (distribution == Distributions.Normal) // See https://stackoverflow.com/a/218600
         {
-            float u1 = 1.0f - (float)random.NextDouble();
-            float u2 = 1.0f - (float)random.NextDouble();
+            float u1 = 1.0f - Random.Range(0.0f, 1.0f);
+            float u2 = 1.0f - Random.Range(0.0f, 1.0f);
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
             return (maxSize - minSize) / 2 + StdDeviation * randStdNormal;
         }
         if (distribution == Distributions.HalfNormal)
         {
             return Mathf.Sqrt(2f) / (StdDeviation * Mathf.Sqrt(Mathf.PI)) 
-                * Mathf.Exp(-Mathf.Pow((float)(random.NextDouble() * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
+                * Mathf.Exp(-Mathf.Pow((float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
         }
 
         return 0.0f;
