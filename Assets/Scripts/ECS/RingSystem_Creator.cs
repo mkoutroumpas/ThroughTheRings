@@ -13,6 +13,7 @@ public class RingSystem_Creator : SystemBase
     const int NumOfRingsAB = 20;
     const int RingAngleStep = 3;
     const float StdDeviation = 0.1f;
+    const int SystemAngleSpanDegs = 360;
     const float MinRingObjectScale =  0.001f, MaxRingObjectScale = 250.0f;
     const float MinDeviation = -5000.0f, MaxDeviation = 5000.0f;
     const float MinYDeviation = -500.0f, MaxYDeviation = 500.0f;
@@ -63,7 +64,7 @@ public class RingSystem_Creator : SystemBase
             {
                 foreach (var ringLayer in ringLayers)
                 {
-                    for (int a = 0; a < 360; a += RingAngleStep) 
+                    for (int a = 0; a < SystemAngleSpanDegs; a += RingAngleStep) 
                     {
                         for (int i = 0; i <= NumOfRingsAB + 1; i++) 
                         {
