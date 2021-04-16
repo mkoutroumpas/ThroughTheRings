@@ -68,9 +68,9 @@ public class RingSystem_Creator : SystemBase
                         {
                             float ringObjectSize = GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White);
 
-                            // AddRingObject(
-                            //     a + ringLayer.Angle, GetRingObjectRadialDistance(i, systemData.PlanetRadius + 10000.0f), ringObjectSize, ringLayer.YOverhead, 
-                            //     ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
+                            AddRingObject(
+                                a + ringLayer.Angle, GetRingObjectRadialDistance(i, systemData.PlanetRadius + 10000.0f), ringObjectSize, ringLayer.YOverhead, 
+                                ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
                         }
                     }
                 }
@@ -125,7 +125,7 @@ public class RingSystem_Creator : SystemBase
             radius += Random.Range(0.0f, 1.0f) * devDiff + minDeviation;
             yOverhead += Random.Range(0.0f, 1.0f) * devDiffY + minYDeviation;
 
-            
+
         }
     }
     #endregion
