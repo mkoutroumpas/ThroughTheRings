@@ -22,6 +22,7 @@ public class RingSystem_Creator : SystemBase
     const float DiffSystemRotSpeed = MaxSystemRotationSpeed - MinSystemRotationSpeed;
     const bool EnableRingObjectsRotation = true;
     const FieldDepths FieldDepth = FieldDepths.Near;
+    const Distributions Distribution = Distributions.White;
     #endregion
 
     #region Private variables
@@ -68,9 +69,21 @@ public class RingSystem_Creator : SystemBase
                         {
                             float ringObjectSize = GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White);
 
-                            AddRingObject(
-                                a + ringLayer.Angle, GetRingObjectRadialDistance(i, systemData.PlanetRadius + 10000.0f), ringObjectSize, ringLayer.YOverhead, 
-                                ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
+                            float devDiff = MaxDeviation - MinDeviation;
+                            float devDiffY = MaxYDeviation - MinYDeviation;
+
+                            float angle = a + ringLayer.Angle;
+                            float radius = 0.0f;
+                            float yOverhead = 0.0f;
+
+                            if (Distribution == Distributions.White)
+                            {
+                                angle += Random.Range(0.0f, 1.0f) * devDiff + MinDeviation;
+                                radius += Random.Range(0.0f, 1.0f) * devDiff + MinDeviation;
+                                yOverhead += Random.Range(0.0f, 1.0f) * devDiffY + MinYDeviation;
+                            }
+
+                            
                         }
                     }
                 }
