@@ -73,8 +73,8 @@ public class RingSystem_Creator : SystemBase
                             float devDiffY = MaxYDeviation - MinYDeviation;
 
                             float angle = a + ringLayer.Angle;
-                            float radius = 0.0f;
-                            float yOverhead = 0.0f;
+                            float radius = GetRingObjectRadialDistance(i, systemData.PlanetRadius + 10000);
+                            float yOverhead = ringLayer.YOverhead;
 
                             if (Distribution == Distributions.White)
                             {
