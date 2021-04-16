@@ -83,7 +83,7 @@ public class RingSystem_Creator : SystemBase
                                 yOverhead += Random.Range(0.0f, 1.0f) * devDiffY + MinYDeviation;
                             }
 
-                            
+
                         }
                     }
                 }
@@ -123,23 +123,6 @@ public class RingSystem_Creator : SystemBase
         }
 
         return 0.0f;
-    }
-
-    static void AddRingObject(float angle, float radius, float ringObjectSize = 1000f, float yOverhead = 0f, 
-        Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
-        float minYDeviation = -500f, float maxYDeviation = 500f, bool localRotation = true) 
-    {
-        float devDiff = maxDeviation - minDeviation;
-        float devDiffY = maxYDeviation - minYDeviation;
-
-        if (distribution == Distributions.White)
-        {
-            angle += Random.Range(0.0f, 1.0f) * devDiff + minDeviation;
-            radius += Random.Range(0.0f, 1.0f) * devDiff + minDeviation;
-            yOverhead += Random.Range(0.0f, 1.0f) * devDiffY + minYDeviation;
-
-
-        }
     }
     #endregion
 }
