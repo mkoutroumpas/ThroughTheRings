@@ -84,7 +84,9 @@ public class RingSystem_Creator : SystemBase
                                 yOverhead += Random.Range(0.0f, 1.0f) * devDiffY + MinYDeviation;
                             }
 
+                            Entity ringSystemEntity = commandBuffer.Instantiate(entityInQueryIndex, systemData.Entity);
 
+                            
                         }
                     }
                 }
