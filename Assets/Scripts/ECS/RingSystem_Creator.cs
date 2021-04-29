@@ -86,7 +86,7 @@ public class RingSystem_Creator : SystemBase
 
                             Entity ringSystemEntity = commandBuffer.Instantiate(entityInQueryIndex, systemData.Entity);
 
-                            
+                            Vector3 finalPosition = new Vector3(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle), yOverhead);
                         }
                     }
                 }
