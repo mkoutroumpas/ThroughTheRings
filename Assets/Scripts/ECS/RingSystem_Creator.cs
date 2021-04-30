@@ -1,6 +1,8 @@
 using UnityEngine;
 using Unity.Entities;
 using Unity.Jobs;
+using Unity.Burst;
+using Unity.Collections;
 
 public class RingSystem_Creator : JobComponentSystem
 {
@@ -37,6 +39,19 @@ public class RingSystem_Creator : JobComponentSystem
     {
         return default;
     }
+    #endregion
+
+    #region Jobs
+    [BurstCompile]
+    [RequireComponentTag(typeof(RingObject_Position), typeof(RingObject_RotationSpeed), typeof(RingObject_SystemData), typeof(RingObject_Appearance))]
+    struct MainJob : IJobEntityBatch
+    {
+        public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
+        {
+            
+        }
+    }
+
     #endregion
 
     #region Support
