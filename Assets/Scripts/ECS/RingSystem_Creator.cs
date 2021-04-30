@@ -5,8 +5,7 @@ using Unity.Jobs;
 using Unity.Transforms;
 using Unity.Collections;
 
-[UpdateInGroup(typeof(InitializationSystemGroup))]
-public class RingSystem_Creator : SystemBase
+public class RingSystem_Creator : JobComponentSystem
 {
     #region Constants
     const float RingWidth = 50000.0f;
@@ -34,72 +33,12 @@ public class RingSystem_Creator : SystemBase
     #region System overrides
     protected override void OnCreate()
     {
-        entityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
+        
     }
 
-    protected override void OnUpdate()
+    protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        EntityCommandBuffer.ParallelWriter commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
-
-        NativeArray<RingLayerData> ringLayers = new NativeArray<RingLayerData>(12, Allocator.TempJob)
-        {
-            [0] = new RingLayerData() { Angle = 0.0f, YOverhead = -4200f, Color = Color.green },
-            [1] = new RingLayerData() { Angle = 0.25f, YOverhead = -3400f, Color = Color.white },
-            [2] = new RingLayerData() { Angle = 0.5f, YOverhead = -2600f, Color = Color.blue }, 
-            [3] = new RingLayerData() { Angle = 0.75f, YOverhead = -1800f, Color = Color.grey }, 
-            [4] = new RingLayerData() { Angle = 1.0f, YOverhead = -1000f, Color = Color.yellow }, 
-            [5] = new RingLayerData() { Angle = 1.25f, YOverhead = -200f, Color = Color.magenta }, 
-            [6] = new RingLayerData() { Angle = 1.5f, YOverhead = 200f, Color = Color.cyan }, 
-            [7] = new RingLayerData() { Angle = 1.75f, YOverhead = 1000f, Color = Color.white }, 
-            [8] = new RingLayerData() { Angle = 2.0f, YOverhead = 1800f, Color = Color.blue }, 
-            [9] = new RingLayerData() { Angle = 2.25f, YOverhead = 2600f, Color = Color.grey }, 
-            [10] = new RingLayerData() { Angle = 2.5f, YOverhead = 3400f, Color = Color.yellow }, 
-            [11] = new RingLayerData() { Angle = 2.75f, YOverhead = 4200f, Color = Color.red }
-        };
-
-        Entities
-            .WithName("SpawnerSystem_FromEntity")
-            .WithNativeDisableParallelForRestriction(ringLayers)
-            .WithBurst(FloatMode.Default, FloatPrecision.Standard, true)
-            .ForEach((Entity entity, int entityInQueryIndex, ref RingObject_Appearance appearance, ref RingObject_Position position, ref RingObject_RotationSpeed rotationSpeed, in RingObject_SystemData systemData, in LocalToWorld location) =>
-            {
-                foreach (var ringLayer in ringLayers)
-                {
-                    for (int a = 0; a < SystemAngleSpanDegs; a += RingAngleStep) 
-                    {
-                        for (int i = 0; i <= NumOfRingsAB + 1; i++) 
-                        {
-                            Unity.Mathematics.Random random = new Unity.Mathematics.Random(1);
-
-                            float ringObjectSize = GetRingObjectSize(random, MinRingObjectScale, MaxRingObjectScale, Distributions.White);
-
-                            float devDiff = MaxDeviation - MinDeviation;
-                            float devDiffY = MaxYDeviation - MinYDeviation;
-
-                            float angle = a + ringLayer.Angle;
-                            float radius = GetRingObjectRadialDistance(i, systemData.PlanetRadius + 10000);
-                            float yOverhead = ringLayer.YOverhead;
-
-                            if (Distribution == Distributions.White)
-                            {
-                                angle += random.NextFloat() * devDiff + MinDeviation;
-                                radius += random.NextFloat() * devDiff + MinDeviation;
-                                yOverhead += random.NextFloat() * devDiffY + MinYDeviation;
-                            }
-
-                            Entity ringSystemEntity = commandBuffer.Instantiate(entityInQueryIndex, systemData.Entity);
-
-                            Vector3 finalPosition = new Vector3(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle), yOverhead);
-
-                            commandBuffer.SetComponent(entityInQueryIndex, ringSystemEntity, new Translation { Value = finalPosition });
-                        }
-                    }
-                }
-
-                commandBuffer.DestroyEntity(entityInQueryIndex, entity);
-            }).ScheduleParallel();
-
-        entityCommandBufferSystem.AddJobHandleForProducer(Dependency);
+        return default;
     }
     #endregion
 
