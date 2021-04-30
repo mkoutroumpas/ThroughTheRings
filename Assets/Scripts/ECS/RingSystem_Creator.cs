@@ -1,9 +1,6 @@
 using UnityEngine;
 using Unity.Entities;
-using Unity.Burst;
 using Unity.Jobs;
-using Unity.Transforms;
-using Unity.Collections;
 
 public class RingSystem_Creator : JobComponentSystem
 {
@@ -53,20 +50,20 @@ public class RingSystem_Creator : JobComponentSystem
 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
 
-    float GetRingObjectSize(Unity.Mathematics.Random random, float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
+    float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
-        if (distribution == Distributions.White) return (float)(random.NextFloat() * (maxSize - minSize) + minSize);
+        if (distribution == Distributions.White) return (float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize);
         if (distribution == Distributions.Normal) // See https://stackoverflow.com/a/218600
         {
-            float u1 = 1.0f - random.NextFloat();
-            float u2 = 1.0f - random.NextFloat();
+            float u1 = 1.0f - Random.Range(0.0f, 1.0f);
+            float u2 = 1.0f - Random.Range(0.0f, 1.0f);
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
             return (maxSize - minSize) / 2 + StdDeviation * randStdNormal;
         }
         if (distribution == Distributions.HalfNormal)
         {
             return Mathf.Sqrt(2f) / (StdDeviation * Mathf.Sqrt(Mathf.PI)) 
-                * Mathf.Exp(-Mathf.Pow((float)(random.NextFloat() * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
+                * Mathf.Exp(-Mathf.Pow((float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
         }
 
         return 0.0f;
