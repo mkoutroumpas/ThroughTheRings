@@ -41,7 +41,7 @@ public class RingSystem_Creator : SystemBase
     {
         EntityCommandBuffer.ParallelWriter commandBuffer = entityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
 
-        NativeArray<RingLayerData> ringLayers = new NativeArray<RingLayerData>(12, Allocator.Temp)
+        NativeArray<RingLayerData> ringLayers = new NativeArray<RingLayerData>(12, Allocator.TempJob)
         {
             [0] = new RingLayerData() { Angle = 0.0f, YOverhead = -4200f, Color = Color.green },
             [1] = new RingLayerData() { Angle = 0.25f, YOverhead = -3400f, Color = Color.white },
@@ -59,6 +59,7 @@ public class RingSystem_Creator : SystemBase
 
         Entities
             .WithName("SpawnerSystem_FromEntity")
+            .WithNativeDisableParallelForRestriction(ringLayers)
             .WithBurst(FloatMode.Default, FloatPrecision.Standard, true)
             .ForEach((Entity entity, int entityInQueryIndex, ref RingObject_Appearance appearance, ref RingObject_Position position, ref RingObject_RotationSpeed rotationSpeed, in RingObject_SystemData systemData, in LocalToWorld location) =>
             {
@@ -68,7 +69,9 @@ public class RingSystem_Creator : SystemBase
                     {
                         for (int i = 0; i <= NumOfRingsAB + 1; i++) 
                         {
-                            float ringObjectSize = GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White);
+                            Unity.Mathematics.Random random = new Unity.Mathematics.Random(1);
+
+                            float ringObjectSize = GetRingObjectSize(random, MinRingObjectScale, MaxRingObjectScale, Distributions.White);
 
                             float devDiff = MaxDeviation - MinDeviation;
                             float devDiffY = MaxYDeviation - MinYDeviation;
@@ -79,9 +82,9 @@ public class RingSystem_Creator : SystemBase
 
                             if (Distribution == Distributions.White)
                             {
-                                angle += Random.Range(0.0f, 1.0f) * devDiff + MinDeviation;
-                                radius += Random.Range(0.0f, 1.0f) * devDiff + MinDeviation;
-                                yOverhead += Random.Range(0.0f, 1.0f) * devDiffY + MinYDeviation;
+                                angle += random.NextFloat() * devDiff + MinDeviation;
+                                radius += random.NextFloat() * devDiff + MinDeviation;
+                                yOverhead += random.NextFloat() * devDiffY + MinYDeviation;
                             }
 
                             Entity ringSystemEntity = commandBuffer.Instantiate(entityInQueryIndex, systemData.Entity);
@@ -111,20 +114,20 @@ public class RingSystem_Creator : SystemBase
 
     static float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
 
-    static float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
+    static float GetRingObjectSize(Unity.Mathematics.Random random, float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
-        if (distribution == Distributions.White) return (float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize);
+        if (distribution == Distributions.White) return (float)(random.NextFloat() * (maxSize - minSize) + minSize);
         if (distribution == Distributions.Normal) // See https://stackoverflow.com/a/218600
         {
-            float u1 = 1.0f - Random.Range(0.0f, 1.0f);
-            float u2 = 1.0f - Random.Range(0.0f, 1.0f);
+            float u1 = 1.0f - random.NextFloat();
+            float u2 = 1.0f - random.NextFloat();
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
             return (maxSize - minSize) / 2 + StdDeviation * randStdNormal;
         }
         if (distribution == Distributions.HalfNormal)
         {
             return Mathf.Sqrt(2f) / (StdDeviation * Mathf.Sqrt(Mathf.PI)) 
-                * Mathf.Exp(-Mathf.Pow((float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
+                * Mathf.Exp(-Mathf.Pow((float)(random.NextFloat() * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
         }
 
         return 0.0f;
