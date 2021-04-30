@@ -49,11 +49,11 @@ public class RingSystem_Creator : JobComponentSystem
         public float YOverhead { get; set; }
         public Color Color { get; set; }
     }
-    static int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
+    int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
 
-    static float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
+    float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
 
-    static float GetRingObjectSize(Unity.Mathematics.Random random, float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
+    float GetRingObjectSize(Unity.Mathematics.Random random, float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
         if (distribution == Distributions.White) return (float)(random.NextFloat() * (maxSize - minSize) + minSize);
         if (distribution == Distributions.Normal) // See https://stackoverflow.com/a/218600
