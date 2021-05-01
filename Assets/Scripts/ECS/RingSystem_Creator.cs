@@ -65,7 +65,7 @@ public class RingSystem_Creator : JobComponentSystem
                 RingObject_Appearance appearance = chunkAppearances[i];
                 RingObject_SystemData systemData = chunkSystemData[i];
 
-                
+
 
 
 
@@ -83,6 +83,17 @@ public class RingSystem_Creator : JobComponentSystem
         public float YOverhead { get; set; }
         public Color Color { get; set; }
     }
+
+    Vector3 PolarToCartesian(float angle, float radius, float yOverhead)
+    {
+        return default;
+    }
+
+    (float Angle, float Radius) CartesianToPolar(Vector3 position)
+    {
+        return default;
+    }
+
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
