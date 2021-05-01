@@ -46,6 +46,7 @@ public class RingSystem_Creator : JobComponentSystem
     [RequireComponentTag(typeof(RingObject_Position), typeof(RingObject_RotationSpeed), typeof(RingObject_SystemData), typeof(RingObject_Appearance))]
     struct MainJob : IJobEntityBatch
     {
+        public float DeltaTime;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             
