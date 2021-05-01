@@ -26,13 +26,15 @@ public class RingSystem_Creator : SystemBase
 
     #region Private variables
     EntityQuery ringObjectQuery;
-    BeginInitializationEntityCommandBufferSystem entityCommandBufferSystem;
     #endregion
 
     #region System overrides
     protected override void OnCreate()
     {
-        
+        ringObjectQuery = GetEntityQuery(typeof(RingObject_Position), 
+            ComponentType.ReadOnly<RingObject_RotationSpeed>(),
+            ComponentType.ReadOnly<RingObject_Appearance>(),
+            ComponentType.ReadOnly<RingObject_SystemData>());
     }
 
     protected override void OnUpdate()
@@ -47,7 +49,7 @@ public class RingSystem_Creator : SystemBase
     struct MainJob : IJobEntityBatch
     {
         public float DeltaTime;
-        [ReadOnly] public ComponentTypeHandle<RingObject_Position> PositionTypeHandle;
+        public ComponentTypeHandle<RingObject_Position> PositionTypeHandle;
         [ReadOnly] public ComponentTypeHandle<RingObject_RotationSpeed> RotationSpeedTypeHandle;
         [ReadOnly] public ComponentTypeHandle<RingObject_Appearance> AppearanceTypeHandle;
         [ReadOnly] public ComponentTypeHandle<RingObject_SystemData> SystemDataTypeHandle;
