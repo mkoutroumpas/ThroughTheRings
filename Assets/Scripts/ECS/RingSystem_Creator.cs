@@ -58,7 +58,19 @@ public class RingSystem_Creator : JobComponentSystem
             NativeArray<RingObject_Appearance> chunkAppearances = batchInChunk.GetNativeArray(AppearanceTypeHandle);
             NativeArray<RingObject_SystemData> chunkSystemData = batchInChunk.GetNativeArray(SystemDataTypeHandle);
 
-            
+            for (var i = 0; i < batchInChunk.Count; i++)
+            {
+                RingObject_Position position = chunkPositions[i];
+                RingObject_RotationSpeed rotationSpeed = chunkRotationSpeeds[i];
+                RingObject_Appearance appearance = chunkAppearances[i];
+                RingObject_SystemData systemData = chunkSystemData[i];
+
+                
+
+
+
+            }
+
         }
     }
 
