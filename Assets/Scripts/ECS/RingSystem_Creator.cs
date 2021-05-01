@@ -4,7 +4,7 @@ using Unity.Jobs;
 using Unity.Burst;
 using Unity.Collections;
 
-public class RingSystem_Creator : JobComponentSystem
+public class RingSystem_Creator : SystemBase
 {
     #region Constants
     const float RingWidth = 50000.0f;
@@ -35,9 +35,9 @@ public class RingSystem_Creator : JobComponentSystem
         
     }
 
-    protected override JobHandle OnUpdate(JobHandle inputDeps)
+    protected override void OnUpdate()
     {
-        return default;
+        
     }
     #endregion
 
