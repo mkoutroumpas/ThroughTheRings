@@ -53,6 +53,11 @@ public class RingSystem_Creator : JobComponentSystem
         [ReadOnly] public ComponentTypeHandle<RingObject_SystemData> SystemDataTypeHandle;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
+            NativeArray<RingObject_Position> chunkPositions = batchInChunk.GetNativeArray(PositionTypeHandle);
+            NativeArray<RingObject_RotationSpeed> chunkRotationSpeeds = batchInChunk.GetNativeArray(RotationSpeedTypeHandle);
+            NativeArray<RingObject_Appearance> chunkAppearances = batchInChunk.GetNativeArray(AppearanceTypeHandle);
+            NativeArray<RingObject_SystemData> chunkSystemData = batchInChunk.GetNativeArray(SystemDataTypeHandle);
+
             
         }
     }
