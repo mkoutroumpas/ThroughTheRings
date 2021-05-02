@@ -62,8 +62,8 @@ public class RingSystem_Creator : SystemBase
         public float DeltaTime;
         public ComponentTypeHandle<RingObject_Position> PositionTypeHandle;
         [ReadOnly] public ComponentTypeHandle<RingObject_RotationSpeed> RotationSpeedTypeHandle;
-        [ReadOnly] public ComponentTypeHandle<RingObject_Appearance> AppearanceTypeHandle;
         [ReadOnly] public ComponentTypeHandle<RingObject_SystemData> SystemDataTypeHandle;
+        [ReadOnly] public ComponentTypeHandle<RingObject_Appearance> AppearanceTypeHandle;
         public void Execute(ArchetypeChunk batchInChunk, int batchIndex)
         {
             NativeArray<RingObject_Position> chunkPositions = batchInChunk.GetNativeArray(PositionTypeHandle);
