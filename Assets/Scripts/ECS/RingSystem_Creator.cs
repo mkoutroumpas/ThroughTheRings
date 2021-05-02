@@ -38,7 +38,10 @@ public class RingSystem_Creator : SystemBase
 
     protected override void OnUpdate()
     {
-        
+        ComponentTypeHandle<RingObject_Position> ringObjectPosition = GetComponentTypeHandle<RingObject_Position>();
+        ComponentTypeHandle<RingObject_RotationSpeed> ringObjectRotationSpeed = GetComponentTypeHandle<RingObject_RotationSpeed>(true);
+        ComponentTypeHandle<RingObject_SystemData> ringObjectSystemData = GetComponentTypeHandle<RingObject_SystemData>(true);
+        ComponentTypeHandle<RingObject_Appearance> ringObjectAppearance = GetComponentTypeHandle<RingObject_Appearance>(true);
     }
     #endregion
 
