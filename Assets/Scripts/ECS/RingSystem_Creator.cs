@@ -78,13 +78,6 @@ public class RingSystem_Creator : SystemBase
     #endregion
 
     #region Support
-    struct RingLayerData
-    {
-        public float Angle { get; set; }
-        public float YOverhead { get; set; }
-        public Color Color { get; set; }
-    }
-
     Vector3 PolarToCartesian(float angle, float radius, float yOverhead)
     {
         return default;
