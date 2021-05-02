@@ -42,6 +42,15 @@ public class RingSystem_Creator : SystemBase
         ComponentTypeHandle<RingObject_RotationSpeed> ringObjectRotationSpeed = GetComponentTypeHandle<RingObject_RotationSpeed>(true);
         ComponentTypeHandle<RingObject_SystemData> ringObjectSystemData = GetComponentTypeHandle<RingObject_SystemData>(true);
         ComponentTypeHandle<RingObject_Appearance> ringObjectAppearance = GetComponentTypeHandle<RingObject_Appearance>(true);
+
+        MainJob mainJob = new MainJob()
+        {
+            PositionTypeHandle = ringObjectPosition,
+            RotationSpeedTypeHandle = ringObjectRotationSpeed,
+            SystemDataTypeHandle = ringObjectSystemData,
+            AppearanceTypeHandle = ringObjectAppearance,
+            DeltaTime = Time.DeltaTime
+        };
     }
     #endregion
 
