@@ -92,7 +92,7 @@ public class RingSystem_Creator : SystemBase
     #region Support
     Vector3 PolarToCartesian(float angle, float radius, float yOverhead)
     {
-        return default;
+        return new Vector3(radius * Mathf.Cos(angle), yOverhead, radius * Mathf.Sin(angle));
     }
 
     (float Angle, float Radius) CartesianToPolar(Vector3 position)
