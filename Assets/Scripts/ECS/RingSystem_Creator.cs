@@ -95,7 +95,7 @@ public class RingSystem_Creator : SystemBase
         return new Vector3(radius * Mathf.Cos(angle), yOverhead, radius * Mathf.Sin(angle));
     }
 
-    (float Angle, float Radius) CartesianToPolar(Vector3 position)
+    (float Angle, float Radius, float YOverhead) CartesianToPolar(Vector3 position)
     {
         return default;
     }
