@@ -95,11 +95,6 @@ public class RingSystem_Creator : SystemBase
         return new Vector3(radius * Mathf.Cos(angle), yOverhead, radius * Mathf.Sin(angle));
     }
 
-    (float Angle, float Radius, float YOverhead) CartesianToPolar(Vector3 position, Vector3 start)
-    {
-        return default;
-    }
-
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
