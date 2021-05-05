@@ -105,13 +105,11 @@ public class RingSystem_Creator : SystemBase
             float u1 = 1.0f - Random.Range(0.0f, 1.0f);
             float u2 = 1.0f - Random.Range(0.0f, 1.0f);
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
+            
             return (maxSize - minSize) / 2 + StdDeviation * randStdNormal;
         }
-        if (distribution == Distributions.HalfNormal)
-        {
-            return Mathf.Sqrt(2f) / (StdDeviation * Mathf.Sqrt(Mathf.PI)) 
-                * Mathf.Exp(-Mathf.Pow((float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
-        }
+        if (distribution == Distributions.HalfNormal) return Mathf.Sqrt(2f) / (StdDeviation * Mathf.Sqrt(Mathf.PI)) 
+            * Mathf.Exp(-Mathf.Pow((float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
 
         return 0.0f;
     }
