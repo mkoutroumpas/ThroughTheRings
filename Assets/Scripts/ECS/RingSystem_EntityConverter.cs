@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
+using Unity.Transforms;
 
 public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
@@ -30,14 +31,5 @@ public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefa
             Entity = conversionSystem.GetPrimaryEntity(RingObjectPrefab)
         };
         manager.AddComponentData(entity, systemData);
-    }
-
-    void Start()
-    {
-        var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
-        var prefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
-
-        var instance = entityManager.Instantiate(prefab);
     }
 }
