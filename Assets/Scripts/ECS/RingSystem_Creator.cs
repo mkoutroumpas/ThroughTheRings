@@ -36,11 +36,6 @@ public class RingSystem_Creator : SystemBase
             ComponentType.ReadOnly<RingObject_SystemData>());
     }
 
-    protected override void OnStartRunning()
-    {
-        base.OnStartRunning();
-    }
-
     protected override void OnUpdate()
     {
         ComponentTypeHandle<RingObject_Position> ringObjectPosition = GetComponentTypeHandle<RingObject_Position>();
