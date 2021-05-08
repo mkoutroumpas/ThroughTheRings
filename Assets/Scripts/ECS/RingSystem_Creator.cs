@@ -25,7 +25,7 @@ public class RingSystem_Creator : SystemBase
 
     #region Private variables
     EntityQuery ringObjectQuery;
-    BeginInitializationEntityCommandBufferSystem entityCommandBufferSystem;
+    EntityManager entityManager;
     #endregion
 
     #region System overrides
@@ -43,7 +43,7 @@ public class RingSystem_Creator : SystemBase
     {
         base.OnStartRunning();
 
-        entityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
+        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
     }
 
     protected override void OnUpdate()
