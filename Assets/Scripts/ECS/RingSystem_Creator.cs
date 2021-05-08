@@ -25,7 +25,6 @@ public class RingSystem_Creator : SystemBase
 
     #region Private variables
     EntityQuery ringObjectQuery;
-    EntityManager entityManager;
     #endregion
 
     #region System overrides
@@ -35,15 +34,11 @@ public class RingSystem_Creator : SystemBase
             ComponentType.ReadOnly<RingObject_RotationSpeed>(),
             ComponentType.ReadOnly<RingObject_Appearance>(),
             ComponentType.ReadOnly<RingObject_SystemData>());
-
-
     }
 
     protected override void OnStartRunning()
     {
         base.OnStartRunning();
-
-        entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
     }
 
     protected override void OnUpdate()
