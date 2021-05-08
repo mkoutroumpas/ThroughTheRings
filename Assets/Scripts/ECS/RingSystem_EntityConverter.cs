@@ -31,4 +31,13 @@ public class RingSystem_EntityConverter : MonoBehaviour, IDeclareReferencedPrefa
         };
         manager.AddComponentData(entity, systemData);
     }
+
+    void Start()
+    {
+        var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
+        var prefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
+
+        var instance = entityManager.Instantiate(prefab);
+    }
 }
