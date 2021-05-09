@@ -9,7 +9,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     public GameObject RingObjectPrefab;
     #endregion
 
-    #region Private variables
+    #region Constants
     const float RingWidth = 50000.0f;
     const int RingAngleStep = 3;
     const int NumOfRingsAB = 20;
@@ -17,22 +17,26 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     const float MinRingObjectScale =  0.001f, MaxRingObjectScale = 250.0f;
     const float MinDeviation = -5000.0f, MaxDeviation = 5000.0f;
     const float MinYDeviation = -500.0f, MaxYDeviation = 500.0f;
-    List<(float Angle, float YOverhead, Color Color)> _RingLayers = new List<(float, float, Color)>
-    {
-        (0.0f, -4200f, Color.green),
-        (0.25f, -3400f, Color.white),
-        (0.5f, -2600f, Color.blue),
-        (0.75f, -1800f, Color.grey),
-        (1.0f, -1000f, Color.yellow),
-        (1.25f, -200f, Color.magenta),
-        (1.5f, 200f, Color.cyan),
-        (1.75f, 1000f, Color.white),
-        (2.0f, 1800f, Color.blue),
-        (2.25f, 2600f, Color.grey),
-        (2.5f, 3400f, Color.yellow),
-        (2.75f, 4200f, Color.red)
-    };
     const FieldDepths FieldDepth = FieldDepths.Near;
+    const Distributions Distribution = Distributions.White;
+    #endregion
+
+    #region Private variables
+    List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers = new List<(float, float, float, Color)>
+    {
+        (0.0f, -4200f, 0f, Color.green),
+        (0.25f, -3400f, 0f, Color.white),
+        (0.5f, -2600f, 0f, Color.blue),
+        (0.75f, -1800f, 0f, Color.grey),
+        (1.0f, -1000f, 0f, Color.yellow),
+        (1.25f, -200f, 0f, Color.magenta),
+        (1.5f, 200f, 0f, Color.cyan),
+        (1.75f, 1000f, 0f, Color.white),
+        (2.0f, 1800f, 0f, Color.blue),
+        (2.25f, 2600f, 0f, Color.grey),
+        (2.5f, 3400f, 0f, Color.yellow),
+        (2.75f, 4200f, 0f, Color.red)
+    };
     #endregion
 
     void Start()
@@ -65,7 +69,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         return 0.0f;
     }
-    void CreateRings(List<(float Angle, float YOverhead, Color Color)> ringLayers)
+    void CreateRings(List<(float Angle, float YOverhead, float RingA, Color Color)> ringLayers)
     {
         if (ringLayers == null) return;
 
@@ -75,11 +79,17 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             {
                 for (int i = 0; i <= NumOfRingsAB + 1; i++) 
                 {
-                    // AddRingObject(
-                    //     a + ringLayer.Angle, GetArtifactRadialDistance(i), GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White), 
-                    //     ringLayer.YOverhead, ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
+                    AddRingObject(
+                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingA), GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White), 
+                        ringLayer.YOverhead, ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
                 }
             }
         }
+    }
+    void AddRingObject(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
+        Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
+        float minYDeviation = -500f, float maxYDeviation = 500f) 
+    {
+
     }
 }
