@@ -8232,8 +8232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d958bc0e38dbfb4db1a2f8a4f0c7a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RingObjectPrefab: {fileID: 8879321607862904318, guid: 5b0ed107e81a04c40abe10242a441819,
-    type: 3}
 --- !u!199 &1220072213
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -15266,7 +15264,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1939361991
 Transform:
