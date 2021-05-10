@@ -1,4 +1,3 @@
-using UnityEngine;
 using Unity.Entities;
 using Unity.Burst;
 using Unity.Collections;
@@ -79,10 +78,5 @@ public class RingSystem_Player : SystemBase
         }
     }
 
-    #endregion
-
-    #region Support
-    Vector3 ToCartesian(float angle, float radius, float yOverhead, Vector3 coordinateSystemZero) => 
-        new Vector3(radius * Mathf.Cos(angle) + coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + coordinateSystemZero.z);
     #endregion
 }
