@@ -3,7 +3,7 @@ using Unity.Entities;
 using Unity.Burst;
 using Unity.Collections;
 
-public class RingSystem_Creator : SystemBase
+public class RingSystem_Player : SystemBase
 {
     #region Constants
     const int SystemAngleSpanDegs = 360;
