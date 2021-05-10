@@ -22,6 +22,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     #endregion
 
     #region Private variables
+    EntityManager EntityManager;
+    Entity Entity;
     List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers = new List<(float, float, float, Color)>
     {
         (0.0f, -4200f, 0f, Color.green),
@@ -41,15 +43,15 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
     void Start()
     {
-        var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
-        var prefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
+        this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
 
 
 
-        var instance = entityManager.Instantiate(prefab);
+        var instance = this.EntityManager.Instantiate(this.Entity);
         var position = transform.TransformPoint(new Vector3(0, 0, 0));
-        entityManager.SetComponentData(instance, new Translation { Value = position });
+        this.EntityManager.SetComponentData(instance, new Translation { Value = position });
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
