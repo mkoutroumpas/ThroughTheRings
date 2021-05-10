@@ -46,12 +46,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
-
-
-
-        var instance = this.EntityManager.Instantiate(this.Entity);
-        var position = transform.TransformPoint(new Vector3(0, 0, 0));
-        this.EntityManager.SetComponentData(instance, new Translation { Value = position });
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
@@ -92,6 +86,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         float minYDeviation = -500f, float maxYDeviation = 500f) 
     {
+        var instance = this.EntityManager.Instantiate(this.Entity);
+        var position = transform.TransformPoint(new Vector3(0, 0, 0));
 
+        
+
+        this.EntityManager.SetComponentData(instance, new Translation { Value = position });
     }
 }
