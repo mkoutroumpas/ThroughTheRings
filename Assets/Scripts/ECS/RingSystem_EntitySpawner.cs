@@ -61,7 +61,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         foreach (var ringLayer in ringLayers)
         {
-            for (int a = 0; a < 360; a += Settings.RingAngleStep) 
+            for (int a = 0; a < Settings.RingAngleMaximum; a += Settings.RingAngleStep) 
             {
                 for (int i = 0; i <= Settings.NumOfRingsAB + 1; i++) 
                 {

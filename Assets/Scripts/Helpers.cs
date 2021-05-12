@@ -10,6 +10,7 @@ public static class Settings
 {
     public const float RingWidth = 50000.0f;
     public const int RingAngleStep = 3;
+    public const int RingAngleMaximum = 360;
     public const int NumOfRingsAB = 20;
     public const float StdDeviation = 0.1f;
     public const float MinRingObjectScale =  0.001f, MaxRingObjectScale = 250.0f;
