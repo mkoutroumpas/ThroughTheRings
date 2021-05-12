@@ -9,18 +9,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     public GameObject RingObjectPrefab;
     #endregion
 
-    #region Constants
-    const float RingWidth = 50000.0f;
-    const int RingAngleStep = 3;
-    const int NumOfRingsAB = 20;
-    const float StdDeviation = 0.1f;
-    const float MinRingObjectScale =  0.001f, MaxRingObjectScale = 250.0f;
-    const float MinDeviation = -5000.0f, MaxDeviation = 5000.0f;
-    const float MinYDeviation = -500.0f, MaxYDeviation = 500.0f;
-    const FieldDepths FieldDepth = FieldDepths.Near;
-    const Distributions Distribution = Distributions.White;
-    #endregion
-
     #region Private variables
     EntityManager EntityManager;
     Entity Entity;
@@ -48,7 +36,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
-    float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * RingWidth * GetSizeAndDistanceMultiplier(FieldDepth) / (NumOfRingsAB + 1);
+    float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * Settings.RingWidth * GetSizeAndDistanceMultiplier(Settings.FieldDepth) / (Settings.NumOfRingsAB + 1);
     float GetRingObjectSize(float minSize = 1f, float maxSize = 1000f, Distributions distribution = default) 
     {
         if (distribution == Distributions.White) return (float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize);
@@ -58,10 +46,10 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             float u2 = 1.0f - Random.Range(0.0f, 1.0f);
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
 
-            return (maxSize - minSize) / 2 + StdDeviation * randStdNormal;
+            return (maxSize - minSize) / 2 + Settings.StdDeviation * randStdNormal;
         }
-        if (distribution == Distributions.HalfNormal) return Mathf.Sqrt(2f) / (StdDeviation * Mathf.Sqrt(Mathf.PI)) 
-            * Mathf.Exp(-Mathf.Pow((float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(StdDeviation, 2)));
+        if (distribution == Distributions.HalfNormal) return Mathf.Sqrt(2f) / (Settings.StdDeviation * Mathf.Sqrt(Mathf.PI)) 
+            * Mathf.Exp(-Mathf.Pow((float)(Random.Range(0.0f, 1.0f) * (maxSize - minSize) + minSize), 2f) / (2 * Mathf.Pow(Settings.StdDeviation, 2)));
 
         return 0.0f;
     }
@@ -71,13 +59,13 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         foreach (var ringLayer in ringLayers)
         {
-            for (int a = 0; a < 360; a += RingAngleStep) 
+            for (int a = 0; a < 360; a += Settings.RingAngleStep) 
             {
-                for (int i = 0; i <= NumOfRingsAB + 1; i++) 
+                for (int i = 0; i <= Settings.NumOfRingsAB + 1; i++) 
                 {
                     AddRingObject(
-                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingA), GetRingObjectSize(MinRingObjectScale, MaxRingObjectScale, Distributions.White), 
-                        ringLayer.YOverhead, ringLayer.Color, Distributions.White, MinDeviation, MaxDeviation, MinYDeviation, MaxYDeviation);
+                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingA), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
+                        ringLayer.YOverhead, ringLayer.Color, Distributions.White, Settings.MinDeviation, Settings.MaxDeviation, Settings.MinYDeviation, Settings.MaxYDeviation);
                 }
             }
         }
@@ -89,7 +77,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         var instance = this.EntityManager.Instantiate(this.Entity);
         var position = transform.TransformPoint(new Vector3(0, 0, 0));
 
-        
+
 
         this.EntityManager.SetComponentData(instance, new Translation { Value = position });
     }
