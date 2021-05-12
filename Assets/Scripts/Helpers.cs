@@ -6,7 +6,7 @@ public static class Helpers
         new Vector3(radius * Mathf.Cos(angle) + coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + coordinateSystemZero.z);
 }
 
-public class Settings
+public static class Settings
 {
     public const float RingWidth = 50000.0f;
     public const int RingAngleStep = 3;
