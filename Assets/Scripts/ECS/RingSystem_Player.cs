@@ -4,16 +4,6 @@ using Unity.Collections;
 
 public class RingSystem_Player : SystemBase
 {
-    #region Constants
-    const int SystemAngleSpanDegs = 360;
-    const float MaxSelfRotationSpeed = 10.0f, MinSelfRotationSpeed = 0.0f;
-    const float DiffSelfRotSpeed = MaxSelfRotationSpeed - MinSelfRotationSpeed;
-    const float MaxSystemRotationSpeed = 0.005f, MinSystemRotationSpeed = 0.0025f;
-    const float DiffSystemRotSpeed = MaxSystemRotationSpeed - MinSystemRotationSpeed;
-    const bool EnableRingObjectsRotation = true;
-    const Distributions Distribution = Distributions.White;
-    #endregion
-
     #region Private variables
     EntityQuery ringObjectQuery;
     #endregion
