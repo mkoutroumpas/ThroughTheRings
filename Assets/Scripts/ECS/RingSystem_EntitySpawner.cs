@@ -40,6 +40,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         this._PlanetRadius = gameObject.transform.localScale.z / 2;
 
+        this._RingLayers.ForEach(rl => rl.RingA = this._PlanetRadius + 10000f);
+
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
