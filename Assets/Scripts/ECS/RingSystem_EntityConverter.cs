@@ -18,7 +18,6 @@ public class RingSystem_EntityConverter : MonoBehaviour, IConvertGameObjectToEnt
 
         RingObject_SystemData systemData = new RingObject_SystemData 
         { 
-            CoordinateSystemZero = new Vector3(gOT.position.x, gOT.position.y, gOT.position.z), 
             PlanetRadius = gOT.localScale.z / 2
         };
         manager.AddComponentData(entity, systemData);
