@@ -12,6 +12,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     #region Private variables
     EntityManager EntityManager;
     Entity Entity;
+    Vector3 _coordinateSystemZero;
     List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers = new List<(float, float, float, Color)>
     {
         (0.0f, -4200f, 0f, Color.green),
@@ -31,6 +32,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
     void Start()
     {
+        this._coordinateSystemZero = new Vector3(
+            gameObject.transform.position.x, 
+            gameObject.transform.position.y, 
+            gameObject.transform.position.z);
+
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
@@ -77,7 +83,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         float minYDeviation = -500f, float maxYDeviation = 500f) 
     {
         var instance = this.EntityManager.Instantiate(this.Entity);
-        var position = transform.TransformPoint(new Vector3(0, 0, 0));
+        var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z));
 
 
 
