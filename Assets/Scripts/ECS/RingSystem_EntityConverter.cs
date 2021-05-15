@@ -13,13 +13,5 @@ public class RingSystem_EntityConverter : MonoBehaviour, IConvertGameObjectToEnt
 
         RingObject_RotationSpeed rorationSpeed = new RingObject_RotationSpeed { SelfRotationSpeed = new Vector3(1f, 1f, 1f), SystemRotationSpeed = new Vector3(1f, 1f, 1f) };
         manager.AddComponentData(entity, rorationSpeed);
-
-        Transform gOT = gameObject.transform;
-
-        RingObject_SystemData systemData = new RingObject_SystemData 
-        { 
-            PlanetRadius = gOT.localScale.z / 2
-        };
-        manager.AddComponentData(entity, systemData);
     }
 }
