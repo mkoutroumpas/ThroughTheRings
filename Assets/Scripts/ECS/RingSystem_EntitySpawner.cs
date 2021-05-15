@@ -13,6 +13,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     EntityManager EntityManager;
     Entity Entity;
     Vector3 _coordinateSystemZero;
+    float _PlanetRadius;
     List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers = new List<(float, float, float, Color)>
     {
         (0.0f, -4200f, 0f, Color.green),
@@ -36,6 +37,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             gameObject.transform.position.x, 
             gameObject.transform.position.y, 
             gameObject.transform.position.z);
+
+        this._PlanetRadius = gameObject.transform.localScale.z / 2;
 
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
