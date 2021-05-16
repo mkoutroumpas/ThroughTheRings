@@ -7707,19 +7707,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStars: 1000
   universeSize: 10
---- !u!114 &1003873275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003873271}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c3ab3e4ea3bb3d4591ca9c8166c6db7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnableRingObjectsRotation: 1
 --- !u!114 &1003873276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15406,13 +15393,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970346654}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: -0.3823468, y: -0.3823468, z: -0.59482014, w: 0.59482014}
   m_LocalPosition: {x: 0.07700001, y: -0.136, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 351024886}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -65.465, y: 0, z: -90}
 --- !u!114 &1970346658
 MonoBehaviour:
   m_ObjectHideFlags: 0
