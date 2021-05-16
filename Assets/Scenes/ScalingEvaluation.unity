@@ -7720,6 +7720,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnableRingObjectsRotation: 1
+--- !u!114 &1003873276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003873271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45819745f570f734d8ba86b4b2968447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RingObjectPrefab: {fileID: 8879321607862904318, guid: 5b0ed107e81a04c40abe10242a441819,
+    type: 3}
 --- !u!1 &1008135367
 GameObject:
   m_ObjectHideFlags: 0
