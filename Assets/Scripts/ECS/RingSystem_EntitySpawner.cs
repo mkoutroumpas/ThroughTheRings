@@ -47,7 +47,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
 
         var instance = this.EntityManager.Instantiate(this.Entity);
-        var position = transform.TransformPoint(new Vector3(-500, 0, 1200));
+        var position = transform.TransformPoint(new Vector3(-1, 0, -5990));
 
         this.EntityManager.SetComponentData(instance, new Translation { Value = position });
 
