@@ -46,7 +46,12 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
 
-        CreateRings(_RingLayers);
+        var instance = this.EntityManager.Instantiate(this.Entity);
+        var position = transform.TransformPoint(new Vector3(-500, 0, 1200));
+
+        this.EntityManager.SetComponentData(instance, new Translation { Value = position });
+
+        // CreateRings(_RingLayers);
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 100 : 1; 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * Settings.RingWidth * GetSizeAndDistanceMultiplier(Settings.FieldDepth) / (Settings.NumOfRingsAB + 1);
