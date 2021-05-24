@@ -10719,5 +10719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpacecraftMock
       objectReference: {fileID: 0}
+    - target: {fileID: 4995544413173023036, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d758e6897c4d954cb1a2dc9aed23ae2, type: 3}
