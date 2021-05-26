@@ -95,8 +95,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         var instance = this.EntityManager.Instantiate(this.Entity);
         var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z));
 
-
-
+        // this.EntityManager.SetComponentData(instance, new CompositeScale { Value = Unity.Mathematics.float4x4.Scale(10f, 10f, 10f)});
         this.EntityManager.SetComponentData(instance, new Translation { Value = position });
     }
 }
