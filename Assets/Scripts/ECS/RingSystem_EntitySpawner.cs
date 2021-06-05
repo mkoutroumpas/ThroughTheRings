@@ -24,7 +24,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             gameObject.transform.position.y, 
             gameObject.transform.position.z);
 
-        this._PlanetRadius = 30000f; // gameObject.transform.localScale.z / 2;
+        this._PlanetRadius = 3000f; // gameObject.transform.localScale.z / 2;
 
         float rA = this._PlanetRadius + 10000f;
 
