@@ -14,21 +14,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     Entity Entity;
     Vector3 _coordinateSystemZero;
     float _PlanetRadius;
-    List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers = new List<(float, float, float, Color)>
-    {
-        (0.0f, -4200f, 0f, Color.green),
-        (0.25f, -3400f, 0f, Color.white),
-        (0.5f, -2600f, 0f, Color.blue),
-        (0.75f, -1800f, 0f, Color.grey),
-        (1.0f, -1000f, 0f, Color.yellow),
-        (1.25f, -200f, 0f, Color.magenta),
-        (1.5f, 200f, 0f, Color.cyan),
-        (1.75f, 1000f, 0f, Color.white),
-        (2.0f, 1800f, 0f, Color.blue),
-        (2.25f, 2600f, 0f, Color.grey),
-        (2.5f, 3400f, 0f, Color.yellow),
-        (2.75f, 4200f, 0f, Color.red)
-    };
+    List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers;
     #endregion
 
     void Start()
@@ -38,9 +24,25 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             gameObject.transform.position.y, 
             gameObject.transform.position.z);
 
-        this._PlanetRadius = gameObject.transform.localScale.z / 2;
+        this._PlanetRadius = 30000f; // gameObject.transform.localScale.z / 2;
 
-        this._RingLayers.ForEach(rl => rl.RingA = this._PlanetRadius + 10000f);
+        float rA = this._PlanetRadius + 10000f;
+
+        _RingLayers = new List<(float, float, float, Color)>
+        {
+            (0.0f, -4200f, rA, Color.green),
+            (0.25f, -3400f, rA, Color.white),
+            (0.5f, -2600f, rA, Color.blue),
+            (0.75f, -1800f, rA, Color.grey),
+            (1.0f, -1000f, rA, Color.yellow),
+            (1.25f, -200f, rA, Color.magenta),
+            (1.5f, 200f, rA, Color.cyan),
+            (1.75f, 1000f, rA, Color.white),
+            (2.0f, 1800f, rA, Color.blue),
+            (2.25f, 2600f, rA, Color.grey),
+            (2.5f, 3400f, rA, Color.yellow),
+            (2.75f, 4200f, rA, Color.red)
+        };
 
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
