@@ -8,7 +8,7 @@ public static class Helpers
 
 public static class Settings
 {
-    public const float RingWidth = 50000.0f;
+    public const float RingWidth = 5000.0f;
     public const int RingAngleStep = 3;
     public const int RingAngleMaximum = 360;
     public const int NumOfRingsAB = 20;
