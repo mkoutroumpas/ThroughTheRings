@@ -14,6 +14,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     Entity Entity;
     Vector3 _coordinateSystemZero;
     float _PlanetRadius;
+    System.Random random;
     List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers;
     #endregion
 
@@ -89,6 +90,16 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         float minYDeviation = -500f, float maxYDeviation = 500f) 
     {
+        float devDiff = maxDeviation - minDeviation;
+        float devDiffY = maxYDeviation - minYDeviation;
+
+        if (distribution == Distributions.White)
+        {
+            angle += (float)(random.NextDouble() * devDiff + minDeviation);
+            radius += (float)(random.NextDouble() * devDiff + minDeviation);
+            yOverhead += (float)(random.NextDouble() * devDiffY + minYDeviation);
+        }
+
         var instance = this.EntityManager.Instantiate(this.Entity);
         var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z));
 
