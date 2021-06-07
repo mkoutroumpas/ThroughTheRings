@@ -45,6 +45,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             (2.75f, 425f, rA, Color.red)
         };
 
+        if (random == null) random = new System.Random();
+
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
