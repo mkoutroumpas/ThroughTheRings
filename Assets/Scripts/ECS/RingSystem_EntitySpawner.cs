@@ -27,7 +27,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         this._PlanetRadius = 3000f; // gameObject.transform.localScale.z / 2;
 
-        float rA = this._PlanetRadius + 1000f;
+        float rA = this._PlanetRadius + 6000f;
 
         _RingLayers = new List<(float, float, float, Color)>
         {
