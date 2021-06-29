@@ -12,27 +12,27 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     #endregion
 
     #region Private variables
-    EntityManager EntityManager;
-    NativeArray<Entity> EntitiesArray;
+    EntityManager _entityManager;
+    NativeArray<Entity> _entitiesArray;
     Entity Entity;
     Vector3 _coordinateSystemZero;
-    float _PlanetRadius;
+    float _planetRadius;
     System.Random random;
-    List<(float Angle, float YOverhead, float RingA, Color Color)> _RingLayers;
+    List<(float Angle, float YOverhead, float RingA, Color Color)> _ringLayers;
     #endregion
 
     void Start()
     {
-        this._coordinateSystemZero = new Vector3(
+        _coordinateSystemZero = new Vector3(
             gameObject.transform.position.x, 
             gameObject.transform.position.y, 
             gameObject.transform.position.z);
 
-        this._PlanetRadius = 3000f; // gameObject.transform.localScale.z / 2;
+        _planetRadius = 3000f; // gameObject.transform.localScale.z / 2;
 
-        float rA = this._PlanetRadius + 6000f;
+        float rA = _planetRadius + 6000f;
 
-        _RingLayers = new List<(float, float, float, Color)>
+        _ringLayers = new List<(float, float, float, Color)>
         {
             (0.0f, -425f, rA, Color.green),
             (0.25f, -350f, rA, Color.white),
@@ -50,11 +50,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         if (random == null) random = new System.Random();
 
-        this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        this.EntitiesArray = new NativeArray<Entity>(_RingLayers.Count * (Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB, Allocator.Temp);
+        _entitiesArray = new NativeArray<Entity>(_ringLayers.Count * (Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB, Allocator.Temp);
 
-        EntityArchetype entityArchetype = this.EntityManager.CreateArchetype(
+        EntityArchetype entityArchetype = _entityManager.CreateArchetype(
             typeof(RenderMesh),
             typeof(LocalToWorld),
             typeof(Translation),
@@ -62,14 +62,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             typeof(NonUniformScale)
         );
 
-        this.EntityManager.CreateEntity(entityArchetype, this.EntitiesArray);
+        _entityManager.CreateEntity(entityArchetype, _entitiesArray);
 
-        var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
-        this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
+        CreateRings(_ringLayers, _entitiesArray);
 
-        CreateRings(_RingLayers);
-
-        this.EntitiesArray.Dispose();
+        _entitiesArray.Dispose();
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 10 : 1; 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * Settings.RingWidth * GetSizeAndDistanceMultiplier(Settings.FieldDepth) / (Settings.NumOfRingsAB + 1);
@@ -89,7 +86,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         return 0.0f;
     }
-    void CreateRings(List<(float Angle, float YOverhead, float RingA, Color Color)> ringLayers)
+    void CreateRings(List<(float Angle, float YOverhead, float RingA, Color Color)> ringLayers, NativeArray<Entity> entitiesArray)
     {
         if (ringLayers == null) return;
 
@@ -120,11 +117,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             yOverhead += (float)(random.NextDouble() * devDiffY + minYDeviation);
         }
 
-        var instance = this.EntityManager.Instantiate(this.Entity);
+        var instance = this._entityManager.Instantiate(this.Entity);
         var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z));
 
         // this.EntityManager.SetComponentData(instance, new CompositeScale { Value = Unity.Mathematics.float4x4.Scale(10f, 10f, 10f)});
         // this.EntityManager.SetComponentData(instance, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f)});
-        this.EntityManager.SetComponentData(instance, new Translation { Value = position });
+        this._entityManager.SetComponentData(instance, new Translation { Value = position });
     }
 }
