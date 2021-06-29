@@ -1,5 +1,6 @@
 using Unity.Entities;
 using UnityEngine;
+using Unity.Collections;
 using Unity.Transforms;
 using System.Collections.Generic;
 
@@ -48,6 +49,10 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         if (random == null) random = new System.Random();
 
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+        NativeArray<Entity> entitiesArray = new NativeArray<Entity>(_RingLayers.Count * (Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB, Allocator.Temp);
+
+
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
 
@@ -106,6 +111,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z));
 
         // this.EntityManager.SetComponentData(instance, new CompositeScale { Value = Unity.Mathematics.float4x4.Scale(10f, 10f, 10f)});
+        // this.EntityManager.SetComponentData(instance, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f)});
         this.EntityManager.SetComponentData(instance, new Translation { Value = position });
     }
 }
