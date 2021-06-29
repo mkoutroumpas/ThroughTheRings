@@ -2,6 +2,7 @@ using Unity.Entities;
 using UnityEngine;
 using Unity.Collections;
 using Unity.Transforms;
+using Unity.Rendering;
 using System.Collections.Generic;
 
 public class RingSystem_EntitySpawner : MonoBehaviour
@@ -52,6 +53,15 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         NativeArray<Entity> entitiesArray = new NativeArray<Entity>(_RingLayers.Count * (Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB, Allocator.Temp);
 
+        EntityArchetype entityArchetype = this.EntityManager.CreateArchetype(
+            typeof(RenderMesh),
+            typeof(LocalToWorld),
+            typeof(Translation),
+            typeof(Rotation),
+            typeof(NonUniformScale)
+        );
+
+        this.EntityManager.CreateEntity(entityArchetype, entitiesArray);
 
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
