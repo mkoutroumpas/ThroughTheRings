@@ -13,6 +13,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
     #region Private variables
     EntityManager EntityManager;
+    NativeArray<Entity> EntitiesArray;
     Entity Entity;
     Vector3 _coordinateSystemZero;
     float _PlanetRadius;
@@ -51,7 +52,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         this.EntityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        NativeArray<Entity> entitiesArray = new NativeArray<Entity>(_RingLayers.Count * (Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB, Allocator.Temp);
+        this.EntitiesArray = new NativeArray<Entity>(_RingLayers.Count * (Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB, Allocator.Temp);
 
         EntityArchetype entityArchetype = this.EntityManager.CreateArchetype(
             typeof(RenderMesh),
@@ -61,14 +62,14 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             typeof(NonUniformScale)
         );
 
-        this.EntityManager.CreateEntity(entityArchetype, entitiesArray);
+        this.EntityManager.CreateEntity(entityArchetype, this.EntitiesArray);
 
         var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
         this.Entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(RingObjectPrefab, settings);
 
         CreateRings(_RingLayers);
 
-        entitiesArray.Dispose();
+        this.EntitiesArray.Dispose();
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 10 : 1; 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * Settings.RingWidth * GetSizeAndDistanceMultiplier(Settings.FieldDepth) / (Settings.NumOfRingsAB + 1);
