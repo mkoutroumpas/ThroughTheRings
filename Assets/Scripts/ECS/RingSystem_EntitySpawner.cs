@@ -14,7 +14,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     #region Private variables
     EntityManager _entityManager;
     NativeArray<Entity> _entitiesArray;
-    Entity Entity;
     Vector3 _coordinateSystemZero;
     float _planetRadius;
     System.Random random;
@@ -123,11 +122,10 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             yOverhead += (float)(random.NextDouble() * devDiffY + minYDeviation);
         }
 
-        var instance = this._entityManager.Instantiate(this.Entity);
-        var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + this._coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + this._coordinateSystemZero.z));
+        var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + _coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + _coordinateSystemZero.z));
 
-        // this.EntityManager.SetComponentData(instance, new CompositeScale { Value = Unity.Mathematics.float4x4.Scale(10f, 10f, 10f)});
-        // this.EntityManager.SetComponentData(instance, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f)});
-        this._entityManager.SetComponentData(instance, new Translation { Value = position });
+        // _entityManager.SetComponentData(instance, new CompositeScale { Value = Unity.Mathematics.float4x4.Scale(10f, 10f, 10f)});
+        // _entityManager.SetComponentData(instance, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f)});
+        _entityManager.SetComponentData(entity, new Translation { Value = position });
     }
 }
