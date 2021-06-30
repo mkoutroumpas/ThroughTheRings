@@ -127,5 +127,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         // _entityManager.SetComponentData(instance, new CompositeScale { Value = Unity.Mathematics.float4x4.Scale(10f, 10f, 10f)});
         // _entityManager.SetComponentData(instance, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f)});
         _entityManager.SetComponentData(entity, new Translation { Value = position });
+        _entityManager.SetComponentData(entity, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f) });
     }
 }
