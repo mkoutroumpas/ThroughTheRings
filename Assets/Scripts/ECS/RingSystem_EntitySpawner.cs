@@ -90,20 +90,26 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     {
         if (ringLayers == null) return;
 
+        int j = 0;
+
         foreach (var ringLayer in ringLayers)
         {
+            j++;
+
             for (int a = 0; a < Settings.RingAngleMaximum; a += Settings.RingAngleStep) 
             {
                 for (int i = 0; i <= Settings.NumOfRingsAB + 1; i++) 
                 {
-                    AddRingObject(
+                    Entity entity = entitiesArray[j * (a + 1) * (i + 1)];
+
+                    AddRingObject(entity, 
                         a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingA), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
                         ringLayer.YOverhead, ringLayer.Color, Distributions.White, Settings.MinDeviation, Settings.MaxDeviation, Settings.MinYDeviation, Settings.MaxYDeviation);
                 }
             }
         }
     }
-    void AddRingObject(float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
+    void AddRingObject(Entity entity, float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         float minYDeviation = -500f, float maxYDeviation = 500f) 
     {
