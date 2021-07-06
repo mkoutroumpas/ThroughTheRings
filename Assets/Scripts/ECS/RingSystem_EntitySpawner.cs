@@ -52,7 +52,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        _entitiesArray = new NativeArray<Entity>(_ringLayers.Count * (Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB, Allocator.Temp);
+        _entitiesArray = new NativeArray<Entity>(_ringLayers.Count * ((int)(Settings.RingAngleMaximum / Settings.RingAngleStep)) * Settings.NumOfRingsAB, Allocator.Temp);
 
         EntityArchetype entityArchetype = _entityManager.CreateArchetype(
             typeof(RenderMesh),
