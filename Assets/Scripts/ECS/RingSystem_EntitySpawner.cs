@@ -94,17 +94,17 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         foreach (var ringLayer in ringLayers)
         {
-            j++;
-
             for (int a = 0; a < Settings.RingAngleMaximum; a += Settings.RingAngleStep) 
             {
-                for (int i = 0; i <= Settings.NumOfRingsAB + 1; i++) 
+                for (int i = 0; i < Settings.NumOfRingsAB; i++) 
                 {
-                    Entity entity = entitiesArray[j * (a + 1) * (i + 1)];
+                    Entity entity = entitiesArray[j];
 
                     AddRingObject(entity, 
                         a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingA), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
                         ringLayer.YOverhead, ringLayer.Color, Distributions.White, Settings.MinDeviation, Settings.MaxDeviation, Settings.MinYDeviation, Settings.MaxYDeviation);
+
+                    j++;
                 }
             }
         }
