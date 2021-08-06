@@ -52,7 +52,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        _entitiesArray = new NativeArray<Entity>(_ringLayers.Count * ((int)(Settings.RingAngleMaximum / Settings.RingAngleStep)) * Settings.NumOfRingsAB, Allocator.Temp);
+        int entitiesCount = _ringLayers.Count * ((int)(Settings.RingAngleMaximum / Settings.RingAngleStep)) * Settings.NumOfRingsAB;
+
+        // Debug.Log($"entitiesCount = {entitiesCount}");
+
+        _entitiesArray = new NativeArray<Entity>(entitiesCount, Allocator.Temp);
 
         EntityArchetype entityArchetype = _entityManager.CreateArchetype(
             typeof(RenderMesh),
@@ -108,6 +112,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
                 }
             }
         }
+
+        // Debug.Log($"j = {j}");
     }
     void AddRingObject(Entity entity, float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
