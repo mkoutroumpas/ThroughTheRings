@@ -30,22 +30,22 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _planetRadius = 3000f; // gameObject.transform.localScale.z / 2;
 
-        float rA = _planetRadius + 6000f;
+        float ringStart = _planetRadius + 6000f;
 
         _ringLayers = new List<(float, float, float, Color)>
         {
-            (0.0f, -425f, rA, Color.green),
-            (0.25f, -350f, rA, Color.white),
-            (0.5f, -275f, rA, Color.blue),
-            (0.75f, -200f, rA, Color.grey),
-            (1.0f, -125f, rA, Color.yellow),
-            (1.25f, -50f, rA, Color.magenta),
-            (1.5f, 50f, rA, Color.cyan),
-            (1.75f, 125f, rA, Color.white),
-            (2.0f, 200f, rA, Color.blue),
-            (2.25f, 275f, rA, Color.grey),
-            (2.5f, 350f, rA, Color.yellow),
-            (2.75f, 425f, rA, Color.red)
+            (0.0f, -425f, ringStart, Color.green),
+            (0.25f, -350f, ringStart, Color.white),
+            (0.5f, -275f, ringStart, Color.blue),
+            (0.75f, -200f, ringStart, Color.grey),
+            (1.0f, -125f, ringStart, Color.yellow),
+            (1.25f, -50f, ringStart, Color.magenta),
+            (1.5f, 50f, ringStart, Color.cyan),
+            (1.75f, 125f, ringStart, Color.white),
+            (2.0f, 200f, ringStart, Color.blue),
+            (2.25f, 275f, ringStart, Color.grey),
+            (2.5f, 350f, ringStart, Color.yellow),
+            (2.75f, 425f, ringStart, Color.red)
         };
 
         if (random == null) random = new System.Random();
@@ -67,6 +67,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         );
 
         _entityManager.CreateEntity(entityArchetype, _entitiesArray);
+
+        // Debug.Log($"_entitiesArray.Length = {_entitiesArray.Length}");
 
         CreateRings(_ringLayers, _entitiesArray);
 
@@ -90,7 +92,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         return 0.0f;
     }
-    void CreateRings(List<(float Angle, float YOverhead, float RingA, Color Color)> ringLayers, NativeArray<Entity> entitiesArray)
+    void CreateRings(List<(float Angle, float YOverhead, float RingStart, Color Color)> ringLayers, NativeArray<Entity> entitiesArray)
     {
         if (ringLayers == null) return;
 
@@ -105,7 +107,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
                     Entity entity = entitiesArray[j];
 
                     AddRingObject(entity, 
-                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingA), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
+                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
                         ringLayer.YOverhead, ringLayer.Color, Distributions.White, Settings.MinDeviation, Settings.MaxDeviation, Settings.MinYDeviation, Settings.MaxYDeviation);
 
                     j++;
