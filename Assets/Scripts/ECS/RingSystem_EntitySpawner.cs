@@ -60,15 +60,15 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _entitiesArray = new NativeArray<Entity>(entitiesCount, Allocator.Temp);
 
-        EntityArchetype entityArchetype = _entityManager.CreateArchetype(
-            // typeof(RenderMesh),
-            // typeof(LocalToWorld),
-            // typeof(NonUniformScale),
-            typeof(Translation),
-            typeof(Rotation)
-        );
+        // EntityArchetype entityArchetype = _entityManager.CreateArchetype(
+        //     typeof(RenderMesh),
+        //     typeof(LocalToWorld),
+        //     typeof(NonUniformScale),
+        //     typeof(Translation),
+        //     typeof(Rotation)
+        // );
 
-        _entityManager.CreateEntity(entityArchetype, _entitiesArray);
+        // _entityManager.CreateEntity(entityArchetype, _entitiesArray);
 
         // Debug.Log($"_entitiesArray.Length = {_entitiesArray.Length}");
 
