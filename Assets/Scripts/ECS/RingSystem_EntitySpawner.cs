@@ -8,8 +8,8 @@ using System.Collections.Generic;
 public class RingSystem_EntitySpawner : MonoBehaviour
 {
     #region Public properties
-    public Mesh Mesh;
-    public Material Material;
+    // public Mesh Mesh;
+    // public Material Material;
     #endregion
 
     #region Private variables
@@ -59,11 +59,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         _entitiesArray = new NativeArray<Entity>(entitiesCount, Allocator.Temp);
 
         EntityArchetype entityArchetype = _entityManager.CreateArchetype(
-            typeof(RenderMesh),
-            typeof(LocalToWorld),
+            // typeof(RenderMesh),
+            // typeof(LocalToWorld),
+            // typeof(NonUniformScale),
             typeof(Translation),
-            typeof(Rotation),
-            typeof(NonUniformScale)
+            typeof(Rotation)
         );
 
         _entityManager.CreateEntity(entityArchetype, _entitiesArray);
@@ -133,8 +133,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + _coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + _coordinateSystemZero.z));
 
-        _entityManager.SetSharedComponentData(entity, new RenderMesh { mesh = Mesh, material = Material });
+        // _entityManager.SetSharedComponentData(entity, new RenderMesh { mesh = Mesh, material = Material });
         _entityManager.SetComponentData(entity, new Translation { Value = position });
-        _entityManager.SetComponentData(entity, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f) });
+        // _entityManager.SetComponentData(entity, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f) });
     }
 }
