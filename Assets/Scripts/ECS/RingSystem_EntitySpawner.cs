@@ -10,6 +10,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     #region Public properties
     // public Mesh Mesh;
     // public Material Material;
+    [SerializeField]
+    public GameObject Prefab;
     #endregion
 
     #region Private variables
