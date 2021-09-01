@@ -56,13 +56,18 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        Entity entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
+        Entity prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
 
         int entitiesCount = _ringLayers.Count * ((int)(Settings.RingAngleMaximum / Settings.RingAngleStep)) * Settings.NumOfRingsAB;
 
         // Debug.Log($"entitiesCount = {entitiesCount}");
 
         _entitiesArray = new NativeArray<Entity>(entitiesCount, Allocator.Temp);
+
+        for (int i = 0; i < _entitiesArray.Length; i++)
+        {
+            _entitiesArray[i] = prefabEntity;
+        }
 
         // EntityArchetype entityArchetype = _entityManager.CreateArchetype(
         //     typeof(RenderMesh),
