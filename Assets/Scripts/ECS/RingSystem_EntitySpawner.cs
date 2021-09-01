@@ -66,7 +66,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         for (int i = 0; i < _entitiesArray.Length; i++)
         {
-            _entitiesArray[i] = prefabEntity;
+            _entitiesArray[i] = _entityManager.Instantiate(prefabEntity);
         }
 
         // EntityArchetype entityArchetype = _entityManager.CreateArchetype(
