@@ -52,7 +52,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         if (random == null) random = new System.Random();
 
+        GameObjectConversionSettings gameObjectConversionSettings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
+
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+        Entity entity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
 
         int entitiesCount = _ringLayers.Count * ((int)(Settings.RingAngleMaximum / Settings.RingAngleStep)) * Settings.NumOfRingsAB;
 
