@@ -8,8 +8,6 @@ using System.Collections.Generic;
 public class RingSystem_EntitySpawner : MonoBehaviour
 {
     #region Public properties
-    // public Mesh Mesh;
-    // public Material Material;
     [SerializeField]
     public GameObject Prefab;
     #endregion
@@ -60,24 +58,12 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         int entitiesCount = _ringLayers.Count * ((int)(Settings.RingAngleMaximum / Settings.RingAngleStep)) * Settings.NumOfRingsAB;
 
-        // Debug.Log($"entitiesCount = {entitiesCount}");
-
         _entitiesArray = new NativeArray<Entity>(entitiesCount, Allocator.Temp);
 
         for (int i = 0; i < _entitiesArray.Length; i++)
         {
             _entitiesArray[i] = _entityManager.Instantiate(prefabEntity);
         }
-
-        // EntityArchetype entityArchetype = _entityManager.CreateArchetype(
-        //     typeof(RenderMesh),
-        //     typeof(LocalToWorld),
-        //     typeof(NonUniformScale),
-        //     typeof(Translation),
-        //     typeof(Rotation)
-        // );
-
-        // _entityManager.CreateEntity(entityArchetype, _entitiesArray);
 
         // Debug.Log($"_entitiesArray.Length = {_entitiesArray.Length}");
 
@@ -144,8 +130,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + _coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + _coordinateSystemZero.z));
 
-        // _entityManager.SetSharedComponentData(entity, new RenderMesh { mesh = Mesh, material = Material });
         _entityManager.SetComponentData(entity, new Translation { Value = position });
-        // _entityManager.SetComponentData(entity, new NonUniformScale { Value = new Unity.Mathematics.float3(10f, 10f, 10f) });
     }
 }
