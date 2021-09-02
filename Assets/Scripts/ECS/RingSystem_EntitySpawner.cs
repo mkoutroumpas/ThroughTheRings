@@ -14,6 +14,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
     #region Private variables
     EntityManager _entityManager;
+    Entity _prefabEntity;
     Vector3 _coordinateSystemZero;
     float _planetRadius;
     System.Random random;
@@ -53,7 +54,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        Entity prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
+        _prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
 
         // Debug.Log($"_entitiesArray.Length = {_entitiesArray.Length}");
 
@@ -89,7 +90,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             {
                 for (int i = 0; i < Settings.NumOfRingsAB; i++) 
                 {
-                    Entity entity = default;
+                    Entity entity = _entityManager.Instantiate(_prefabEntity);
 
                     AddRingObject(entity, 
                         a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
