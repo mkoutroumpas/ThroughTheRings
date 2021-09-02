@@ -14,7 +14,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
     #region Private variables
     EntityManager _entityManager;
-    NativeArray<Entity> _entitiesArray;
     Vector3 _coordinateSystemZero;
     float _planetRadius;
     System.Random random;
@@ -56,20 +55,9 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         Entity prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
 
-        int entitiesCount = _ringLayers.Count * ((int)(Settings.RingAngleMaximum / Settings.RingAngleStep)) * Settings.NumOfRingsAB;
-
-        _entitiesArray = new NativeArray<Entity>(entitiesCount, Allocator.Temp);
-
-        for (int i = 0; i < _entitiesArray.Length; i++)
-        {
-            _entitiesArray[i] = _entityManager.Instantiate(prefabEntity);
-        }
-
         // Debug.Log($"_entitiesArray.Length = {_entitiesArray.Length}");
 
-        CreateRings(_ringLayers, _entitiesArray);
-
-        _entitiesArray.Dispose();
+        CreateRings(_ringLayers);
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 10 : 1; 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * Settings.RingWidth * GetSizeAndDistanceMultiplier(Settings.FieldDepth) / (Settings.NumOfRingsAB + 1);
@@ -89,7 +77,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         return 0.0f;
     }
-    void CreateRings(List<(float Angle, float YOverhead, float RingStart, Color Color)> ringLayers, NativeArray<Entity> entitiesArray)
+    void CreateRings(List<(float Angle, float YOverhead, float RingStart, Color Color)> ringLayers)
     {
         if (ringLayers == null) return;
 
@@ -101,7 +89,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             {
                 for (int i = 0; i < Settings.NumOfRingsAB; i++) 
                 {
-                    Entity entity = entitiesArray[j];
+                    Entity entity = default;
 
                     AddRingObject(entity, 
                         a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
