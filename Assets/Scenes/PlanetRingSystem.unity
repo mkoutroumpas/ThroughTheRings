@@ -361,8 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45819745f570f734d8ba86b4b2968447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mesh: {fileID: 289301614986012343, guid: 289722cdf5a19334ab8920569a9fb158, type: 3}
-  Material: {fileID: 2100000, guid: cb8742e3143d13841b674854c2995ee8, type: 2}
+  Prefab: {fileID: 8879321607862904318, guid: 5b0ed107e81a04c40abe10242a441819, type: 3}
 --- !u!4 &1175719653
 Transform:
   m_ObjectHideFlags: 0
