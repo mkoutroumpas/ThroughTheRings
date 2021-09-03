@@ -56,8 +56,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
 
-        // Debug.Log($"_entitiesArray.Length = {_entitiesArray.Length}");
-
         CreateRings(_ringLayers);
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 10 : 1; 
@@ -100,8 +98,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
                 }
             }
         }
-
-        // Debug.Log($"j = {j}");
     }
     void AddRingObject(Entity entity, float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
