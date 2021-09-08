@@ -113,7 +113,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             yOverhead += (float)(random.NextDouble() * devDiffY + minYDeviation);
         }
 
-        var position = transform.TransformPoint(new Vector3(radius * Mathf.Cos(angle) + _coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + _coordinateSystemZero.z));
+        var position = gameObject.transform.TransformPoint(
+            new Vector3(radius * Mathf.Cos(angle) + _coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + _coordinateSystemZero.z));
 
         _entityManager.SetComponentData(entity, new Translation { Value = position });
     }
