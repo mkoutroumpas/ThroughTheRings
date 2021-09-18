@@ -7,11 +7,6 @@ using System.Collections.Generic;
 
 public class RingSystem_EntitySpawner : MonoBehaviour
 {
-    #region Public properties
-    [SerializeField]
-    public GameObject Prefab;
-    #endregion
-
     #region Private variables
     EntityManager _entityManager;
     Entity _prefabEntity;
@@ -54,9 +49,9 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        _prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
+        // _prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
 
-        CreateRings(_ringLayers);
+        // CreateRings(_ringLayers);
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 10 : 1; 
     float GetRingObjectRadialDistance(int ringId, float ringSystemA) => ringSystemA + ringId * Settings.RingWidth * GetSizeAndDistanceMultiplier(Settings.FieldDepth) / (Settings.NumOfRingsAB + 1);
