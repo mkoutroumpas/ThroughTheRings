@@ -8,6 +8,11 @@ using System.Collections.Generic;
 public class RingSystem_EntitySpawner : MonoBehaviour
 {
     #region Private variables
+    GameObject _prefabIcoSphere1;
+    GameObject _prefabIcoSphere10;
+    GameObject _prefabIcoSphere100;
+    GameObject _prefabIcoSphere1000;
+    GameObject _prefabIcoSphere10000;
     EntityManager _entityManager;
     Entity _prefabEntity;
     Vector3 _coordinateSystemZero;
@@ -42,6 +47,12 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             (2.5f, 350f, ringStart, Color.yellow),
             (2.75f, 425f, ringStart, Color.red)
         };
+
+         _prefabIcoSphere1 = Resources.Load<GameObject>("IcoShperes/IcoShpere_1");
+         _prefabIcoSphere10 = Resources.Load<GameObject>("IcoShperes/IcoShpere_10");
+         _prefabIcoSphere100 = Resources.Load<GameObject>("IcoShperes/IcoShpere_100");
+         _prefabIcoSphere1000 = Resources.Load<GameObject>("IcoShperes/IcoShpere_1000");
+         _prefabIcoSphere10000 = Resources.Load<GameObject>("IcoShperes/IcoShpere_10000");
 
         if (random == null) random = new System.Random();
 
