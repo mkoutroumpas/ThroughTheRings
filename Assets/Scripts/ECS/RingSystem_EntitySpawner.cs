@@ -50,11 +50,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         {
             _prefabIcoSpheres[0] = Resources.Load<GameObject>($"IcoShperes/IcoShpere_{10 ^ i}");
         }
-        //  _prefabIcoSpheres = Resources.Load<GameObject>("IcoShperes/IcoShpere_1");
-        //  _prefabIcoSphere10 = Resources.Load<GameObject>("IcoShperes/IcoShpere_10");
-        //  _prefabIcoSphere100 = Resources.Load<GameObject>("IcoShperes/IcoShpere_100");
-        //  _prefabIcoSphere1000 = Resources.Load<GameObject>("IcoShperes/IcoShpere_1000");
-        //  _prefabIcoSphere10000 = Resources.Load<GameObject>("IcoShperes/IcoShpere_10000");
 
         if (random == null) random = new System.Random();
 
