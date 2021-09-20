@@ -48,7 +48,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-            _prefabIcoSpheres[0] = Resources.Load<GameObject>($"IcoShperes/IcoShpere_{10 ^ i}");
+            _prefabIcoSpheres[i] = Resources.Load<GameObject>($"IcoShperes/IcoShpere_{10 ^ i}");
         }
 
         if (random == null) random = new System.Random();
