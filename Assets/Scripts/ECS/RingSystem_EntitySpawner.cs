@@ -9,6 +9,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 {
     #region Private variables
     GameObject[] _prefabIcoSpheres;
+    Entity[] _prefabEntities;
     EntityManager _entityManager;
     Entity _prefabEntity;
     Vector3 _coordinateSystemZero;
@@ -45,6 +46,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         };
 
         _prefabIcoSpheres = new GameObject[5];
+        _prefabEntities = new Entity[5];
 
         for (int i = 0; i < 5; i++)
         {
