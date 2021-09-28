@@ -45,17 +45,18 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             (2.75f, 425f, ringStart, Color.red)
         };
 
+        GameObjectConversionSettings gameObjectConversionSettings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
+
         _prefabIcoSpheres = new GameObject[5];
         _prefabEntities = new Entity[5];
 
         for (int i = 0; i < 5; i++)
         {
             _prefabIcoSpheres[i] = Resources.Load<GameObject>($"IcoShperes/IcoShpere_{10 ^ i}");
+            _prefabEntities[i] = GameObjectConversionUtility.ConvertGameObjectHierarchy(_prefabIcoSpheres[i], gameObjectConversionSettings);
         }
 
         if (random == null) random = new System.Random();
-
-        GameObjectConversionSettings gameObjectConversionSettings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
 
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
