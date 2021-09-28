@@ -11,7 +11,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     GameObject[] _prefabIcoSpheres;
     Entity[] _prefabEntities;
     EntityManager _entityManager;
-    Entity _prefabEntity;
     Vector3 _coordinateSystemZero;
     float _planetRadius;
     System.Random random;
@@ -60,8 +59,6 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        // _prefabEntity = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, gameObjectConversionSettings);
-
         // CreateRings(_ringLayers);
     }
     int GetSizeAndDistanceMultiplier(FieldDepths fieldDepth) => fieldDepth == FieldDepths.Far ? 10 : 1; 
@@ -94,7 +91,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             {
                 for (int i = 0; i < Settings.NumOfRingsAB; i++) 
                 {
-                    Entity entity = _entityManager.Instantiate(_prefabEntity);
+                    Entity entity = GetNewEntity(_entityManager, j);
 
                     AddRingObject(entity, 
                         a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
@@ -104,6 +101,10 @@ public class RingSystem_EntitySpawner : MonoBehaviour
                 }
             }
         }
+    }
+    Entity GetNewEntity(EntityManager entityManager, int index)
+    {
+        return default; //_entityManager.Instantiate(_prefabEntity);
     }
     void AddRingObject(Entity entity, float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
