@@ -106,9 +106,9 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     }
     Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount)
     {
-        var v = 2 * Mathf.Pow(index + 0.1f, -1);
+        var v = 20000 * Mathf.Pow(index + 500f, -1);
 
-        
+
         return default; //_entityManager.Instantiate(_prefabEntity);
     }
     void AddRingObject(Entity entity, float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
