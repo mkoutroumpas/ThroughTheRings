@@ -93,7 +93,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             {
                 for (int i = 0; i < Settings.NumOfRingsAB; i++) 
                 {
-                    Entity entity = GetNewEntity(_entityManager, j);
+                    Entity entity = GetNewEntity(_entityManager, j, totalEntityCount);
 
                     AddRingObject(entity, 
                         a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
@@ -104,7 +104,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             }
         }
     }
-    Entity GetNewEntity(EntityManager entityManager, int index)
+    Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount)
     {
         return default; //_entityManager.Instantiate(_prefabEntity);
     }
