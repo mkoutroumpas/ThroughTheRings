@@ -85,6 +85,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         int j = 0;
 
+        int totalEntityCount = ringLayers.Count * (int)(Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB;
+
         foreach (var ringLayer in ringLayers)
         {
             for (int a = 0; a < Settings.RingAngleMaximum; a += Settings.RingAngleStep) 
