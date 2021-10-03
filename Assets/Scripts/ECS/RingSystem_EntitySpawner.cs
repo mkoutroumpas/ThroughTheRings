@@ -106,7 +106,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     }
     Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount)
     {
-        var v = 20000 * Mathf.Pow(index + 500f, -1);
+        var v = 50000 / (index + 500);
 
 
         return default; //_entityManager.Instantiate(_prefabEntity);
