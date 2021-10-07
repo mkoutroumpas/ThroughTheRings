@@ -49,9 +49,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         _prefabIcoSpheres = new GameObject[5];
         _prefabEntities = new Entity[5];
 
+        // var isph = Resources.Load("IcoShpere_1", typeof(GameObject));
+
         for (int i = 0; i < 5; i++)
         {
-            _prefabIcoSpheres[i] = Resources.Load<GameObject>($"IcoShperes/IcoShpere_{10 ^ i}");
+            _prefabIcoSpheres[i] = Resources.Load($"IcoShpere_{10 ^ i}", typeof(GameObject)) as GameObject;
             _prefabEntities[i] = GameObjectConversionUtility.ConvertGameObjectHierarchy(_prefabIcoSpheres[i], gameObjectConversionSettings);
         }
 
@@ -93,7 +95,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             {
                 for (int i = 0; i < Settings.NumOfRingsAB; i++) 
                 {
-                    // Entity entity = GetNewEntity(_entityManager, j, totalEntityCount);
+                    Entity entity = GetNewEntity(_entityManager, j, totalEntityCount);
 
                     // AddRingObject(entity, 
                     //     a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
