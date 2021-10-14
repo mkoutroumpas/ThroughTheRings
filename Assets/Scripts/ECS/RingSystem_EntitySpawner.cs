@@ -51,6 +51,12 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         // var isph = Resources.Load("IcoShpere_1", typeof(GameObject));
 
+        _prefabIcoSpheres[0] = Resources.Load("IcoShpere_1", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[1] = Resources.Load("IcoShpere_10", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[2] = Resources.Load("IcoShpere_100", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[3] = Resources.Load("IcoShpere_1000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[4] = Resources.Load("IcoShpere_10000", typeof(GameObject)) as GameObject;
+
         for (int i = 0; i < 5; i++)
         {
             _prefabIcoSpheres[i] = Resources.Load($"IcoShpere_{10 ^ i}", typeof(GameObject)) as GameObject;
