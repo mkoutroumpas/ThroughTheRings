@@ -46,16 +46,20 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         GameObjectConversionSettings gameObjectConversionSettings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
 
-        _prefabIcoSpheres = new GameObject[5];
-        _prefabEntities = new Entity[5];
+        _prefabIcoSpheres = new GameObject[9];
+        _prefabEntities = new Entity[9];
 
-        _prefabIcoSpheres[0] = Resources.Load("IcoShpere_50", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[1] = Resources.Load("IcoShpere_200", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[2] = Resources.Load("IcoShpere_500", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[3] = Resources.Load("IcoShpere_1000", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[4] = Resources.Load("IcoShpere_5000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[0] = Resources.Load("IcoShpere_10", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[1] = Resources.Load("IcoShpere_20", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[2] = Resources.Load("IcoShpere_50", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[3] = Resources.Load("IcoShpere_100", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[4] = Resources.Load("IcoShpere_200", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[5] = Resources.Load("IcoShpere_500", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[6] = Resources.Load("IcoShpere_1000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[7] = Resources.Load("IcoShpere_2000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[8] = Resources.Load("IcoShpere_5000", typeof(GameObject)) as GameObject;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 9; i++)
         {
             _prefabEntities[i] = GameObjectConversionUtility.ConvertGameObjectHierarchy(_prefabIcoSpheres[i], gameObjectConversionSettings);
         }
