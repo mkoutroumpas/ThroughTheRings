@@ -119,7 +119,9 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     {
         index -= totalEntityCount / 2;
 
-        var v = (250 / (Mathf.Sqrt(2 * Mathf.PI * 20))) * Mathf.Exp(-Mathf.Pow(index, 2) / (2 * 20));
+        float i = index / (totalEntityCount / 8);
+
+        var v = (250 / (Mathf.Sqrt(2 * Mathf.PI * 1))) * Mathf.Exp(-Mathf.Pow(i, 2) / (2 * 1));
 
         if (v <= 100 && v > 80) return _entityManager.Instantiate(_prefabEntities[8]);
         if (v <= 80 && v > 40) return _entityManager.Instantiate(_prefabEntities[7]);
