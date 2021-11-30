@@ -123,12 +123,12 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         var v = (250 / (Mathf.Sqrt(2 * Mathf.PI * 1))) * Mathf.Exp(-Mathf.Pow(i, 2) / (2 * 1));
 
-        if (v <= 100 && v > 90) return _entityManager.Instantiate(_prefabEntities[8]);
-        if (v <= 90 && v > 80) return _entityManager.Instantiate(_prefabEntities[7]);
-        if (v <= 80 && v > 40) return _entityManager.Instantiate(_prefabEntities[6]);
-        if (v <= 40 && v > 20) return _entityManager.Instantiate(_prefabEntities[5]);
-        if (v <= 20 && v > 15) return _entityManager.Instantiate(_prefabEntities[4]);
-        if (v <= 15 && v > 10) return _entityManager.Instantiate(_prefabEntities[3]);
+        if (v <= 100 && v > 95) return _entityManager.Instantiate(_prefabEntities[8]);
+        if (v <= 95 && v > 90) return _entityManager.Instantiate(_prefabEntities[7]);
+        if (v <= 90 && v > 85) return _entityManager.Instantiate(_prefabEntities[6]);
+        if (v <= 85 && v > 60) return _entityManager.Instantiate(_prefabEntities[5]);
+        if (v <= 60 && v > 30) return _entityManager.Instantiate(_prefabEntities[4]);
+        if (v <= 30 && v > 10) return _entityManager.Instantiate(_prefabEntities[3]);
         if (v <= 10 && v > 5) return _entityManager.Instantiate(_prefabEntities[2]);
         if (v <= 5 && v > 3) return _entityManager.Instantiate(_prefabEntities[1]);
         if (v <= 3) return _entityManager.Instantiate(_prefabEntities[0]);
