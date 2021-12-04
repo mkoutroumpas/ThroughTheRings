@@ -119,6 +119,11 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         }
 
         Debug.Log($"Total j = {j}");
+
+        for (int i = 0; i < entityIndexes.Length; i++)
+        {
+            Debug.Log($"Total for category {i}: {entityIndexes[i]}");
+        }
     }
     Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount, out int entityIndex)
     {
