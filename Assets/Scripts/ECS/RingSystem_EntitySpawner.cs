@@ -49,15 +49,15 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         _prefabIcoSpheres = new GameObject[9];
         _prefabEntities = new Entity[9];
 
-        _prefabIcoSpheres[0] = Resources.Load("IcoShpere_10", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[1] = Resources.Load("IcoShpere_20", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[2] = Resources.Load("IcoShpere_50", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[3] = Resources.Load("IcoShpere_100", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[8] = Resources.Load("IcoShpere_10", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[7] = Resources.Load("IcoShpere_20", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[6] = Resources.Load("IcoShpere_50", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[5] = Resources.Load("IcoShpere_100", typeof(GameObject)) as GameObject;
         _prefabIcoSpheres[4] = Resources.Load("IcoShpere_200", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[5] = Resources.Load("IcoShpere_500", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[6] = Resources.Load("IcoShpere_1000", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[7] = Resources.Load("IcoShpere_2000", typeof(GameObject)) as GameObject;
-        _prefabIcoSpheres[8] = Resources.Load("IcoShpere_5000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[3] = Resources.Load("IcoShpere_500", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[2] = Resources.Load("IcoShpere_1000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[1] = Resources.Load("IcoShpere_2000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[0] = Resources.Load("IcoShpere_5000", typeof(GameObject)) as GameObject;
 
         for (int i = 0; i < 9; i++)
         {
@@ -123,15 +123,15 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         var v = (250 / (Mathf.Sqrt(2 * Mathf.PI * 1))) * Mathf.Exp(-Mathf.Pow(i, 2) / (2 * 1));
 
-        if (v <= 100 && v > 80) return _entityManager.Instantiate(_prefabEntities[0]);
-        if (v <= 80 && v > 40) return _entityManager.Instantiate(_prefabEntities[1]);
-        if (v <= 40 && v > 20) return _entityManager.Instantiate(_prefabEntities[2]);
-        if (v <= 20 && v > 15) return _entityManager.Instantiate(_prefabEntities[3]);
-        if (v <= 15 && v > 12) return _entityManager.Instantiate(_prefabEntities[4]);
-        if (v <= 12 && v > 10) return _entityManager.Instantiate(_prefabEntities[5]);
-        if (v <= 10 && v > 5) return _entityManager.Instantiate(_prefabEntities[6]);
-        if (v <= 5 && v > 3) return _entityManager.Instantiate(_prefabEntities[7]);
-        if (v <= 3) return _entityManager.Instantiate(_prefabEntities[8]);
+        if (v <= 100 && v > 70) return _entityManager.Instantiate(_prefabEntities[8]);
+        if (v <= 70 && v > 50) return _entityManager.Instantiate(_prefabEntities[7]);
+        if (v <= 50 && v > 40) return _entityManager.Instantiate(_prefabEntities[6]);
+        if (v <= 40 && v > 30) return _entityManager.Instantiate(_prefabEntities[5]);
+        if (v <= 30 && v > 20) return _entityManager.Instantiate(_prefabEntities[4]);
+        if (v <= 20 && v > 10) return _entityManager.Instantiate(_prefabEntities[3]);
+        if (v <= 10 && v > 5) return _entityManager.Instantiate(_prefabEntities[2]);
+        if (v <= 5 && v > 3) return _entityManager.Instantiate(_prefabEntities[1]);
+        if (v <= 3) return _entityManager.Instantiate(_prefabEntities[0]);
 
         return default;
     }
