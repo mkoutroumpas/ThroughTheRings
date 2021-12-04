@@ -96,13 +96,18 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         int totalEntityCount = ringLayers.Count * (int)(Settings.RingAngleMaximum / Settings.RingAngleStep) * Settings.NumOfRingsAB;
 
+        int entityIndex = -1;
+        int[] entityIndexes = new int[9];
+
         foreach (var ringLayer in ringLayers)
         {
             for (int a = 0; a < Settings.RingAngleMaximum; a += Settings.RingAngleStep) 
             {
                 for (int i = 0; i < Settings.NumOfRingsAB; i++) 
                 {
-                    Entity entity = GetNewEntity(_entityManager, j, totalEntityCount);
+                    Entity entity = GetNewEntity(_entityManager, j, totalEntityCount, out entityIndex);
+
+                    entityIndexes[entityIndex]++;
 
                     AddRingObject(entity, 
                         a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
@@ -115,7 +120,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         Debug.Log($"Total j = {j}");
     }
-    Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount)
+    Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount, out int entityIndex)
     {
         index -= totalEntityCount / 2;
 
@@ -123,17 +128,19 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         var v = (250 / (Mathf.Sqrt(2 * Mathf.PI * 1))) * Mathf.Exp(-Mathf.Pow(i, 2) / (2 * 1));
 
-        if (v <= 100 && v > 70) return _entityManager.Instantiate(_prefabEntities[8]);
-        if (v <= 70 && v > 50) return _entityManager.Instantiate(_prefabEntities[7]);
-        if (v <= 50 && v > 40) return _entityManager.Instantiate(_prefabEntities[6]);
-        if (v <= 40 && v > 30) return _entityManager.Instantiate(_prefabEntities[5]);
-        if (v <= 30 && v > 20) return _entityManager.Instantiate(_prefabEntities[4]);
-        if (v <= 20 && v > 10) return _entityManager.Instantiate(_prefabEntities[3]);
-        if (v <= 10 && v > 5) return _entityManager.Instantiate(_prefabEntities[2]);
-        if (v <= 5 && v > 3) return _entityManager.Instantiate(_prefabEntities[1]);
-        if (v <= 3) return _entityManager.Instantiate(_prefabEntities[0]);
+        entityIndex = -1;
 
-        return default;
+        if (v <= 100 && v > 70) entityIndex = 8;
+        if (v <= 70 && v > 50) entityIndex = 7;
+        if (v <= 50 && v > 40) entityIndex = 6;
+        if (v <= 40 && v > 30) entityIndex = 5;
+        if (v <= 30 && v > 20) entityIndex = 4;
+        if (v <= 20 && v > 10) entityIndex = 3;
+        if (v <= 10 && v > 5) entityIndex = 2;
+        if (v <= 5 && v > 3) entityIndex = 1;
+        if (v <= 3) entityIndex = 0;
+
+        return _entityManager.Instantiate(_prefabEntities[entityIndex]);
     }
     void AddRingObject(Entity entity, float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
