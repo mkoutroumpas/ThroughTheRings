@@ -135,8 +135,8 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         entityIndex = -1;
 
-        if (v <= 100 && v > 60) entityIndex = 8;
-        if (v <= 60 && v > 40) entityIndex = 7;
+        if (v <= 100 && v > 50) entityIndex = 8;
+        if (v <= 50 && v > 40) entityIndex = 7;
         if (v <= 40 && v > 30) entityIndex = 6;
         if (v <= 30 && v > 20) entityIndex = 5;
         if (v <= 20 && v > 10) entityIndex = 4;
