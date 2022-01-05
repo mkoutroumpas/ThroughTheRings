@@ -131,7 +131,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         float i = index / (totalEntityCount / 8);
 
-        var v = (250 / (Mathf.Sqrt(2 * Mathf.PI * 1))) * Mathf.Exp(-Mathf.Pow(i, 2) / (2 * 1));
+        var v = (250 / (Mathf.Sqrt(2 * Mathf.PI))) * Mathf.Exp(-0.5f * Mathf.Pow(i, 2));
 
         entityIndex = -1;
 
