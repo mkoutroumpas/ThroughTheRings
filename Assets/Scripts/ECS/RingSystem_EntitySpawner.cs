@@ -1,8 +1,6 @@
 using Unity.Entities;
 using UnityEngine;
-using Unity.Collections;
 using Unity.Transforms;
-using Unity.Rendering;
 using System.Collections.Generic;
 
 public class RingSystem_EntitySpawner : MonoBehaviour
