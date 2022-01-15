@@ -125,23 +125,19 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     }
     Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount, out int entityIndex)
     {
-        index -= totalEntityCount / 2;
-
-        float i = index / (totalEntityCount / 8);
-
-        var v = (250 / (Mathf.Sqrt(2 * Mathf.PI * Mathf.Pow(1f, 2)))) * Mathf.Exp(-0.5f * Mathf.Pow(i, 2));
+        float v = index / totalEntityCount;
 
         entityIndex = -1;
 
-        if (v <= 100 && v > 90) entityIndex = 0;
-        if (v <= 90 && v > 80) entityIndex = 1;
-        if (v <= 80 && v > 70) entityIndex = 2;
-        if (v <= 70 && v > 60) entityIndex = 3;
-        if (v <= 60 && v > 50) entityIndex = 4;
-        if (v <= 50 && v > 40) entityIndex = 5;
-        if (v <= 40 && v > 30) entityIndex = 6;
-        if (v <= 30 && v > 20) entityIndex = 7;
-        if (v <= 20) entityIndex = 8;
+        if (v <= 1.0f && v > 0.9f) entityIndex = 0;
+        if (v <= 0.9f && v > 0.8f) entityIndex = 1;
+        if (v <= 0.8f && v > 0.7f) entityIndex = 2;
+        if (v <= 0.7f && v > 0.6f) entityIndex = 3;
+        if (v <= 0.6f && v > 0.5f) entityIndex = 4;
+        if (v <= 0.5f && v > 0.4f) entityIndex = 5;
+        if (v <= 0.4f && v > 0.3f) entityIndex = 6;
+        if (v <= 0.3f && v > 0.2f) entityIndex = 7;
+        if (v <= 0.2f) entityIndex = 8;
 
         return _entityManager.Instantiate(_prefabEntities[entityIndex]);
     }
