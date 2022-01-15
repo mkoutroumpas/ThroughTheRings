@@ -125,7 +125,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
     }
     Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount, out int entityIndex)
     {
-        float v = index / totalEntityCount;
+        float v = (float)index / (float)totalEntityCount;
 
         entityIndex = -1;
 
