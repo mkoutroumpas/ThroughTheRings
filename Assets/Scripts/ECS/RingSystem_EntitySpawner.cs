@@ -132,12 +132,12 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         if (v <= 1.0f && v > 0.98f) entityIndex = 0;
         if (v <= 0.98f && v > 0.92f) entityIndex = 1;
         if (v <= 0.92f && v > 0.84f) entityIndex = 2;
-        if (v <= 0.84f && v > 0.74f) entityIndex = 3;
-        if (v <= 0.74f && v > 0.62f) entityIndex = 4;
-        if (v <= 0.62f && v > 0.50f) entityIndex = 5;
-        if (v <= 0.50f && v > 0.36f) entityIndex = 6;
-        if (v <= 0.36f && v > 0.24f) entityIndex = 7;
-        if (v <= 0.24f) entityIndex = 8;
+        if (v <= 0.84f && v > 0.65f) entityIndex = 3;
+        if (v <= 0.65f && v > 0.55f) entityIndex = 4;
+        if (v <= 0.55f && v > 0.45f) entityIndex = 5;
+        if (v <= 0.45f && v > 0.35f) entityIndex = 6;
+        if (v <= 0.35f && v > 0.25f) entityIndex = 7;
+        if (v <= 0.25f) entityIndex = 8;
 
         return _entityManager.Instantiate(_prefabEntities[entityIndex]);
     }
