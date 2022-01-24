@@ -22,7 +22,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
             gameObject.transform.position.y, 
             gameObject.transform.position.z);
 
-        _planetRadius = 3000f; // gameObject.transform.localScale.z / 2;
+        _planetRadius = 3000f;
 
         float ringStart = _planetRadius + 6000f;
 
@@ -58,9 +58,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         _prefabIcoSpheres[0] = Resources.Load("IcoShpere_5000", typeof(GameObject)) as GameObject;
 
         for (int i = 0; i < 9; i++)
-        {
             _prefabEntities[i] = GameObjectConversionUtility.ConvertGameObjectHierarchy(_prefabIcoSpheres[i], gameObjectConversionSettings);
-        }
 
         if (random == null) random = new System.Random();
 
@@ -118,10 +116,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         Debug.Log($"Total j = {j}");
 
-        for (int i = 0; i < entityIndexes.Length; i++)
-        {
-            Debug.Log($"Total for category {i}: {entityIndexes[i]}");
-        }
+        for (int i = 0; i < entityIndexes.Length; i++) Debug.Log($"Total for category {i}: {entityIndexes[i]}");
     }
     Entity GetNewEntity(EntityManager entityManager, int index, int totalEntityCount, out int entityIndex)
     {
