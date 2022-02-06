@@ -11,10 +11,10 @@ public static class Settings
     public const float RingWidth = 5000.0f;
     public const int RingAngleStep = 3;
     public const int RingAngleMaximum = 360;
-    public const int NumOfRingsAB = 20;
+    public const int NumOfRingsAB = 60;
     public const float StdDeviation = 0.1f;
     public const float MinRingObjectScale =  0.001f, MaxRingObjectScale = 250.0f;
-    public const float MinDeviation = -5000.0f, MaxDeviation = 5000.0f;
+    public const float MinDeviation = -3500.0f, MaxDeviation = 3500.0f;
     public const float MinYDeviation = -500.0f, MaxYDeviation = 500.0f;
     public const float MaxSelfRotationSpeed = 10.0f, MinSelfRotationSpeed = 0.0f;
     public const float DiffSelfRotSpeed = MaxSelfRotationSpeed - MinSelfRotationSpeed;
