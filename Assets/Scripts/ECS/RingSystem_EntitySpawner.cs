@@ -106,7 +106,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
                     entityIndexes[entityIndex]++;
 
                     AddRingObject(entity, 
-                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
+                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), Vector3.zero, Vector3.zero, GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
                         ringLayer.YOverhead, ringLayer.Color, Distributions.White, Settings.MinDeviation, Settings.MaxDeviation, Settings.MinYDeviation, Settings.MaxYDeviation);
 
                     j++;
@@ -136,7 +136,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         return _entityManager.Instantiate(_prefabEntities[entityIndex]);
     }
-    void AddRingObject(Entity entity, float angle, float radius, float scale = 1000f, float yOverhead = 0f, 
+    void AddRingObject(Entity entity, float angle, float radius, Vector3 selfSpeed, Vector3 systemSpeed, float scale = 1000f, float yOverhead = 0f, 
         Color color = default, Distributions distribution = default, float minDeviation = -1000f, float maxDeviation = 1000f,
         float minYDeviation = -500f, float maxYDeviation = 500f) 
     {
@@ -152,6 +152,10 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         var position = gameObject.transform.TransformPoint(
             new Vector3(radius * Mathf.Cos(angle) + _coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + _coordinateSystemZero.z));
+
+        _entityManager.SetComponentData(entity, new RingObject_Position { Angle = angle, Radius = radius });
+        _entityManager.SetComponentData(entity, new RingObject_Appearance { Color = color, Scale = new Vector3(scale, scale, scale) });
+        _entityManager.SetComponentData(entity, new RingObject_RotationSpeed { Self = selfSpeed, System = systemSpeed });
 
         _entityManager.SetComponentData(entity, new Translation { Value = position });
     }
