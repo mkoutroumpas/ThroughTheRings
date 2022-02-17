@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8102678702802747204}
   - component: {fileID: 5178476346780758241}
   - component: {fileID: 6933664932507534379}
+  - component: {fileID: -9173541775874295311}
   m_Layer: 0
   m_Name: IcoShpere_1000
   m_TagString: Untagged
@@ -81,3 +82,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-9173541775874295311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879321607862904318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d958bc0e38dbfb4db1a2f8a4f0c7a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
