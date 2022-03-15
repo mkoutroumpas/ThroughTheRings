@@ -153,6 +153,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         var position = gameObject.transform.TransformPoint(
             new Vector3(radius * Mathf.Cos(angle) + _coordinateSystemZero.x, yOverhead, radius * Mathf.Sin(angle) + _coordinateSystemZero.z));
 
+        _entityManager.SetComponentData(entity, new RingObject_Entity());
         _entityManager.SetComponentData(entity, new RingObject_Position { Angle = angle, Radius = radius });
         _entityManager.SetComponentData(entity, new RingObject_Appearance { Color = color, Scale = new Vector3(scale, scale, scale) });
         _entityManager.SetComponentData(entity, new RingObject_RotationSpeed { Self = selfSpeed, System = systemSpeed });
