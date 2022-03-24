@@ -3,6 +3,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Transforms;
 using Unity.Jobs;
+using Unity.Mathematics;
 
 public class RingSystem_System : JobComponentSystem
 {
@@ -15,7 +16,7 @@ public class RingSystem_System : JobComponentSystem
 
         public void Execute(ref Rotation rotation, ref RingObject_RotationSpeed rotationSpeed)
         {
-            
+            rotation.Value = quaternion.Euler(DeltaTime * rotationSpeed.Self);
         }
     }
 
