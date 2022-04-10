@@ -22,6 +22,11 @@ public class RingSystem_System : JobComponentSystem
 
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        return default;
+        RotateJob rotateJob = new RotateJob
+        {
+            DeltaTime = Time.DeltaTime
+        };
+
+        return rotateJob.Schedule(this, inputDeps);
     }
 }
