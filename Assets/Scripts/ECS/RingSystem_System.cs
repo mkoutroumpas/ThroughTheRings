@@ -16,7 +16,7 @@ public class RingSystem_System : JobComponentSystem
 
         public void Execute(ref Rotation rotation, ref RingObject_RotationSpeed rotationSpeed)
         {
-            rotation.Value = quaternion.Euler(DeltaTime * rotationSpeed.Self);
+            rotation.Value = quaternion.AxisAngle(math.up(), rotationSpeed.Self.x * DeltaTime);
         }
     }
 
