@@ -1,8 +1,6 @@
-using System;
-using UnityEngine;
 using Unity.Entities;
 
-[Serializable]
+[GenerateAuthoringComponent]
 public struct RingObject_Position : IComponentData
 {
     public float Angle;

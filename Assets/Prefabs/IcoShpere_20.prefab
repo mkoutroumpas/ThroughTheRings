@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8102678702802747204}
   - component: {fileID: 5178476346780758241}
   - component: {fileID: 6933664932507534379}
-  - component: {fileID: 6061142527767413870}
+  - component: {fileID: 4651285774594583412}
   m_Layer: 0
-  m_Name: IcoShpere_2000
+  m_Name: IcoShpere_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8879321607862904318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 2000, y: 2000, z: 2000}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6061142527767413870
+--- !u!114 &4651285774594583412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,6 +91,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8879321607862904318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d958bc0e38dbfb4db1a2f8a4f0c7a12, type: 3}
+  m_Script: {fileID: 11500000, guid: ef685b4ac9603514f95368040beca4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Self: {x: 0, y: 2, z: 0}
+  System: {x: 0, y: 0, z: 0}

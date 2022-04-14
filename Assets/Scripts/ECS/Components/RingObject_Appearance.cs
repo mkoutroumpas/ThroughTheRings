@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Unity.Entities;
 
-[Serializable]
+[GenerateAuthoringComponent]
 public struct RingObject_Appearance : IComponentData
 {
     public Color Color;

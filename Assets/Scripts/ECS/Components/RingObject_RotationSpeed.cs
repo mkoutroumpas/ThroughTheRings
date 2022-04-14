@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using Unity.Entities;
 
-[Serializable]
+[GenerateAuthoringComponent]
 public struct RingObject_RotationSpeed : IComponentData
 {
     public Vector3 Self;
