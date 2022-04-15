@@ -1,33 +1,22 @@
 using Unity.Entities;
 using Unity.Burst;
-using Unity.Collections;
 using Unity.Transforms;
 using Unity.Jobs;
 using Unity.Mathematics;
 
-public class RingSystem_System : JobComponentSystem
+[BurstCompile]
+public class RingSystem_System : SystemBase
 {
-    [BurstCompile]
-    struct RotateJob : IJobForEach<Rotation, RingObject_RotationSpeed>
+    protected override void OnUpdate()
     {
-        [ReadOnly]
-        public float DeltaTime;
+        float deltaTime = Time.DeltaTime;
 
-        public void Execute(ref Rotation rotation, ref RingObject_RotationSpeed rotationSpeed)
-        {
-            rotation.Value = math.mul(
+        Entities
+            .ForEach((ref Rotation rotation, in RingObject_RotationSpeed rotationSpeed) =>
+            {
+                rotation.Value = math.mul(
                     math.normalize(rotation.Value),
-                    quaternion.AxisAngle(math.up(), rotationSpeed.Self.y * DeltaTime));
-        }
-    }
-
-    protected override JobHandle OnUpdate(JobHandle inputDeps)
-    {
-        RotateJob rotateJob = new RotateJob
-        {
-            DeltaTime = Time.DeltaTime
-        };
-
-        return rotateJob.Schedule(this, inputDeps);
+                    quaternion.AxisAngle(math.up(), rotationSpeed.Self.y * deltaTime));
+            }).ScheduleParallel();
     }
 }
