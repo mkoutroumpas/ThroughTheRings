@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class RingSystem_EntitySpawner : MonoBehaviour
 {
     #region Private variables
-    public GameObject[] PrefabIcoSpheres;
+    GameObject[] _prefabIcoSpheres;
     Entity[] _prefabEntities;
     EntityManager _entityManager;
     Vector3 _coordinateSystemZero;
@@ -17,7 +17,9 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
     void Start()
     {
-        if (PrefabIcoSpheres == null || PrefabIcoSpheres.Length ==0) return;
+        _prefabIcoSpheres = new GameObject[9];
+
+        if (_prefabIcoSpheres == null || _prefabIcoSpheres.Length ==0) return;
 
         _coordinateSystemZero = new Vector3(
             gameObject.transform.position.x, 
@@ -46,11 +48,21 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
         GameObjectConversionSettings gameObjectConversionSettings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
 
-        _prefabEntities = new Entity[PrefabIcoSpheres.Length];
+        _prefabEntities = new Entity[_prefabIcoSpheres.Length];
+        
+        _prefabIcoSpheres[8] = Resources.Load("IcoShpere_10", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[7] = Resources.Load("IcoShpere_20", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[6] = Resources.Load("IcoShpere_50", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[5] = Resources.Load("IcoShpere_100", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[4] = Resources.Load("IcoShpere_200", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[3] = Resources.Load("IcoShpere_500", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[2] = Resources.Load("IcoShpere_1000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[1] = Resources.Load("IcoShpere_2000", typeof(GameObject)) as GameObject;
+        _prefabIcoSpheres[0] = Resources.Load("IcoShpere_5000", typeof(GameObject)) as GameObject;
 
-        for (int i = 0; i < PrefabIcoSpheres.Length; i++)
+        for (int i = 0; i < _prefabIcoSpheres.Length; i++)
         {
-            _prefabEntities[i] = GameObjectConversionUtility.ConvertGameObjectHierarchy(PrefabIcoSpheres[i], gameObjectConversionSettings);
+            _prefabEntities[i] = GameObjectConversionUtility.ConvertGameObjectHierarchy(_prefabIcoSpheres[i], gameObjectConversionSettings);
         }
 
         if (random == null) random = new System.Random();
