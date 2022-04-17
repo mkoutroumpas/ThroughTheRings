@@ -49,7 +49,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         GameObjectConversionSettings gameObjectConversionSettings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, null);
 
         _prefabEntities = new Entity[_prefabIcoSpheres.Length];
-        
+
         _prefabIcoSpheres[8] = Resources.Load("IcoShpere_10", typeof(GameObject)) as GameObject;
         _prefabIcoSpheres[7] = Resources.Load("IcoShpere_20", typeof(GameObject)) as GameObject;
         _prefabIcoSpheres[6] = Resources.Load("IcoShpere_50", typeof(GameObject)) as GameObject;
@@ -160,7 +160,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
         
         _entityManager.SetComponentData(entity, new Translation { Value = position });
 
-        _entityManager.SetComponentData(entity, new RingObject_RotationSpeed { Self = selfSpeed, System = systemSpeed });
         _entityManager.SetComponentData(entity, new Rotation { Value = Quaternion.Euler(0f, 0f, 0f) });
+        _entityManager.SetComponentData(entity, new RingObject_RotationSpeed { Self = selfSpeed, System = systemSpeed });
     }
 }

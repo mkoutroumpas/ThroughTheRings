@@ -12,6 +12,7 @@ public class RingSystem_System : SystemBase
         float deltaTime = Time.DeltaTime;
 
         Entities
+            .WithName("RingSystem_System")
             .ForEach((ref Rotation rotation, in RingObject_RotationSpeed rotationSpeed) =>
             {
                 rotation.Value = math.mul(
