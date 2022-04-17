@@ -111,7 +111,7 @@ public class RingSystem_EntitySpawner : MonoBehaviour
                     entityIndexes[entityIndex]++;
 
                     AddRingObject(entity, 
-                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), new Vector3(0f, 2f, 0f), Vector3.zero, GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
+                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), new Vector3(0f, -2f, 0f), Vector3.zero, GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
                         ringLayer.YOverhead, ringLayer.Color, Distributions.White, Settings.MinDeviation, Settings.MaxDeviation, Settings.MinYDeviation, Settings.MaxYDeviation);
 
                     j++;
