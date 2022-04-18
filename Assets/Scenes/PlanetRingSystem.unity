@@ -238,7 +238,7 @@ PrefabInstance:
     - target: {fileID: 11551346893745076, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 11551346893745076, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
         type: 3}
@@ -361,16 +361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45819745f570f734d8ba86b4b2968447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabIcoSpheres:
-  - {fileID: 8879321607862904318, guid: a417c90fb9d653a40a652fc3c2fd8bb4, type: 3}
-  - {fileID: 8879321607862904318, guid: e47f801add857954e9b35bbabfab83c9, type: 3}
-  - {fileID: 8879321607862904318, guid: 0d91daa41ae85c943b668715a4a614b7, type: 3}
-  - {fileID: 8879321607862904318, guid: 8b9073f696e393f478a2f92e16ba74b7, type: 3}
-  - {fileID: 8879321607862904318, guid: aa6f43bf2bcaba846bf6b32feb8e8bc8, type: 3}
-  - {fileID: 8879321607862904318, guid: 0313109b3a4dad245b0318cf7cb3e7e0, type: 3}
-  - {fileID: 8879321607862904318, guid: 5b0ed107e81a04c40abe10242a441819, type: 3}
-  - {fileID: 8879321607862904318, guid: 04bdcf4903475d74c8e5083499751e65, type: 3}
-  - {fileID: 8879321607862904318, guid: 6e0dc68e903e1c54892f7eedaac8db6f, type: 3}
 --- !u!4 &1175719653
 Transform:
   m_ObjectHideFlags: 0
