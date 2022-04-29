@@ -243,7 +243,7 @@ PrefabInstance:
     - target: {fileID: 11551346893745076, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22000
+      value: -21673
       objectReference: {fileID: 0}
     - target: {fileID: 11551346893745076, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
         type: 3}
@@ -285,6 +285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpacecraftMock
       objectReference: {fileID: 0}
+    - target: {fileID: 4995544412940379450, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.98999995
+      objectReference: {fileID: 0}
     - target: {fileID: 4995544413173023026, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
         type: 3}
       propertyPath: far clip plane
@@ -294,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995544413173023037, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.209
       objectReference: {fileID: 0}
     - target: {fileID: 4995544413173023037, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
         type: 3}
@@ -329,6 +339,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995544413865015875, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.98999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995544414472814826, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.8300001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995544414572162776, guid: 6d758e6897c4d954cb1a2dc9aed23ae2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d758e6897c4d954cb1a2dc9aed23ae2, type: 3}
