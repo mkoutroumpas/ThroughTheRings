@@ -110,8 +110,12 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
                     entityIndexes[entityIndex]++;
 
+                    float selfSpeed = random.Next(-2000, 2000) / 1000;
+
+                    Debug.Log($"SelfSpeed for {entityIndex}: {selfSpeed}.");
+
                     AddRingObject(entity, 
-                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), new Vector3(0f, -2f, 0f), Vector3.zero, GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
+                        a + ringLayer.Angle, GetRingObjectRadialDistance(i, ringLayer.RingStart), new Vector3(0f, selfSpeed, 0f), Vector3.zero, GetRingObjectSize(Settings.MinRingObjectScale, Settings.MaxRingObjectScale, Distributions.White), 
                         ringLayer.YOverhead, ringLayer.Color, Distributions.White, Settings.MinDeviation, Settings.MaxDeviation, Settings.MinYDeviation, Settings.MaxYDeviation);
 
                     j++;
