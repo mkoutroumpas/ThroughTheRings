@@ -112,6 +112,9 @@ public class RingSystem_EntitySpawner : MonoBehaviour
 
                     float selfSpeed = random.Next(-2000, 2000) / 1000;
 
+                    if (selfSpeed > -0.1f && selfSpeed <= 0)  selfSpeed = -0.1f;
+                    if (selfSpeed < 0.1f && selfSpeed >= 0)  selfSpeed = 0.1f;
+
                     Debug.Log($"SelfSpeed for {entityIndex}: {selfSpeed}.");
 
                     AddRingObject(entity, 
