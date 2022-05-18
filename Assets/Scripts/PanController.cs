@@ -2,35 +2,31 @@
 
 public class PanController : MonoBehaviour
 {
-	private Rigidbody rb;
+	private float speed = 2.0f;
 	void Start()
 	{
-		rb = GetComponent<Rigidbody>();
+		
 	}
 	void Update () 
     {
-		if (Input.GetKey(KeyCode.W))
+		if (Input.GetKeyDown(KeyCode.W))
 		{
-			rb.AddForce(Vector3.forward);
-			return;
+			transform.position += Vector3.forward * speed * Time.deltaTime;
 		}
 
-		if (Input.GetKey(KeyCode.S))
+		if (Input.GetKeyDown(KeyCode.S))
 		{
-			rb.AddForce(Vector3.back);
-			return;
+			transform.position += Vector3.back* speed * Time.deltaTime;
 		}
 
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKeyDown(KeyCode.A))
 		{
-			rb.AddForce(Vector3.left);
-			return;
+			transform.position += Vector3.left* speed * Time.deltaTime;
 		}
 
-		if (Input.GetKey(KeyCode.D))
+		if (Input.GetKeyDown(KeyCode.D))
 		{
-			rb.AddForce(Vector3.right);
-			return;
+			transform.position += Vector3.right * speed * Time.deltaTime;
 		}	
 	}
 }
