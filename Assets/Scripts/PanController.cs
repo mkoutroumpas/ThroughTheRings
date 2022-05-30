@@ -2,7 +2,7 @@
 
 public class PanController : MonoBehaviour
 {
-	private float speed = 2.0f;
+	private float speed = 20.0f;
 	void Start()
 	{
 		
