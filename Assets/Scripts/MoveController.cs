@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PanController : MonoBehaviour
+public class MoveController : MonoBehaviour
 {
 	private float speed = 20.0f;
 	void Start()
