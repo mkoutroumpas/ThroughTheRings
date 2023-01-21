@@ -23,6 +23,12 @@ Third Phase:
 
 By now the Scene must be filled with tens of thousands of moving GameObjects, making rendering very difficult. Add features, controls and artifacts inside the Capsule. Refactor the whole project using ECS. 
 
+Update:
+
+Third Phase: 
+
+Clean project up completely of all Assets and Scenes. Using GameObjects to represent Planet and Cockpit proved to be inefficient and of degrading performance. Instead, create ringed planet system based on skybox (Planet) and world space Canvas (Cockpit). Add and animate Asteroid field using Entities (ECS) v. 1.0 on Unity > 2022.2.0b8. 
+
 Fourth Phase:
 
 Try to make the Scene as compelling as possible. See how much load it can handle. Replace token cubes with Asteroid meshes and textures. Also try to build and run it on various platforms; even gaming consoles. 
@@ -30,3 +36,5 @@ Try to make the Scene as compelling as possible. See how much load it can handle
 Fifth Phase:
 
 Implement collisions and gravity forces between Asteroids, affecting their motion. Collisions should also result in fragmentation (debris). Those Physics should also affect the Capsule. 
+
+
